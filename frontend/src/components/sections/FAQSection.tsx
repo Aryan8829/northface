@@ -1,78 +1,81 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const faqs = [
+  {
+    question: "What is your typical executive search delivery timeline?",
+    answer: "Our average time to calibrated shortlist presentation is 18 business days. We initiate deep talent mapping within 48 hours of brief calibration, conducting confidential referencing before candidate introductions.",
+  },
+  {
+    question: "What are your search fee structures and engagement models?",
+    answer: "We offer three primary engagement models: Retained Executive Search (one-third on initiation, one-third on shortlist presentation, and one-third on placement execution), Contingent Direct-Hire for specialist individual contributors, and Embedded RPO for team build-outs.",
+  },
+  {
+    question: "How do you protect candidate confidentiality and current employment?",
+    answer: "Confidentiality is fundamental to our practice. We never submit a candidate's credentials or identifiable details to an employer without prior explicit discussion and written candidate consent. All searches operate under mutual non-disclosure agreements.",
+  },
+  {
+    question: "Do you offer a placement warranty or replacement guarantee?",
+    answer: "Yes. All retained executive placements are covered by our 12-month performance and cultural fit guarantee. In the unlikely event an executive departs within the first year, our practice desk executes an immediate replacement search at zero additional professional fee.",
+  },
+  {
+    question: "Are there any fees or costs for job seekers and candidates?",
+    answer: "Never. Under our strict ethics charter and global employment regulations, candidates are never charged for representation, advisory, or placement services. Our fees are exclusively covered by hiring client organizations.",
+  },
+];
 
 export function FAQSection() {
-  const faqs = [
-    {
-      q: "How does Nexus source its market intelligence data?",
-      a: "Our data is sourced through a proprietary blend of primary research, executive interviews, and automated scraping of over 10,000 global regulatory, financial, and industry databases. All data is vetted by senior analysts before inclusion in our reports."
-    },
-    {
-      q: "Can you execute the strategies you recommend?",
-      a: "Yes. Unlike pure-play research firms, Nexus maintains a robust Technology & Integration practice. We build the cloud architectures, deploy the AI models, and manage the digital transformations we recommend."
-    },
-    {
-      q: "Do you offer custom syndicate research?",
-      a: "Absolutely. We routinely partner with Fortune 500 organizations to conduct deep-dive, proprietary research into highly niche or emerging markets that are not covered in our standard catalog."
-    },
-    {
-      q: "How is your consulting model structured?",
-      a: "We operate on a partner-led model. This means you will always have a senior partner managing your engagement, backed by a dedicated team of analysts, technologists, and industry specialists tailored to your exact challenge."
-    }
-  ];
-
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
   return (
-    <section className="py-24 md:py-32 bg-surface">
-      <div className="container-enterprise">
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-8">
-          
-          <div className="lg:col-span-5">
-            <span className="eyebrow mb-6 block">12 / Common Questions</span>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Clarity on how we operate.
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              We believe in total transparency regarding our methodologies, data sources, and engagement models.
-            </p>
-          </div>
+    <section className="py-24 md:py-32 bg-surface border-b border-border">
+      <div className="container-enterprise max-w-4xl">
+        <div className="text-center mb-16">
+          <span className="eyebrow block mb-3">07 / Transparent Guidance</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-muted-foreground mt-4 text-base font-light">
+            Answers to common questions regarding our search protocols, timelines, and candidate representation.
+          </p>
+        </div>
 
-          <div className="lg:col-span-7">
-            <div className="divide-y divide-border border-y border-border">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className="py-6">
-                  <button
-                    onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                    className="flex w-full items-start justify-between text-left focus:outline-none group"
-                  >
-                    <h3 className="text-xl font-bold pr-8 group-hover:text-accent transition-colors">
-                      {faq.q}
-                    </h3>
-                    <div className="flex-shrink-0 h-8 w-8 rounded-full border border-border flex items-center justify-center group-hover:border-accent group-hover:text-accent transition-colors mt-0.5">
-                      {openIndex === idx ? (
-                        <Minus className="h-4 w-4" />
-                      ) : (
-                        <Plus className="h-4 w-4" />
-                      )}
-                    </div>
-                  </button>
-                  <div 
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      openIndex === idx ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <p className="text-muted-foreground leading-relaxed pr-12">
-                      {faq.a}
-                    </p>
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div
+                key={faq.question}
+                className="border border-border rounded-xl bg-background overflow-hidden transition-colors"
+              >
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-lg font-serif transition-colors hover:text-accent"
+                  aria-expanded={isOpen}
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className={cn(
+                      "h-5 w-5 text-muted-foreground shrink-0 transition-transform duration-200",
+                      isOpen && "rotate-180 text-accent"
+                    )}
+                  />
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed font-light border-t border-border/50 pt-4">
+                    {faq.answer}
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

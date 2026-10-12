@@ -10,8 +10,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export const metadata: Metadata = {
-  title: "Industries | Nexus Consulting",
-  description: "Explore market intelligence and research reports across 24+ industries — from technology and healthcare to energy and financial services.",
+  title: "Practice Areas & Industry Desks | Nexus Talent Partners",
+  description: "Specialized executive search and recruitment practice desks across Technology, Quantitative Finance, Healthcare, and Industrial Systems.",
 };
 
 export default function IndustriesPage() {

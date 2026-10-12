@@ -76,6 +76,9 @@
 
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-soft: hsl(var(--accent-soft));
+  --color-sage: hsl(var(--sage));
+  --color-sage-foreground: hsl(var(--sage-foreground));
 
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
@@ -146,9 +149,14 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Sharp Electric Blue Accent */
-    --accent: 221 83% 53%;
+    /* Confident Cobalt Accent */
+    --accent: 226 75% 52%;
     --accent-foreground: 210 40% 98%;
+    --accent-soft: 224 100% 96%;
+
+    /* Human-centered soft sage */
+    --sage: 144 24% 93%;
+    --sage-foreground: 154 50% 20%;
 
     --border: 214.3 31.8% 91.4%;
     --border-strong: 214.3 31.8% 80%;
@@ -178,9 +186,13 @@
     --muted: 222 47% 11%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    /* Electric Blue Accent */
-    --accent: 221 83% 53%;
+    /* Cobalt Accent */
+    --accent: 226 75% 58%;
     --accent-foreground: 210 40% 98%;
+    --accent-soft: 226 50% 16%;
+
+    --sage: 154 30% 16%;
+    --sage-foreground: 144 35% 85%;
 
     --border: 216 34% 17%;
     --border-strong: 216 34% 25%;

@@ -46,18 +46,19 @@ export function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-4 pr-8">
               <Link href="/" className="inline-block mb-6">
-                <div className="font-serif font-bold text-3xl tracking-tight text-white">
-                  Nexus<span className="text-accent">.</span>
+                <div className="font-serif font-bold text-3xl tracking-tight text-white flex items-center gap-2">
+                  <span>Nexus</span>
+                  <span className="text-accent text-xs uppercase tracking-widest font-sans font-bold px-2 py-0.5 rounded bg-accent/20 border border-accent/30">Talent Partners</span>
                 </div>
               </Link>
               <p className="text-primary-foreground/70 text-sm mb-8 leading-relaxed">
-                We equip leaders with the market intelligence, strategic clarity, and technological 
-                capabilities required to win in an era of unprecedented disruption.
+                Specialist executive search and recruitment consultancy. We connect market-defining organizations 
+                with proven leadership, technical specialists, and visionary operators.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span>350 Fifth Avenue, New York, NY 10118</span>
+                  <span>One World Trade Center, Suite 4500, New York, NY 10007</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
                   <Phone className="h-4 w-4 text-accent" />
@@ -65,16 +66,16 @@ export function Footer() {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
                   <Mail className="h-4 w-4 text-accent" />
-                  <span>contact@nexusconsulting.com</span>
+                  <span>talent@nexustalent.example.com</span>
                 </div>
               </div>
             </div>
 
             {/* Links Columns */}
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Services</h3>
+              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">For Employers</h3>
               <ul className="space-y-4">
-                {footerNavigation.services.map((item) => (
+                {footerNavigation.employers.map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
                       {item.label}
@@ -85,9 +86,9 @@ export function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Reports</h3>
+              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">For Candidates</h3>
               <ul className="space-y-4">
-                {footerNavigation.reports.map((item) => (
+                {footerNavigation.candidates.map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
                       {item.label}
@@ -98,9 +99,9 @@ export function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Insights</h3>
+              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Practices</h3>
               <ul className="space-y-4">
-                {footerNavigation.insights.map((item) => (
+                {footerNavigation.practiceAreas.map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
                       {item.label}
@@ -111,7 +112,7 @@ export function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Company</h3>
+              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Firm</h3>
               <ul className="space-y-4">
                 {footerNavigation.company.map((item) => (
                   <li key={item.label}>
@@ -127,7 +128,7 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-sm text-primary-foreground/50">
-              © {new Date().getFullYear()} Nexus Consulting. All rights reserved.
+              © {new Date().getFullYear()} Nexus Talent Partners. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
               {footerNavigation.legal.map((item) => (

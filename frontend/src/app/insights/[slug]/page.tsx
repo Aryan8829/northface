@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const insight = latestInsights.find((i) => i.slug === slug);
   if (!insight) return {};
   return {
-    title: `${insight.title} | Nexus Consulting`,
+    title: `${insight.title} | Nexus Talent Partners`,
     description: insight.excerpt,
   };
 }
@@ -140,7 +140,7 @@ export default async function InsightDetailPage({ params }: PageProps) {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">{insight.author}</h4>
-                  <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-3">Senior Partner, Nexus Consulting</p>
+                  <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-3">Practice Director, Nexus Talent Partners</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {insight.author} leads the Global Strategy Practice at Nexus, advising Fortune 500 executives on corporate transformation, digital strategy, and macroeconomic resilience.
                   </p>

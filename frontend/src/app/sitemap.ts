@@ -3,17 +3,40 @@ import { services } from "@/data/services";
 import { industries } from "@/data/industries";
 import { getAllReportSlugs } from "@/data/reports";
 import { latestInsights } from "@/data/homepage";
+import { getAllJobSlugs } from "@/data/jobs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nexusconsulting.example.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nexustalent.com";
   const currentDate = new Date().toISOString().split("T")[0];
 
-  // Static routes
-  const staticRoutes = ["", "/about", "/contact", "/services", "/industries", "/reports", "/insights"].map((route) => ({
+  // Core Static routes
+  const staticRoutes = [
+    "",
+    "/employers",
+    "/candidates",
+    "/jobs",
+    "/about",
+    "/case-studies",
+    "/contact",
+    "/services",
+    "/industries",
+    "/privacy",
+    "/terms",
+    "/reports",
+    "/insights",
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
-    changeFrequency: route === "" ? "weekly" as const : "monthly" as const,
-    priority: route === "" ? 1.0 : 0.8,
+    changeFrequency: route === "" ? ("daily" as const) : ("weekly" as const),
+    priority: route === "" ? 1.0 : route === "/employers" || route === "/candidates" || route === "/jobs" ? 0.95 : 0.8,
+  }));
+
+  // Dynamic Job routes
+  const jobRoutes = getAllJobSlugs().map((slug) => ({
+    url: `${baseUrl}/jobs/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: "daily" as const,
+    priority: 0.9,
   }));
 
   // Dynamic Service routes
@@ -21,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/services/${service.slug}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
-    priority: 0.9,
+    priority: 0.85,
   }));
 
   // Dynamic Industry routes
@@ -29,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/industries/${industry.slug}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
-    priority: 0.9,
+    priority: 0.85,
   }));
 
   // Dynamic Report routes
@@ -50,6 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes,
+    ...jobRoutes,
     ...serviceRoutes,
     ...industryRoutes,
     ...reportRoutes,

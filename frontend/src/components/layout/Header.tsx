@@ -50,8 +50,9 @@ export function Header() {
             
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 z-50">
-              <div className={cn("font-serif font-bold text-2xl tracking-tight transition-colors", isTransparent ? "text-white" : "text-primary")}>
-                Nexus<span className="text-accent">.</span>
+              <div className={cn("font-serif font-bold text-2xl tracking-tight transition-colors flex items-center gap-1", isTransparent ? "text-white" : "text-primary")}>
+                <span>Nexus</span>
+                <span className="text-accent text-xs uppercase tracking-widest font-sans font-bold px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20">Talent</span>
               </div>
             </Link>
 
@@ -149,26 +150,41 @@ export function Header() {
               ))}
             </nav>
 
-            {/* Desktop Right (Search + CTA) */}
-            <div className="hidden lg:flex items-center gap-6">
+            {/* Desktop Right (Search + CTAs) */}
+            <div className="hidden lg:flex items-center gap-3">
               <button 
                 onClick={() => setSearchOpen(true)}
                 className={cn(
-                "flex items-center gap-2 text-sm font-semibold transition-colors group",
-                isTransparent ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-primary"
-              )}>
-                <Search className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>Search</span>
+                  "flex items-center gap-2 text-sm font-semibold transition-colors mr-1",
+                  isTransparent ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-primary"
+                )}
+                aria-label="Search jobs, insights and solutions"
+              >
+                <Search className="h-4 w-4" />
+                <span className="hidden xl:inline">Search</span>
               </button>
-              <Link href="/contact" tabIndex={-1}>
+
+              <Link href="/jobs" tabIndex={-1}>
+                <Button
+                  variant="ghost"
+                  className={cn(
+                    "font-semibold rounded-sm text-sm px-4",
+                    isTransparent ? "text-white/90 hover:text-white hover:bg-white/10" : "text-foreground hover:bg-secondary"
+                  )}
+                >
+                  Explore Jobs
+                </Button>
+              </Link>
+
+              <Link href="/employers" tabIndex={-1}>
                 <Button
                   variant={isTransparent ? "secondary" : "default"}
                   className={cn(
-                    "font-semibold rounded-sm shadow-none",
-                    isTransparent && "bg-white text-primary hover:bg-white/90"
+                    "font-semibold rounded-sm shadow-none px-5",
+                    isTransparent ? "bg-white text-primary hover:bg-white/90" : "bg-primary text-primary-foreground hover:bg-primary/90"
                   )}
                 >
-                  Let&apos;s Talk
+                  Hire Talent
                 </Button>
               </Link>
             </div>
@@ -235,10 +251,15 @@ export function Header() {
                 )}
               </div>
             ))}
-            <div className="pt-6">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="lg" className="w-full rounded-sm text-lg h-14">
-                  Let&apos;s Talk
+            <div className="pt-6 flex flex-col gap-3">
+              <Link href="/employers" onClick={() => setMobileMenuOpen(false)}>
+                <Button size="lg" className="w-full rounded-sm text-base h-13 bg-primary text-primary-foreground">
+                  Hire Talent
+                </Button>
+              </Link>
+              <Link href="/jobs" onClick={() => setMobileMenuOpen(false)}>
+                <Button size="lg" variant="outline" className="w-full rounded-sm text-base h-13 border-border">
+                  Explore Jobs
                 </Button>
               </Link>
             </div>

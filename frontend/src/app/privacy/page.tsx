@@ -3,13 +3,13 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Nexus Consulting",
-  description: "Privacy Policy and Data Handling procedures for Nexus Consulting.",
+  title: "Privacy Policy & Candidate Data Protection | Nexus Talent Partners",
+  description: "Learn how Nexus Talent Partners safeguards candidate resumes, executive portfolios, and corporate hiring briefs with military-grade discretion and GDPR/CCPA compliance.",
 };
 
 export default function PrivacyPage() {
   return (
-    <>
+    <main className="min-h-screen bg-background">
       <section className="bg-primary text-primary-foreground pt-32 pb-20">
         <div className="container-enterprise">
           <Breadcrumb
@@ -18,10 +18,10 @@ export default function PrivacyPage() {
           />
           <div className="max-w-3xl space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-white">
-              Privacy Policy
+              Privacy Policy &amp; Candidate Data Governance
             </h1>
             <p className="text-xl text-primary-foreground/70 max-w-2xl font-light">
-              Last Updated: October 1, 2026
+              Last Updated: October 2026 &bull; Strict Discretion Protocols
             </p>
           </div>
         </div>
@@ -30,47 +30,67 @@ export default function PrivacyPage() {
       <section className="py-24 bg-background">
         <div className="container-enterprise max-w-4xl">
           <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-bold prose-p:leading-relaxed">
-            <h2>1. Introduction</h2>
+            <h2>1. Our Commitment to Discretion</h2>
             <p>
-              Nexus Consulting (&ldquo;Nexus,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is committed to protecting your privacy and ensuring you have a positive experience on our website and in using our services (collectively, the &ldquo;Services&rdquo;). This Privacy Policy applies to our website and describes our practices for handling your personal data.
+              Nexus Talent Partners (&ldquo;Nexus,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates an executive search and specialized recruitment practice where confidentiality is our foundational currency. This Privacy Policy describes how we collect, safeguard, and process personal information submitted by prospective candidates, executive leaders, and hiring client organizations.
             </p>
 
-            <h2>2. Information We Collect</h2>
+            <h2>2. The Candidate Consent &amp; Zero-Exposure Guarantee</h2>
             <p>
-              We may collect personal data that you provide directly to us, such as when you request information, register for events, download insights, or contact us. This may include your name, business email address, corporate title, company name, and phone number.
+              Unlike traditional contingency agencies, <strong>Nexus Talent Partners will NEVER distribute, transmit, or disclose a candidate&apos;s resume, identity, current employer, or portfolio to any client organization without prior, explicit written permission for that specific mandate.</strong>
             </p>
             <p>
-              We also collect data automatically through your use of the Services, such as IP addresses, browser types, operating systems, and information about your interaction with our website using cookies and similar technologies.
+              Candidate profiles registered through our confidential career intake forms are stored within an encrypted, access-controlled vault accessible exclusively by designated Practice Directors.
             </p>
 
-            <h2>3. How We Use Your Information</h2>
+            <h2>3. Information We Collect</h2>
             <p>
-              We use the collected information to:
+              We collect information strictly necessary to evaluate professional experience and facilitate executive placements:
             </p>
             <ul>
-              <li>Provide, operate, and maintain our Services.</li>
-              <li>Improve, personalize, and expand our Services.</li>
-              <li>Understand and analyze how you use our Services.</li>
-              <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes.</li>
-              <li>Send you emails containing thought leadership, market insights, or service offerings.</li>
+              <li><strong>Candidate Information:</strong> Full name, professional email, phone number, employment history, architectural and technical proficiencies, compensation targets, and publicly available professional profiles (e.g., LinkedIn, GitHub, Google Scholar).</li>
+              <li><strong>Employer Information:</strong> Organization name, hiring authority contact information, organizational charts, technical specifications, and compensation budgets provided in hiring briefs.</li>
+              <li><strong>Digital Interactions:</strong> Log data, IP address, and cookie identifiers used solely to maintain website performance and form security.</li>
             </ul>
 
-            <h2>4. Data Security & Enterprise Standards</h2>
+            <h2>4. How We Use Professional Data</h2>
             <p>
-              As an enterprise intelligence firm, we maintain the highest standards of data security. We implement advanced technical and organizational measures to protect your personal data against unauthorized access, loss, or alteration. We regularly audit our security protocols to ensure compliance with global data protection regulations (including GDPR and CCPA).
+              Data collected is utilized strictly to:
+            </p>
+            <ul>
+              <li>Calibrate and match senior candidates with vetted, active search mandates.</li>
+              <li>Communicate directly regarding career opportunities, compensation benchmarks, and executive search timelines.</li>
+              <li>Verify past credentials and leadership achievements with candidate consent.</li>
+              <li>Fulfill statutory employment and equal opportunity reporting obligations where mandated by applicable law.</li>
+            </ul>
+
+            <h2>5. Data Retention, Portability &amp; Right to Erasure</h2>
+            <p>
+              Under global data privacy frameworks (including the EU/UK General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA)):
+            </p>
+            <ul>
+              <li>You may request a complete copy of all career records and notes maintained regarding your candidacy.</li>
+              <li>You may request the immediate and irrevocable erasure of your profile and submitted resumes from our systems at any time by emailing <code>privacy@nexustalent.com</code>.</li>
+              <li>We perform biennial audits to purge candidate records that have not engaged in active communication over a 24-month horizon.</li>
+            </ul>
+
+            <h2>6. Employer Mandate Confidentiality</h2>
+            <p>
+              All corporate hiring inquiries, succession plans, and organizational briefs submitted through our platform are treated as confidential proprietary business information protected by mutual non-disclosure standards. We will never publicly acknowledge an employer client partnership without prior corporate consent.
             </p>
 
-            <h2>5. Contact Us</h2>
+            <h2>7. Contact Our Data Protection Officer</h2>
             <p>
-              If you have any questions about this Privacy Policy or our privacy practices, please contact our Data Protection Officer at:
+              For questions regarding our candidate privacy protocols or to submit a data subject access request, contact:
             </p>
-            <p>
-              <strong>Email:</strong> privacy@nexusconsulting.com<br />
-              <strong>Address:</strong> One World Trade Center, Suite 4500, New York, NY 10007, United States
+            <p className="font-mono text-sm">
+              Nexus Talent Partners &bull; Data Governance Office<br />
+              Email: privacy@nexustalent.com<br />
+              555 California Street, Suite 4200, San Francisco, CA 94104
             </p>
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

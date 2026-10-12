@@ -6,8 +6,8 @@ import { ArrowRight, Clock } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Insights & Perspectives | Nexus Consulting",
-  description: "Read our latest thinking, research, and analysis on the trends shaping the future of enterprise.",
+  title: "Insights & Talent Perspectives | Nexus Talent Partners",
+  description: "Market intelligence, compensation frameworks, and executive search perspectives across technology, quant finance, and healthcare.",
 };
 
 export default function InsightsPage() {

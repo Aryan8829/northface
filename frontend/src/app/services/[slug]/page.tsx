@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = getServiceBySlug(slug);
   if (!service) return {};
   return {
-    title: `${service.title} | Nexus Consulting`,
+    title: `${service.title} | Nexus Talent Partners`,
     description: service.description,
   };
 }

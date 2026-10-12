@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const industry = getIndustryBySlug(slug);
   if (!industry) return {};
   return {
-    title: `${industry.name} Market Research | Nexus Consulting`,
+    title: `${industry.name} Practice Desk | Nexus Talent Partners`,
     description: industry.description,
   };
 }

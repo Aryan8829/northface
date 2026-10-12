@@ -5,7 +5,7 @@ import { reports } from "@/data/reports";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Market Research Reports | Nexus Consulting",
+  title: "Talent & Market Intelligence Reports | Nexus Talent Partners",
   description: "Browse our comprehensive library of market research reports spanning 24+ industries, with detailed market sizing, competitive analysis, and strategic forecasts.",
 };
 

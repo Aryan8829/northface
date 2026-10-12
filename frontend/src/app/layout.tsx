@@ -15,31 +15,31 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Nexus Consulting",
-    default: "Nexus Consulting | Market Intelligence & Technology Services",
+    template: "%s | Nexus Talent Partners",
+    default: "Nexus Talent Partners | Executive Search & Global Recruitment Consultancy",
   },
-  description: "Global strategy and technology consulting firm dedicated to helping organizations navigate complexity and accelerate growth through data, insights, and action.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://nexusconsulting.example.com"),
+  description: "Specialist recruitment and executive talent consultancy built around people, potential, and long-term organizational fit.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://nexustalent.example.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
-    title: "Nexus Consulting | Market Intelligence & Technology Services",
-    description: "Global strategy and technology consulting firm dedicated to helping organizations navigate complexity and accelerate growth.",
-    siteName: "Nexus Consulting",
+    title: "Nexus Talent Partners | Executive Search & Recruitment Consultancy",
+    description: "Specialist recruitment and executive talent consultancy built around people, potential, and long-term organizational fit.",
+    siteName: "Nexus Talent Partners",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Nexus Consulting",
+        alt: "Nexus Talent Partners",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexus Consulting | Market Intelligence & Technology Services",
-    description: "Global strategy and technology consulting firm dedicated to helping organizations navigate complexity and accelerate growth.",
+    title: "Nexus Talent Partners | Executive Search & Recruitment Consultancy",
+    description: "Specialist recruitment and executive talent consultancy built around people, potential, and long-term organizational fit.",
     images: ["/og-image.jpg"],
   },
   robots: {

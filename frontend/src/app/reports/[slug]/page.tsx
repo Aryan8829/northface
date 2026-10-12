@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const report = getReportBySlug(slug);
   if (!report) return {};
   return {
-    title: `${report.title} | Nexus Consulting`,
+    title: `${report.title} | Nexus Talent Partners`,
     description: report.excerpt,
   };
 }
