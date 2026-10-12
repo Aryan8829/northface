@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   PHASE 4, 5, 6: ENTERPRISE DESIGN SYSTEM (TAILWIND V4)
+   ========================================================================== */
+
+@theme {
+  /* 1. TYPOGRAPHY SYSTEM */
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
+
+  /* Strict Typography Scale (Fluid considerations where applicable) */
+  --text-display-xl: 4.5rem;
+  --text-display-xl--line-height: 1.1;
+  
+  --text-display-lg: 3.75rem;
+  --text-display-lg--line-height: 1.15;
+  
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 1.2;
+
+  --text-h1: 2.5rem;
+  --text-h1--line-height: 1.2;
+  
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.25;
+  
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.3;
+  
+  --text-h4: 1.25rem;
+  --text-h4--line-height: 1.4;
+  
+  --text-h5: 1.125rem;
+  --text-h5--line-height: 1.5;
+
+  --text-body-xl: 1.25rem;
+  --text-body-xl--line-height: 1.6;
+  
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.6;
+  
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+
+  /* 2. COLOR SYSTEM (Bound to CSS variables for theming) */
+  --color-border: hsl(var(--border));
+  --color-border-strong: hsl(var(--border-strong));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  --color-background: hsl(var(--background));
+  --color-surface: hsl(var(--surface));
+  --color-surface-elevated: hsl(var(--surface-elevated));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Semantic Colors */
+  --color-success: hsl(142 71% 45%);
+  --color-success-foreground: hsl(0 0% 100%);
+  --color-warning: hsl(38 92% 50%);
+  --color-warning-foreground: hsl(0 0% 100%);
+  --color-error: hsl(0 84% 60%);
+  --color-error-foreground: hsl(0 0% 100%);
+  --color-info: hsl(217 91% 60%);
+  --color-info-foreground: hsl(0 0% 100%);
+
+  /* 3. SPACING SYSTEM (Based on 4px grid) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-60: 15rem;
+
+  /* 4. RADIUS SYSTEM (Subtle, enterprise feel - NOT pill shaped) */
+  --radius-lg: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.25rem;
+  --radius-none: 0;
+
+  /* 5. SHADOW SYSTEM */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-premium: 0 20px 40px -10px rgb(0 0 0 / 0.25), 0 0 0 1px rgb(255 255 255 / 0.05);
+
+  /* 6. CONTAINER SYSTEM */
+  --container-width: 1440px;
+}
+
+@layer base {
+  :root {
+    /* DEFAULT THEME: PREMIUM LIGHT/EDITORIAL */
+    --background: 0 0% 99%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Deep Slate/Obsidian for Primary */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Sharp Electric Blue Accent */
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --border-strong: 214.3 31.8% 80%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 47% 11%;
+  }
+
+  .dark {
+    /* ENTERPRISE DARK THEME (Obsidian base) */
+    --background: 224 71% 4%;
+    --surface: 224 71% 6%;
+    --surface-elevated: 224 71% 8%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 6%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 6%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 47% 11%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    /* Electric Blue Accent */
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 216 34% 17%;
+    --border-strong: 216 34% 25%;
+    --input: 216 34% 17%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    /* Prevent horizontal scroll globally */
+    overflow-x: hidden;
+  }
+
+  /* Core Editorial Typography Overrides */
+  h1, .h1 {
+    @apply font-serif tracking-tight text-primary font-bold text-h1;
+  }
+  
+  h2, .h2 {
+    @apply font-sans tracking-tight text-primary font-bold text-h2;
+  }
+  
+  h3, .h3 {
+    @apply font-sans tracking-tight text-primary font-semibold text-h3;
+  }
+  
+  h4, .h4 {
+    @apply font-sans tracking-tight text-primary font-semibold text-h4;
+  }
+  
+  h5, .h5 {
+    @apply font-sans text-primary font-semibold text-h5;
+  }
+  
+  p {
+    @apply text-body-md text-foreground/90 leading-relaxed;
+  }
+  
+  .eyebrow {
+    @apply text-label uppercase tracking-widest font-semibold text-accent;
+  }
+}
+
+@layer utilities {
+  .container-enterprise {
+    @apply mx-auto w-full max-w-[var(--container-width)] px-6 md:px-12 lg:px-16;
+  }
+  
+  .grid-editorial {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12;
+  }
+}
