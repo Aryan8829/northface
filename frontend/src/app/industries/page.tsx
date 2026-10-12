@@ -19,20 +19,23 @@ export default function IndustriesPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-primary text-primary-foreground pt-32 pb-20 md:pt-40 md:pb-28">
+      {/* Hero on Pure White Canvas */}
+      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container mx-auto px-4 md:px-6">
           <Breadcrumb
             items={[{ label: "Industries" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+              Sector Practices
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#202022] font-serif">
               Industries We Cover
             </h1>
-            <p className="text-xl text-primary-foreground/70 max-w-2xl leading-relaxed">
+            <p className="text-xl text-[#606064] max-w-2xl leading-relaxed font-light">
               Deep domain expertise across {industries.length} major industry verticals with {totalReports}+ published reports
-              and counting.
+              and specialized executive networks.
             </p>
           </div>
         </div>

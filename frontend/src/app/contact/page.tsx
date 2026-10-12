@@ -58,25 +58,23 @@ function ContactTabs() {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <section className="bg-primary text-primary-foreground pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/15 to-transparent opacity-60 blur-3xl" />
-        </div>
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Contact & Intake" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="eyebrow block text-accent border-l-2 border-accent pl-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
               Discreet Engagement
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
               Begin a confidential dialogue.
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/75 max-w-2xl leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#606064] max-w-2xl leading-relaxed font-light">
               Connect with our search directors to initiate a retained executive search, discuss an embedded hiring partnership, or register your leadership profile.
             </p>
           </div>

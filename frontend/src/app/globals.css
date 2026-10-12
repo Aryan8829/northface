@@ -3,7 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================================================
-   PHASE 4, 5, 6: ENTERPRISE DESIGN SYSTEM (TAILWIND V4)
+   ANTIGRAVITY WHITE CANVAS / HUMAN MOMENTUM DESIGN SYSTEM (TAILWIND V4)
    ========================================================================== */
 
 @theme {
@@ -11,55 +11,61 @@
   --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
 
-  /* Strict Typography Scale (Fluid considerations where applicable) */
-  --text-display-xl: 4.5rem;
-  --text-display-xl--line-height: 1.1;
-  
-  --text-display-lg: 3.75rem;
-  --text-display-lg--line-height: 1.15;
-  
-  --text-display-md: 3rem;
-  --text-display-md--line-height: 1.2;
+  /* Fluid Editorial Typographic Scale */
+  --text-hero: clamp(3.25rem, 8vw, 8.2rem);
+  --text-hero--line-height: 1.05;
 
-  --text-h1: 2.5rem;
-  --text-h1--line-height: 1.2;
-  
-  --text-h2: 2rem;
-  --text-h2--line-height: 1.25;
-  
-  --text-h3: 1.5rem;
+  --text-display: clamp(2.5rem, 5.5vw, 5.8rem);
+  --text-display--line-height: 1.1;
+
+  --text-h1: clamp(2rem, 3.8vw, 4.2rem);
+  --text-h1--line-height: 1.18;
+
+  --text-h2: clamp(1.6rem, 2.8vw, 3.2rem);
+  --text-h2--line-height: 1.22;
+
+  --text-h3: clamp(1.25rem, 1.8vw, 2rem);
   --text-h3--line-height: 1.3;
-  
+
   --text-h4: 1.25rem;
   --text-h4--line-height: 1.4;
-  
-  --text-h5: 1.125rem;
-  --text-h5--line-height: 1.5;
 
-  --text-body-xl: 1.25rem;
-  --text-body-xl--line-height: 1.6;
-  
   --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.6;
-  
-  --text-body-md: 1rem;
-  --text-body-md--line-height: 1.6;
-  
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
   --text-body-sm: 0.875rem;
   --text-body-sm--line-height: 1.5;
-
-  --text-caption: 0.75rem;
-  --text-caption--line-height: 1.4;
 
   --text-label: 0.75rem;
   --text-label--line-height: 1;
 
-  /* 2. COLOR SYSTEM (Bound to CSS variables for theming) */
+  /* 2. COLOR SYSTEM (White Canvas + Warm Signal Tokens) */
+  --color-canvas: #FFFFFF;
+  --color-ink: #202022;
+  --color-ink-muted: #606064;
+  --color-line: #EAE8E5;
+  --color-surface-soft: #FAF9F7;
+
+  /* Vibrant Signal Accents */
+  --color-signal-coral: #FF5B3D;
+  --color-signal-orange: #FF9A39;
+  --color-signal-raspberry: #E83379;
+  --color-signal-yellow: #FFC84B;
+  --color-signal-lime: #C6E86B;
+
+  /* Delicate Washes */
+  --color-coral-wash: #FFF3EF;
+  --color-peach-wash: #FFF8EE;
+
+  /* Theme mappings */
   --color-border: hsl(var(--border));
   --color-border-strong: hsl(var(--border-strong));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-  
+
   --color-background: hsl(var(--background));
   --color-surface: hsl(var(--surface));
   --color-surface-elevated: hsl(var(--surface-elevated));
@@ -77,181 +83,110 @@
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-accent-soft: hsl(var(--accent-soft));
-  --color-sage: hsl(var(--sage));
-  --color-sage-foreground: hsl(var(--sage-foreground));
 
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  /* Semantic Colors */
-  --color-success: hsl(142 71% 45%);
-  --color-success-foreground: hsl(0 0% 100%);
-  --color-warning: hsl(38 92% 50%);
-  --color-warning-foreground: hsl(0 0% 100%);
-  --color-error: hsl(0 84% 60%);
-  --color-error-foreground: hsl(0 0% 100%);
-  --color-info: hsl(217 91% 60%);
-  --color-info-foreground: hsl(0 0% 100%);
-
-  /* 3. SPACING SYSTEM (Based on 4px grid) */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-  --spacing-24: 6rem;
-  --spacing-32: 8rem;
-  --spacing-40: 10rem;
-  --spacing-48: 12rem;
-  --spacing-60: 15rem;
-
-  /* 4. RADIUS SYSTEM (Subtle, enterprise feel - NOT pill shaped) */
-  --radius-lg: 0.5rem;
-  --radius-md: 0.375rem;
+  /* 3. SHADOWS & RADIUS */
   --radius-sm: 0.25rem;
-  --radius-none: 0;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
 
-  /* 5. SHADOW SYSTEM */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-premium: 0 20px 40px -10px rgb(0 0 0 / 0.25), 0 0 0 1px rgb(255 255 255 / 0.05);
+  --shadow-subtle: 0 2px 10px 0 rgba(32, 32, 34, 0.03);
+  --shadow-card: 0 4px 20px -2px rgba(32, 32, 34, 0.05);
+  --shadow-elevated: 0 20px 40px -10px rgba(32, 32, 34, 0.08);
 
-  /* 6. CONTAINER SYSTEM */
+  /* 4. CONTAINER SYSTEM */
   --container-width: 1440px;
 }
 
 @layer base {
   :root {
-    /* DEFAULT THEME: PREMIUM LIGHT/EDITORIAL */
-    --background: 0 0% 99%;
-    --surface: 0 0% 100%;
-    --surface-elevated: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* PURE WHITE STAGE AS THE UNBREAKABLE BASE */
+    --background: 0 0% 100%;       /* #FFFFFF pure white */
+    --surface: 0 0% 100%;          /* #FFFFFF pure white */
+    --surface-elevated: 40 20% 98%;/* #FAF9F7 soft paper */
+    --foreground: 240 3% 13%;      /* #202022 near-black ink */
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 240 3% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 240 3% 13%;
 
-    /* Deep Slate/Obsidian for Primary */
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    /* Near-black primary button / ink fill */
+    --primary: 240 3% 13%;          /* #202022 ink */
+    --primary-foreground: 0 0% 100%;/* #FFFFFF */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 40 18% 97%;        /* #FAF9F7 soft paper */
+    --secondary-foreground: 240 3% 13%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 12% 95%;
+    --muted-foreground: 240 2% 39%; /* #606064 secondary ink */
 
-    /* Confident Cobalt Accent */
-    --accent: 226 75% 52%;
-    --accent-foreground: 210 40% 98%;
-    --accent-soft: 224 100% 96%;
+    /* Signature Coral Accent (#FF5B3D) */
+    --accent: 9 100% 62%;           /* #FF5B3D */
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 14 100% 97%;     /* #FFF3EF coral wash */
 
-    /* Human-centered soft sage */
-    --sage: 144 24% 93%;
-    --sage-foreground: 154 50% 20%;
-
-    --border: 214.3 31.8% 91.4%;
-    --border-strong: 214.3 31.8% 80%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 47% 11%;
-  }
-
-  .dark {
-    /* ENTERPRISE DARK THEME (Obsidian base) */
-    --background: 224 71% 4%;
-    --surface: 224 71% 6%;
-    --surface-elevated: 224 71% 8%;
-    --foreground: 213 31% 91%;
-
-    --card: 224 71% 6%;
-    --card-foreground: 213 31% 91%;
-
-    --popover: 224 71% 6%;
-    --popover-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 222 47% 11%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    /* Cobalt Accent */
-    --accent: 226 75% 58%;
-    --accent-foreground: 210 40% 98%;
-    --accent-soft: 226 50% 16%;
-
-    --sage: 154 30% 16%;
-    --sage-foreground: 144 35% 85%;
-
-    --border: 216 34% 17%;
-    --border-strong: 216 34% 25%;
-    --input: 216 34% 17%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-border);
+    --border: 36 10% 91%;           /* #EAE8E5 hairline */
+    --border-strong: 36 10% 82%;
+    --input: 36 10% 91%;
+    --ring: 9 100% 62%;             /* #FF5B3D */
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans;
-    /* Prevent horizontal scroll globally */
+    background-color: #FFFFFF !important;
+    color: #202022;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  /* Core Editorial Typography Overrides */
-  h1, .h1 {
-    @apply font-serif tracking-tight text-primary font-bold text-h1;
-  }
-  
-  h2, .h2 {
-    @apply font-sans tracking-tight text-primary font-bold text-h2;
-  }
-  
-  h3, .h3 {
-    @apply font-sans tracking-tight text-primary font-semibold text-h3;
-  }
-  
-  h4, .h4 {
-    @apply font-sans tracking-tight text-primary font-semibold text-h4;
-  }
-  
-  h5, .h5 {
-    @apply font-sans text-primary font-semibold text-h5;
-  }
-  
-  p {
-    @apply text-body-md text-foreground/90 leading-relaxed;
-  }
-  
-  .eyebrow {
-    @apply text-label uppercase tracking-widest font-semibold text-accent;
+  ::selection {
+    background-color: #FF5B3D;
+    color: #FFFFFF;
   }
 }
 
-@layer utilities {
-  .container-enterprise {
-    @apply mx-auto w-full max-w-[var(--container-width)] px-6 md:px-12 lg:px-16;
+/* ==========================================================================
+   EDITORIAL UTILITIES & ACCENTS
+   ========================================================================== */
+
+.container-enterprise {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF5B3D;
+}
+
+/* Route stroke utility */
+.route-stroke {
+  stroke-dasharray: 6 6;
+  animation: routeDash 30s linear infinite;
+}
+
+@keyframes routeDash {
+  to {
+    stroke-dashoffset: -120;
   }
-  
-  .grid-editorial {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-stroke {
+    animation: none !important;
   }
 }

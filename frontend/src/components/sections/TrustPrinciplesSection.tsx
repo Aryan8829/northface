@@ -1,41 +1,47 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Scale, EyeOff, Award, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { ShieldCheck, Scale, EyeOff, Award } from "lucide-react";
 
 const principles = [
   {
     icon: ShieldCheck,
     title: "Zero False-Positive Rigor",
-    description: "We do not flood hiring executives with unsolicited resumes. Every candidate profile submitted has passed deep technical and back-channel referencing.",
+    description: "We will never pad a shortlist to demonstrate activity. Every profile presented has undergone extensive technical and back-channel referencing.",
+    accent: "#FF5B3D",
   },
   {
     icon: EyeOff,
     title: "Radical Discretion & Privacy",
-    description: "Confidentiality is sacrosanct. Executive search mandates and candidate records are handled with end-to-end operational privacy and strict NDA protocols.",
+    description: "Confidentiality is our primary currency. Searches and candidate dossiers are protected by strict Chinese walls and mutual NDA protocols.",
+    accent: "#FF9A39",
   },
   {
     icon: Scale,
-    title: "Truthful Compensation Benchmarking",
-    description: "We eliminate opaque salary negotiations by publishing clear salary ranges, equity liquidity analysis, and verified total compensation frameworks.",
+    title: "Total Compensation Transparency",
+    description: "We eliminate offer-stage surprises by publishing truthful salary bands, equity cap-table expectations, and bonus mechanics upfront.",
+    accent: "#E83379",
   },
   {
     icon: Award,
     title: "12-Month Placement Guarantee",
-    description: "We stand behind our placements with full financial accountability. If an executive leaves within 12 months, we execute an immediate priority replacement at zero search fee.",
+    description: "We hold ourselves accountable. If a placed leader departs within 12 months, we execute an immediate replacement search at zero fee.",
+    accent: "#FFC84B",
   },
 ];
 
 export function TrustPrinciplesSection() {
   return (
-    <section className="py-24 md:py-32 bg-secondary border-b border-border">
+    <section className="py-24 md:py-32 bg-white border-t border-[#EAE8E5]">
       <div className="container-enterprise">
         <div className="max-w-2xl mb-16">
-          <span className="eyebrow block mb-3">06 / The Nexus Standard</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
-            How we protect organizational value and career integrity.
+          <span className="eyebrow block mb-3 text-[#FF5B3D]">07 / The Nexus Standard</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
+            Search ethics built on long-term accountability.
           </h2>
+          <p className="text-sm sm:text-base text-[#606064] font-light mt-3 leading-relaxed">
+            We reject the high-volume keyword matching that has commoditized talent acquisition. These four commitments govern every search we accept.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -44,29 +50,25 @@ export function TrustPrinciplesSection() {
             return (
               <div
                 key={p.title}
-                className="p-8 rounded-xl bg-surface border border-border flex flex-col justify-between hover:border-accent/40 hover:shadow-md transition-all group"
+                className="p-8 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] flex flex-col justify-between hover:border-[#FF5B3D]/50 hover:shadow-md transition-all duration-300 group"
               >
                 <div>
-                  <div className="h-12 w-12 rounded-lg bg-accent-soft text-accent flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div
+                    className="h-12 w-12 rounded-xl bg-white border border-[#EAE8E5] flex items-center justify-center mb-6 transition-colors"
+                    style={{ color: p.accent }}
+                  >
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-bold font-serif mb-3 leading-snug">
+                  <h3 className="text-lg font-bold font-serif mb-2.5 leading-snug text-[#202022]">
                     {p.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-[#606064] leading-relaxed font-light">
                     {p.description}
                   </p>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link href="/about" className="text-xs font-bold text-accent hover:underline inline-flex items-center gap-1.5">
-            <span>Read our complete firm operating principles and ethics charter</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
         </div>
       </div>
     </section>

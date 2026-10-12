@@ -57,25 +57,24 @@ const globalDesks = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <section className="relative min-h-[60vh] flex items-center bg-primary text-primary-foreground overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-accent/20 via-primary to-primary opacity-90 z-10" />
-        </div>
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="relative min-h-[50vh] flex items-center bg-white text-[#202022] overflow-hidden pt-32 pb-20 border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-[350px] h-[350px] rounded-full bg-[#FFFBE8] blur-[120px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Firm Overview" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-4xl space-y-6">
-            <span className="eyebrow block text-accent border-l-2 border-accent pl-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
               Our Ethos &amp; Philosophy
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white font-serif text-balance">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif text-balance">
               The human element of transformational leadership.
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/75 max-w-2xl leading-relaxed font-light text-balance">
+            <p className="text-xl md:text-2xl text-[#606064] max-w-2xl leading-relaxed font-light text-balance">
               Nexus Talent Partners was founded on a simple premise: executive search should be defined by deep domain mastery, unyielding discretion, and human empathy—not high-volume resume scraping.
             </p>
           </div>

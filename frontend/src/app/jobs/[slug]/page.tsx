@@ -58,49 +58,49 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Editorial Header */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-primary text-primary-foreground border-b border-border relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[130px] pointer-events-none" />
+      {/* Editorial Header on Pure White Canvas */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white text-[#202022] border-b border-[#EAE8E5] relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] rounded-full bg-[#FFF3EF] blur-[120px] pointer-events-none" />
 
         <div className="container-enterprise relative z-10">
           <div className="max-w-4xl space-y-6">
             <Link
               href="/jobs"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-foreground/75 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#606064] hover:text-[#FF5B3D] transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Back to all active mandates</span>
             </Link>
 
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded bg-white/10 text-white border border-white/15">
+              <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
                 {job.department} Practice
               </span>
-              <span className="text-xs font-semibold px-2.5 py-1 rounded bg-accent/20 text-accent-soft border border-accent/30">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#FAF9F7] text-[#202022] border border-[#EAE8E5]">
                 {job.experienceLevel} Level
               </span>
-              <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5 ml-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1.5 ml-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                 Active Retained Mandate
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
               {job.title}
             </h1>
 
             {/* Quick Metadata Bar */}
-            <div className="pt-2 flex flex-wrap items-center gap-y-3 gap-x-8 text-sm text-primary-foreground/80 font-medium">
+            <div className="pt-2 flex flex-wrap items-center gap-y-3 gap-x-8 text-sm text-[#606064] font-medium">
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-accent" />
+                <MapPin className="h-4 w-4 text-[#FF5B3D]" />
                 <span>{job.location} ({job.workplaceType})</span>
               </div>
               <div className="flex items-center gap-2">
-                <Briefcase className="h-4 w-4 text-accent" />
+                <Briefcase className="h-4 w-4 text-[#FF5B3D]" />
                 <span>{job.employmentType}</span>
               </div>
-              <div className="flex items-center gap-2 text-white font-semibold">
-                <DollarSign className="h-4 w-4 text-accent" />
+              <div className="flex items-center gap-2 text-[#202022] font-semibold">
+                <DollarSign className="h-4 w-4 text-[#FF5B3D]" />
                 <span>{job.salaryRange}</span>
               </div>
             </div>

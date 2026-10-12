@@ -16,46 +16,46 @@ export default function InsightsPage() {
 
   return (
     <>
-      {/* Editorial Hero */}
-      <section className="bg-primary text-primary-foreground pt-32 pb-20 md:pt-40 md:pb-28">
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <Breadcrumb
             items={[{ label: "Insights" }]}
-            className="mb-12 text-primary-foreground/50"
+            className="mb-12 text-[#606064]"
           />
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-white/10 pb-12 mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-[#EAE8E5] pb-12 mb-12">
             <div className="max-w-3xl space-y-4">
-              <span className="eyebrow block text-accent border-l-2 border-accent pl-4">
-                The Quarterly
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+                The Executive Quarterly
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white font-serif">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
                 Perspectives
               </h1>
             </div>
-            <div className="text-primary-foreground/60 max-w-sm text-sm">
-              Provocative thinking and deep research on the forces transforming the global economy.
+            <div className="text-[#606064] max-w-sm text-sm font-light">
+              Provocative thinking and deep research on the forces transforming leadership, governance, and talent.
             </div>
           </div>
           
           {/* Featured Insight (Hero Article) */}
           <Link href={`/insights/${featuredInsight.slug}`} className="group block">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="aspect-[16/9] lg:aspect-square bg-white/5 relative overflow-hidden rounded-xl border border-white/10">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:scale-105 transition-transform duration-700" />
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center p-8 md:p-12 rounded-3xl bg-[#FAF9F7] border border-[#EAE8E5] hover:border-[#FF5B3D]/30 transition-all">
+              <div className="aspect-[16/9] lg:aspect-square bg-white relative overflow-hidden rounded-2xl border border-[#EAE8E5]">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700" />
               </div>
               
               <div className="space-y-6 max-w-xl">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1 rounded-sm">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#FF5B3D] bg-[#FFF3EF] px-3 py-1 rounded-sm border border-[#FF5B3D]/20">
                     {featuredInsight.category}
                   </span>
-                  <span className="text-xs font-medium text-primary-foreground/50 flex items-center gap-1.5">
+                  <span className="text-xs font-medium text-[#606064] flex items-center gap-1.5">
                     <Clock className="h-3 w-3" /> {featuredInsight.readingTime}
                   </span>
                 </div>
                 
-                <h2 className="text-3xl md:text-5xl font-bold text-white group-hover:text-accent transition-colors leading-tight font-serif">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202022] group-hover:text-[#FF5B3D] transition-colors leading-tight font-serif">
                   {featuredInsight.title}
                 </h2>
                 
@@ -136,7 +136,7 @@ export default function InsightsPage() {
               placeholder="Enter your corporate email" 
               className="flex-1 h-12 px-4 rounded-sm border border-border bg-background focus:outline-none focus:border-accent"
             />
-            <button className="h-12 px-8 bg-primary text-primary-foreground font-bold rounded-sm hover:bg-primary/90 transition-colors uppercase tracking-widest text-sm">
+            <button className="h-12 px-8 bg-[#FF5B3D] text-white font-bold rounded-sm hover:bg-[#FF5B3D]/90 transition-colors uppercase tracking-widest text-sm shadow-sm">
               Subscribe
             </button>
           </form>

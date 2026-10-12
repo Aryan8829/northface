@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Cpu, TrendingUp, HeartPulse, Zap, Factory } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowRight, Cpu, TrendingUp, HeartPulse, Zap, Factory, CheckCircle2 } from "lucide-react";
 
 const practices = [
   {
@@ -12,8 +11,14 @@ const practices = [
     slug: "technology",
     icon: Cpu,
     headline: "Architects of foundation models, distributed platforms, and hyper-scale infrastructure.",
-    roles: ["VP / Head of Machine Learning", "Principal Distributed Systems Architect", "Chief Information Security Officer (CISO)", "Head of Developer Platform"],
+    roles: [
+      "VP / Head of Machine Learning",
+      "Principal Distributed Systems Architect",
+      "Chief Information Security Officer (CISO)",
+      "Head of Developer Platform",
+    ],
     mandates: "320+ Executive & Staff Placements",
+    accent: "#FF5B3D",
   },
   {
     id: "finance",
@@ -21,8 +26,14 @@ const practices = [
     slug: "financial-services",
     icon: TrendingUp,
     headline: "Alpha researchers, low-latency execution developers, and algorithmic risk leadership.",
-    roles: ["Head of Quantitative Research", "Senior Low-Latency C++ Engineer", "Chief Risk Officer (CRO)", "Head of Institutional Compliance"],
+    roles: [
+      "Head of Quantitative Research",
+      "Senior Low-Latency C++ Engineer",
+      "Chief Risk Officer (CRO)",
+      "Head of Institutional Compliance",
+    ],
     mandates: "210+ Quant & Trading Placements",
+    accent: "#FF9A39",
   },
   {
     id: "health",
@@ -30,8 +41,14 @@ const practices = [
     slug: "healthcare",
     icon: HeartPulse,
     headline: "Physician executives, clinical development directors, and regulatory affairs pioneers.",
-    roles: ["Chief Medical Officer (CMO)", "VP Clinical Development & Oncology", "Head of Computational Biology", "Director of Regulatory Strategy"],
+    roles: [
+      "Chief Medical Officer (CMO)",
+      "VP Clinical Development & Oncology",
+      "Head of Computational Biology",
+      "Director of Regulatory Strategy",
+    ],
     mandates: "140+ BioPharma Placements",
+    accent: "#E83379",
   },
   {
     id: "cleantech",
@@ -39,8 +56,14 @@ const practices = [
     slug: "energy",
     icon: Zap,
     headline: "Engineers and operational executives scaling battery storage, smart grids, and robotics.",
-    roles: ["VP Grid Operations", "Principal Battery Chemistry Scientist", "Head of Autonomous Systems", "Director of Sustainable Supply Chains"],
+    roles: [
+      "VP Grid Operations",
+      "Principal Battery Chemistry Scientist",
+      "Head of Autonomous Systems",
+      "Director of Sustainable Supply Chains",
+    ],
     mandates: "95+ Energy Infrastructure Placements",
+    accent: "#FFC84B",
   },
   {
     id: "operations",
@@ -48,101 +71,136 @@ const practices = [
     slug: "manufacturing",
     icon: Factory,
     headline: "Operational architects transforming procurement, lean manufacturing, and global logistics.",
-    roles: ["Chief Operating Officer (COO)", "VP Global Logistics", "Director of Continuous Improvement", "Head of Sourcing & Procurement"],
+    roles: [
+      "Chief Operating Officer (COO)",
+      "VP Global Logistics",
+      "Director of Continuous Improvement",
+      "Head of Sourcing & Procurement",
+    ],
     mandates: "115+ Enterprise Operations Placements",
+    accent: "#C6E86B",
   },
 ];
 
 export function PracticeAreasSection() {
-  const [activeTab, setActiveTab] = useState(0);
-  const current = practices[activeTab];
+  const [activeIdx, setActiveIdx] = useState(0);
+  const current = practices[activeIdx];
   const Icon = current.icon;
 
   return (
-    <section className="py-24 md:py-32 bg-secondary border-b border-border">
+    <section className="py-24 md:py-32 bg-white border-t border-[#EAE8E5]">
       <div className="container-enterprise">
         <div className="max-w-2xl mb-16">
-          <span className="eyebrow block mb-3">03 / Practice Areas</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
-            Specialized search directors embedded in your domain.
+          <span className="eyebrow block mb-3 text-[#FF9A39]">04 / Practice Desks</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
+            Domain expertise led by former industry practitioners.
           </h2>
+          <p className="text-sm sm:text-base text-[#606064] font-light mt-3 leading-relaxed">
+            Our search directors have built systems, traded markets, and managed clinical trials. We understand the unwritten technical nuances that separate average talent from industry outliers.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+        {/* Interactive Editorial Index Layout */}
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
           
-          {/* Left: Interactive Practice List */}
-          <div className="lg:col-span-5 space-y-2">
-            {practices.map((practice, index) => {
-              const PIcon = practice.icon;
-              const isActive = index === activeTab;
+          {/* Left Column: Typographic Specialty List (col-span-6) */}
+          <div className="lg:col-span-6 space-y-2">
+            {practices.map((practice, idx) => {
+              const isActive = activeIdx === idx;
               return (
                 <button
                   key={practice.id}
-                  onClick={() => setActiveTab(index)}
-                  className={cn(
-                    "w-full p-5 rounded-xl text-left transition-all duration-200 flex items-center justify-between group border",
+                  onClick={() => setActiveIdx(idx)}
+                  className={`w-full text-left p-5 sm:p-6 rounded-xl border transition-all duration-200 flex items-center justify-between group ${
                     isActive
-                      ? "bg-surface text-foreground border-accent/40 shadow-sm"
-                      : "bg-transparent text-muted-foreground border-transparent hover:bg-surface/50 hover:text-foreground"
-                  )}
+                      ? "bg-[#FAF9F7] border-[#EAE8E5] shadow-sm"
+                      : "bg-white border-transparent hover:bg-[#FAF9F7]/60"
+                  }`}
+                  aria-pressed={isActive}
                 >
                   <div className="flex items-center gap-4">
-                    <div className={cn(
-                      "h-10 w-10 rounded-lg flex items-center justify-center transition-colors",
-                      isActive ? "bg-accent text-white" : "bg-secondary text-muted-foreground group-hover:text-foreground"
-                    )}>
-                      <PIcon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <span className="font-bold text-base block">{practice.name}</span>
-                      <span className="text-xs text-muted-foreground">{practice.mandates}</span>
-                    </div>
+                    <span className="text-xs font-bold text-[#606064] font-mono">
+                      0{idx + 1}
+                    </span>
+                    <span
+                      className={`text-lg sm:text-xl font-bold font-serif transition-colors ${
+                        isActive ? "text-[#202022]" : "text-[#606064] group-hover:text-[#202022]"
+                      }`}
+                    >
+                      {practice.name}
+                    </span>
                   </div>
-                  <ArrowRight className={cn(
-                    "h-4 w-4 transition-transform",
-                    isActive ? "text-accent translate-x-1" : "opacity-0 group-hover:opacity-100"
-                  )} />
+
+                  <span
+                    className={`h-2.5 w-2.5 rounded-full transition-transform ${
+                      isActive ? "scale-100" : "scale-0 opacity-0"
+                    }`}
+                    style={{ backgroundColor: practice.accent }}
+                  />
                 </button>
               );
             })}
           </div>
 
-          {/* Right: Rich Domain Detail Preview Panel */}
-          <div className="lg:col-span-7 bg-surface p-8 sm:p-10 rounded-2xl border border-border shadow-sm">
-            <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
-              <div className="h-12 w-12 rounded-xl bg-accent-soft text-accent flex items-center justify-center">
-                <Icon className="h-6 w-6" />
-              </div>
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-accent">Active Practice Desk</span>
-                <h3 className="text-2xl font-bold font-serif">{current.name}</h3>
-              </div>
-            </div>
-
-            <p className="text-lg text-foreground/80 leading-relaxed font-light mb-8">
-              {current.headline}
-            </p>
-
-            <div className="space-y-4 mb-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
-                Representative Placed Mandates:
-              </span>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {current.roles.map((role) => (
-                  <div key={role} className="p-3.5 rounded-lg bg-background border border-border text-xs font-semibold text-foreground flex items-center gap-2.5">
-                    <div className="h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                    <span>{role}</span>
+          {/* Right Column: Dynamic Preview Card (col-span-6) */}
+          <div className="lg:col-span-6">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] shadow-sm space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[#EAE8E5]">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-white border border-[#EAE8E5] flex items-center justify-center text-[#202022]">
+                    <Icon className="h-5 w-5" />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div>
+                    <h4 className="text-base font-bold text-[#202022] font-serif">{current.name}</h4>
+                    <span className="text-[11px] text-[#606064]">{current.mandates}</span>
+                  </div>
+                </div>
 
-            <div className="pt-6 border-t border-border flex items-center justify-between">
-              <span className="text-xs text-muted-foreground font-medium">{current.mandates} across North America &amp; Europe</span>
-              <Link href={`/industries/${current.slug}`} className="text-xs font-bold text-accent hover:underline flex items-center gap-1.5">
-                <span>View Practice Capabilities</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white border border-[#EAE8E5]"
+                  style={{ color: current.accent }}
+                >
+                  Specialized Desk
+                </span>
+              </div>
+
+              <p className="text-base text-[#202022] font-serif italic leading-relaxed">
+                &ldquo;{current.headline}&rdquo;
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#606064] block">
+                  Typical Search Mandates
+                </span>
+                <div className="grid sm:grid-cols-2 gap-2.5">
+                  {current.roles.map((role) => (
+                    <div
+                      key={role}
+                      className="p-3 rounded-lg bg-white border border-[#EAE8E5] text-xs font-medium text-[#202022] flex items-start gap-2"
+                    >
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#FF5B3D] shrink-0 mt-0.5" />
+                      <span className="leading-snug">{role}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#EAE8E5] flex items-center justify-between">
+                <Link
+                  href={`/industries/${current.slug}`}
+                  className="text-xs font-bold text-[#202022] hover:text-[#FF5B3D] transition-colors flex items-center gap-1.5"
+                >
+                  <span>View Practice Details</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+
+                <Link
+                  href="/contact?type=employer"
+                  className="text-xs font-semibold text-[#FF5B3D] hover:underline"
+                >
+                  Inquire With Sector Lead &rarr;
+                </Link>
+              </div>
             </div>
           </div>
 

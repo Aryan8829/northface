@@ -72,25 +72,23 @@ const caseStudies = [
 export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <section className="bg-primary text-primary-foreground pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute right-0 top-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/20 to-transparent opacity-60 mix-blend-overlay" />
-        </div>
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="bg-white text-[#202022] pt-32 pb-20 relative overflow-hidden border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Case Studies" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-4xl space-y-6">
-            <span className="eyebrow block text-accent border-l-2 border-accent pl-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
               Proven Search Outcomes
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
               Impact measured in organizational trajectory.
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/75 max-w-2xl leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#606064] max-w-2xl leading-relaxed font-light">
               We do not measure our success by resumes submitted. We measure success by the durability, cultural elevation, and performance of the leaders we place.
             </p>
           </div>

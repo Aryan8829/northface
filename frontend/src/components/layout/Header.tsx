@@ -1,29 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowRight, Search } from "lucide-react";
 import { navigation } from "@/config/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
 import { SearchOverlay } from "./SearchOverlay";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (prevPathname !== pathname) {
@@ -33,31 +23,24 @@ export function Header() {
     setSearchOpen(false);
   }
 
-  const isTransparent = pathname === "/" && !isScrolled;
-
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isTransparent
-            ? "bg-transparent border-transparent text-white py-4"
-            : "bg-surface/95 backdrop-blur-md border-b border-border text-foreground shadow-sm py-0"
-        )}
-      >
+      <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#EAE8E5] text-[#202022] transition-colors duration-200">
         <div className="container-enterprise">
           <div className="flex items-center justify-between h-20">
             
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 z-50">
-              <div className={cn("font-serif font-bold text-2xl tracking-tight transition-colors flex items-center gap-1", isTransparent ? "text-white" : "text-primary")}>
+            <Link href="/" className="flex items-center gap-2 z-50 group">
+              <div className="font-serif font-bold text-2xl tracking-tight text-[#202022] flex items-center gap-1.5">
                 <span>Nexus</span>
-                <span className="text-accent text-xs uppercase tracking-widest font-sans font-bold px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20">Talent</span>
+                <span className="text-[#FF5B3D] text-[11px] uppercase tracking-widest font-sans font-bold px-1.5 py-0.5 rounded bg-[#FFF3EF] border border-[#FF5B3D]/20">
+                  Talent
+                </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8 h-full">
+            <nav className="hidden lg:flex items-center gap-7 h-full">
               {navigation.map((item) => (
                 <div
                   key={item.label}
@@ -69,8 +52,8 @@ export function Header() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "text-sm font-semibold transition-colors hover:text-accent",
-                        isTransparent ? "text-white/90" : "text-foreground/80"
+                        "text-sm font-semibold transition-colors hover:text-[#FF5B3D] text-[#202022]/80",
+                        pathname === item.href && "text-[#FF5B3D]"
                       )}
                     >
                       {item.label}
@@ -78,24 +61,25 @@ export function Header() {
                   ) : (
                     <button
                       className={cn(
-                        "flex items-center gap-1 text-sm font-semibold transition-colors focus:outline-none h-full",
-                        isTransparent ? "text-white/90 hover:text-white" : "text-foreground/80 hover:text-primary",
-                        activeDropdown === item.label && (isTransparent ? "text-white" : "text-primary")
+                        "flex items-center gap-1 text-sm font-semibold transition-colors focus:outline-none h-full text-[#202022]/80 hover:text-[#FF5B3D]",
+                        activeDropdown === item.label && "text-[#FF5B3D]"
                       )}
                     >
                       {item.label}
-                      <ChevronDown className={cn(
-                        "h-4 w-4 opacity-70 transition-transform duration-200",
-                        activeDropdown === item.label && "rotate-180"
-                      )} />
+                      <ChevronDown
+                        className={cn(
+                          "h-3.5 w-3.5 opacity-60 transition-transform duration-200",
+                          activeDropdown === item.label && "rotate-180"
+                        )}
+                      />
                     </button>
                   )}
 
-                  {/* Enterprise Mega Menu */}
+                  {/* Mega Menu */}
                   {item.children && (
                     <div
                       className={cn(
-                        "absolute top-[calc(100%-1px)] left-1/2 -translate-x-1/2 w-[800px] bg-surface border border-border shadow-premium rounded-b-xl overflow-hidden transition-all duration-300 origin-top text-foreground",
+                        "absolute top-[calc(100%-1px)] left-1/2 -translate-x-1/2 w-[760px] bg-white border border-[#EAE8E5] shadow-xl rounded-b-2xl overflow-hidden transition-all duration-300 origin-top text-[#202022]",
                         activeDropdown === item.label
                           ? "opacity-100 scale-y-100 pointer-events-auto translate-y-0"
                           : "opacity-0 scale-y-95 pointer-events-none -translate-y-2"
@@ -103,24 +87,26 @@ export function Header() {
                     >
                       <div className="grid grid-cols-3 p-8">
                         {/* Left: Links */}
-                        <div className="col-span-2 pr-8 border-r border-border">
-                          <div className="mb-6">
-                            <h3 className="text-lg font-bold text-primary mb-1">{item.label}</h3>
-                            {item.description && <p className="text-sm text-muted-foreground">{item.description}</p>}
+                        <div className="col-span-2 pr-8 border-r border-[#EAE8E5]">
+                          <div className="mb-5">
+                            <h3 className="text-base font-bold font-serif text-[#202022] mb-1">{item.label}</h3>
+                            {item.description && <p className="text-xs text-[#606064]">{item.description}</p>}
                           </div>
                           <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                             {item.children.map((child) => (
                               <Link
                                 key={child.label}
                                 href={child.href}
-                                className="group/link p-3 rounded-lg hover:bg-secondary transition-colors"
+                                className="group/link p-2.5 rounded-lg hover:bg-[#FAF9F7] transition-colors"
                               >
                                 <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-sm group-hover/link:text-accent transition-colors">{child.label}</span>
-                                  <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-accent" />
+                                  <span className="font-semibold text-xs group-hover/link:text-[#FF5B3D] transition-colors text-[#202022]">
+                                    {child.label}
+                                  </span>
+                                  <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#FF5B3D]" />
                                 </div>
                                 {child.description && (
-                                  <p className="text-xs text-muted-foreground mt-1 line-clamp-1">{child.description}</p>
+                                  <p className="text-[11px] text-[#606064] mt-0.5 line-clamp-1">{child.description}</p>
                                 )}
                               </Link>
                             ))}
@@ -129,18 +115,24 @@ export function Header() {
 
                         {/* Right: Featured */}
                         {item.featured && (
-                          <div className="col-span-1 pl-8 flex flex-col">
-                            <span className="eyebrow mb-4 block">Featured</span>
-                            <div className="bg-secondary rounded-lg p-5 flex-1 flex flex-col items-start border border-border">
-                              <h4 className="font-bold text-primary mb-2 leading-snug">{item.featured.title}</h4>
-                              <p className="text-sm text-muted-foreground mb-6 flex-1">{item.featured.description}</p>
-                              <Link href={item.featured.href}>
-                                <Button variant="ghost" className="h-auto p-0 hover:bg-transparent text-accent font-semibold gap-2 group/btn">
-                                  {item.featured.cta}
-                                  <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                                </Button>
-                              </Link>
+                          <div className="col-span-1 pl-8 flex flex-col justify-between">
+                            <div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-[#FF5B3D] mb-3 block">
+                                Spotlight
+                              </span>
+                              <h4 className="font-bold text-sm text-[#202022] mb-2 leading-snug font-serif">
+                                {item.featured.title}
+                              </h4>
+                              <p className="text-xs text-[#606064] mb-4 leading-relaxed">
+                                {item.featured.description}
+                              </p>
                             </div>
+                            <Link href={item.featured.href}>
+                              <Button variant="ghost" className="h-auto p-0 hover:bg-transparent text-[#FF5B3D] text-xs font-semibold gap-1.5 group/btn">
+                                <span>{item.featured.cta}</span>
+                                <ArrowRight className="h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                              </Button>
+                            </Link>
                           </div>
                         )}
                       </div>
@@ -152,13 +144,10 @@ export function Header() {
 
             {/* Desktop Right (Search + CTAs) */}
             <div className="hidden lg:flex items-center gap-3">
-              <button 
+              <button
                 onClick={() => setSearchOpen(true)}
-                className={cn(
-                  "flex items-center gap-2 text-sm font-semibold transition-colors mr-1",
-                  isTransparent ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-primary"
-                )}
-                aria-label="Search jobs, insights and solutions"
+                className="flex items-center gap-2 text-xs font-semibold text-[#606064] hover:text-[#202022] transition-colors p-2 rounded-sm"
+                aria-label="Search mandates and practices"
               >
                 <Search className="h-4 w-4" />
                 <span className="hidden xl:inline">Search</span>
@@ -166,11 +155,8 @@ export function Header() {
 
               <Link href="/jobs" tabIndex={-1}>
                 <Button
-                  variant="ghost"
-                  className={cn(
-                    "font-semibold rounded-sm text-sm px-4",
-                    isTransparent ? "text-white/90 hover:text-white hover:bg-white/10" : "text-foreground hover:bg-secondary"
-                  )}
+                  variant="outline"
+                  className="font-semibold rounded-sm text-xs px-4 h-10 border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7]"
                 >
                   Explore Jobs
                 </Button>
@@ -178,28 +164,20 @@ export function Header() {
 
               <Link href="/employers" tabIndex={-1}>
                 <Button
-                  variant={isTransparent ? "secondary" : "default"}
-                  className={cn(
-                    "font-semibold rounded-sm shadow-none px-5",
-                    isTransparent ? "bg-white text-primary hover:bg-white/90" : "bg-primary text-primary-foreground hover:bg-primary/90"
-                  )}
+                  className="font-semibold rounded-sm px-5 h-10 text-xs bg-[#202022] text-white hover:bg-[#FF5B3D] transition-colors"
                 >
-                  Hire Talent
+                  <span>Hire Talent</span>
                 </Button>
               </Link>
             </div>
 
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden p-2 z-50 text-current"
+              className="lg:hidden p-2 z-50 text-[#202022]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Mobile Menu"
             >
-              {mobileMenuOpen ? (
-                <X className={cn("h-6 w-6", !isTransparent && "text-foreground", isTransparent && mobileMenuOpen && "text-foreground")} />
-              ) : (
-                <Menu className={cn("h-6 w-6", isTransparent ? "text-white" : "text-foreground")} />
-              )}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -207,59 +185,55 @@ export function Header() {
         {/* Mobile Menu Drawer */}
         <div
           className={cn(
-            "fixed inset-0 top-0 pt-24 bg-surface z-40 transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto border-t border-border",
+            "fixed inset-0 top-0 pt-24 bg-white z-40 transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto border-t border-[#EAE8E5]",
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
-          <div className="container-enterprise pb-24 flex flex-col gap-6 text-foreground">
-            
+          <div className="container-enterprise pb-24 flex flex-col gap-6 text-[#202022]">
             <button 
               onClick={() => { setMobileMenuOpen(false); setSearchOpen(true); }}
-              className="flex items-center gap-3 w-full p-4 border border-border rounded-xl bg-background"
+              className="flex items-center gap-3 w-full p-4 border border-[#EAE8E5] rounded-xl bg-[#FAF9F7]"
             >
-              <Search className="h-5 w-5 text-muted-foreground" />
-              <span className="font-semibold text-muted-foreground text-left flex-1">Search Nexus...</span>
+              <Search className="h-5 w-5 text-[#606064]" />
+              <span className="text-sm font-medium text-[#606064]">Search roles, practices &amp; insights...</span>
             </button>
 
-            {navigation.map((item) => (
-              <div key={item.label} className="border-b border-border/50 pb-4">
-                {item.href && !item.children ? (
-                  <Link
-                    href={item.href}
-                    className="text-xl font-sans font-bold hover:text-accent transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <div className="flex flex-col gap-4">
-                    <div className="text-xl font-sans font-bold">{item.label}</div>
-                    <div className="flex flex-col gap-3 pl-4 border-l-2 border-border">
-                      {item.children?.map((child) => (
+            <div className="flex flex-col divide-y divide-[#EAE8E5]">
+              {navigation.map((item) => (
+                <div key={item.label} className="py-4">
+                  <div className="font-bold text-base mb-2 font-serif flex items-center justify-between text-[#202022]">
+                    <Link href={item.href || "#"} onClick={() => setMobileMenuOpen(false)}>
+                      {item.label}
+                    </Link>
+                  </div>
+                  {item.children && (
+                    <div className="flex flex-col gap-2 pl-3 pt-2">
+                      {item.children.map((child) => (
                         <Link
-                           key={child.label}
-                           href={child.href}
-                           className="flex flex-col gap-1 group/mobile"
-                         >
-                           <span className="text-sm font-semibold group-hover/mobile:text-accent transition-colors">{child.label}</span>
-                           {child.description && (
-                             <span className="text-xs text-muted-foreground">{child.description}</span>
-                           )}
-                         </Link>
+                          key={child.label}
+                          href={child.href}
+                          className="text-xs text-[#606064] hover:text-[#FF5B3D] py-1 font-medium"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
                       ))}
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="pt-6 flex flex-col gap-3">
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-4 flex flex-col gap-3">
               <Link href="/employers" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="lg" className="w-full rounded-sm text-base h-13 bg-primary text-primary-foreground">
-                  Hire Talent
+                <Button className="w-full h-12 rounded-sm bg-[#FF5B3D] text-white font-semibold text-xs gap-2">
+                  <span>Hire Talent</span>
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/jobs" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="lg" variant="outline" className="w-full rounded-sm text-base h-13 border-border">
-                  Explore Jobs
+                <Button variant="outline" className="w-full h-12 rounded-sm border-[#EAE8E5] text-xs font-semibold">
+                  <span>Explore Jobs</span>
                 </Button>
               </Link>
             </div>

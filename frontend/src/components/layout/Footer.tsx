@@ -1,145 +1,133 @@
 import React from "react";
 import Link from "next/link";
 import { footerNavigation } from "@/config/navigation";
-import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
+import { RibbonDivider } from "@/components/motion/RibbonDivider";
 
 export function Footer() {
   return (
-    <>
-      {/* Pre-Footer CTA */}
-      <section className="bg-primary text-primary-foreground py-24 md:py-32 border-t border-white/10 relative overflow-hidden">
-        {/* Subtle background element */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[800px] h-[800px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
-        
-        <div className="container-enterprise relative z-10">
-          <div className="max-w-4xl">
-            <span className="eyebrow mb-6 block text-white/70">Ready to explore what&apos;s next?</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8">
-              Transform data into decisive action.
-            </h2>
-            <p className="text-xl text-primary-foreground/70 mb-10 max-w-2xl leading-relaxed">
-              Connect with our principal analysts and technology architects to discuss your strategic challenges.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-8 rounded-sm text-base font-semibold bg-white text-primary hover:bg-white/90 gap-2 group">
-                  Start the Conversation
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Link href="/services">
-                <Button size="lg" variant="outline" className="h-14 px-8 rounded-sm text-base font-semibold border-white/20 text-white hover:bg-white/10">
-                  Explore Capabilities
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <footer className="bg-white text-[#202022] border-t border-[#EAE8E5] pt-16 pb-12 relative z-10">
+      {/* Decorative Ribbon Flourish */}
+      <RibbonDivider variant="loop" accentFrom="coral" accentTo="orange" className="mb-10" />
 
-      {/* Main Footer */}
-      <footer className="bg-primary text-primary-foreground border-t border-white/10 pt-20 pb-8">
-        <div className="container-enterprise">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
-            
-            {/* Brand Column */}
-            <div className="lg:col-span-4 pr-8">
-              <Link href="/" className="inline-block mb-6">
-                <div className="font-serif font-bold text-3xl tracking-tight text-white flex items-center gap-2">
-                  <span>Nexus</span>
-                  <span className="text-accent text-xs uppercase tracking-widest font-sans font-bold px-2 py-0.5 rounded bg-accent/20 border border-accent/30">Talent Partners</span>
-                </div>
-              </Link>
-              <p className="text-primary-foreground/70 text-sm mb-8 leading-relaxed">
-                Specialist executive search and recruitment consultancy. We connect market-defining organizations 
-                with proven leadership, technical specialists, and visionary operators.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                  <MapPin className="h-4 w-4 text-accent" />
-                  <span>One World Trade Center, Suite 4500, New York, NY 10007</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                  <Phone className="h-4 w-4 text-accent" />
-                  <span>+1 (800) 555-0190</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                  <Mail className="h-4 w-4 text-accent" />
-                  <span>talent@nexustalent.example.com</span>
-                </div>
+      <div className="container-enterprise">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+          
+          {/* Brand Column */}
+          <div className="lg:col-span-4 pr-6 space-y-5">
+            <Link href="/" className="inline-block">
+              <div className="font-serif font-bold text-2xl tracking-tight text-[#202022] flex items-center gap-2">
+                <span>Nexus</span>
+                <span className="text-[#FF5B3D] text-[11px] uppercase tracking-widest font-sans font-bold px-2 py-0.5 rounded bg-[#FFF3EF] border border-[#FF5B3D]/20">
+                  Talent Partners
+                </span>
+              </div>
+            </Link>
+
+            <p className="text-[#606064] text-xs leading-relaxed max-w-sm font-light">
+              Executive search and specialist recruitment consultancy built around people, potential, and long-term organizational fit. We partner with boards, founders, and leaders to appoint transformative talent.
+            </p>
+
+            <div className="space-y-2.5 pt-2 text-xs text-[#606064]">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="h-3.5 w-3.5 text-[#FF5B3D] shrink-0 mt-0.5" />
+                <span>One Vanderbilt Avenue, 38th Floor, New York, NY 10017</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone className="h-3.5 w-3.5 text-[#FF5B3D] shrink-0" />
+                <span>+1 (212) 555-0180</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="h-3.5 w-3.5 text-[#FF5B3D] shrink-0" />
+                <span>mandates@nexustalent.com</span>
               </div>
             </div>
 
-            {/* Links Columns */}
-            <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">For Employers</h3>
-              <ul className="space-y-4">
-                {footerNavigation.employers.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">For Candidates</h3>
-              <ul className="space-y-4">
-                {footerNavigation.candidates.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Practices</h3>
-              <ul className="space-y-4">
-                {footerNavigation.practiceAreas.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-2">
-              <h3 className="font-bold text-sm mb-6 tracking-wide text-white uppercase">Firm</h3>
-              <ul className="space-y-4">
-                {footerNavigation.company.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-sm text-primary-foreground/60 hover:text-white transition-colors font-medium">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="pt-2 flex items-center gap-2 text-[11px] text-[#606064] font-medium">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+              <span>Strict Discretion &amp; Non-Disclosure Standards</span>
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-sm text-primary-foreground/50">
-              © {new Date().getFullYear()} Nexus Talent Partners. All rights reserved.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {footerNavigation.legal.map((item) => (
-                <Link key={item.label} href={item.href} className="text-sm font-medium text-primary-foreground/50 hover:text-white transition-colors">
-                  {item.label}
-                </Link>
+          {/* For Employers */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-xs mb-4 tracking-wider text-[#202022] uppercase font-sans">
+              For Employers
+            </h3>
+            <ul className="space-y-2.5">
+              {footerNavigation.employers.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-xs text-[#606064] hover:text-[#FF5B3D] transition-colors font-medium">
+                    {item.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          {/* For Candidates */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-xs mb-4 tracking-wider text-[#202022] uppercase font-sans">
+              For Candidates
+            </h3>
+            <ul className="space-y-2.5">
+              {footerNavigation.candidates.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-xs text-[#606064] hover:text-[#FF5B3D] transition-colors font-medium">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Practice Areas */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-xs mb-4 tracking-wider text-[#202022] uppercase font-sans">
+              Practice Desks
+            </h3>
+            <ul className="space-y-2.5">
+              {footerNavigation.practiceAreas.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-xs text-[#606064] hover:text-[#FF5B3D] transition-colors font-medium">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Firm */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold text-xs mb-4 tracking-wider text-[#202022] uppercase font-sans">
+              Firm
+            </h3>
+            <ul className="space-y-2.5">
+              {footerNavigation.company.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-xs text-[#606064] hover:text-[#FF5B3D] transition-colors font-medium">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#EAE8E5] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#606064]">
+          <p>
+            &copy; {new Date().getFullYear()} Nexus Talent Partners. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {footerNavigation.legal.map((item) => (
+              <Link key={item.label} href={item.href} className="hover:text-[#FF5B3D] transition-colors">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

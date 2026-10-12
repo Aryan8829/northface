@@ -40,58 +40,50 @@ export default async function IndustryDetailPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-primary text-primary-foreground pt-32 pb-20 md:pt-40 md:pb-28">
+      {/* Hero on Pure White Canvas */}
+      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container mx-auto px-4 md:px-6">
           <Breadcrumb
             items={[
               { label: "Industries", href: "/industries" },
               { label: industry.name },
             ]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-                Industry Research
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+                Industry Practice
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#202022] font-serif">
                 {industry.name}
               </h1>
-              <p className="text-xl text-primary-foreground/70 max-w-2xl leading-relaxed">
+              <p className="text-xl text-[#606064] max-w-2xl leading-relaxed font-light">
                 {industry.heroDescription}
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link href="/contact">
-                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group">
-                    Request Custom Research
+                  <Button size="lg" className="bg-[#FF5B3D] text-white hover:bg-[#FF5B3D]/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-sm">
+                    Inquire for Sector Practice
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/reports">
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-sm h-13 px-8 text-base font-semibold">
-                    Browse All Reports
+                <Link href="/jobs">
+                  <Button size="lg" variant="outline" className="border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7] rounded-sm h-13 px-8 text-base font-semibold">
+                    View Practice Mandates
                   </Button>
                 </Link>
               </div>
             </div>
             {/* Stats */}
             <div className="hidden lg:grid grid-cols-2 gap-6">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
-                <div className="text-4xl font-bold font-serif text-white">{industry.reportCount}</div>
-                <div className="text-sm text-primary-foreground/60 mt-2 uppercase tracking-wider">Published Reports</div>
+              <div className="bg-[#FAF9F7] border border-[#EAE8E5] rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold font-serif text-[#202022] mb-1">{industry.reportCount}</div>
+                <div className="text-xs uppercase tracking-wider text-[#606064] font-semibold">Published Reports</div>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
-                <div className="text-4xl font-bold font-serif text-white">{industry.subCategories.length}</div>
-                <div className="text-sm text-primary-foreground/60 mt-2 uppercase tracking-wider">Sub-Categories</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
-                <div className="text-4xl font-bold font-serif text-white">{industry.keyTrends.length}</div>
-                <div className="text-sm text-primary-foreground/60 mt-2 uppercase tracking-wider">Key Trends</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
-                <div className="text-4xl font-bold font-serif text-accent">Live</div>
-                <div className="text-sm text-primary-foreground/60 mt-2 uppercase tracking-wider">Research Updates</div>
+              <div className="bg-[#FAF9F7] border border-[#EAE8E5] rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold font-serif text-[#FF5B3D] mb-1">{industry.subCategories.length}</div>
+                <div className="text-xs uppercase tracking-wider text-[#606064] font-semibold">Practice Desks</div>
               </div>
             </div>
           </div>
@@ -215,20 +207,20 @@ export default async function IndustryDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 md:py-32 bg-primary text-primary-foreground">
+      {/* CTA on Pure White Canvas */}
+      <section className="py-24 md:py-32 bg-white text-[#202022] border-t border-[#EAE8E5]">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Need Custom {industry.name} Research?
+          <div className="max-w-3xl mx-auto text-center space-y-8 p-10 md:p-14 rounded-3xl bg-[#FAF9F7] border border-[#EAE8E5]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202022] leading-tight font-serif">
+              Need Specialized Leadership in {industry.name}?
             </h2>
-            <p className="text-xl text-primary-foreground/70 max-w-xl mx-auto">
-              Our analysts can design bespoke research tailored to your specific strategic questions in the {industry.name.toLowerCase()} sector.
+            <p className="text-xl text-[#606064] max-w-xl mx-auto font-light">
+              Our dedicated practice directors connect high-growth enterprises and established leaders in the {industry.name.toLowerCase()} sector.
             </p>
             <div className="pt-4">
               <Link href="/contact">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group">
-                  Talk to an Analyst
+                <Button size="lg" className="bg-[#FF5B3D] text-white hover:bg-[#FF5B3D]/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-sm">
+                  Consult With Our Practice Lead
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

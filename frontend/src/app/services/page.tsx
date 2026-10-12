@@ -23,25 +23,23 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <section className="relative min-h-[55vh] flex items-center bg-primary text-primary-foreground overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-transparent z-10" />
-        </div>
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="relative min-h-[50vh] flex items-center bg-white text-[#202022] overflow-hidden pt-32 pb-20 border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Solutions" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="eyebrow block mb-4 text-accent border-l-2 border-accent pl-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
               Recruitment Frameworks
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
               Talent Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/75 max-w-2xl leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#606064] max-w-2xl leading-relaxed font-light">
               We deploy dedicated search directors and rigorous qualification architectures to secure transformational leaders and critical technical specialists.
             </p>
           </div>

@@ -157,26 +157,26 @@ export default async function InsightDetailPage({ params }: PageProps) {
         </div>
       </article>
 
-      {/* Recommended Reading */}
-      <section className="py-24 bg-primary text-primary-foreground border-t border-border">
+      {/* Recommended Reading on Pure White Canvas */}
+      <section className="py-24 bg-white text-[#202022] border-t border-[#EAE8E5]">
         <div className="container-enterprise">
-          <div className="flex items-center justify-between mb-12 border-b border-white/10 pb-6">
-            <h2 className="text-2xl font-bold font-serif">Recommended Reading</h2>
-            <Link href="/insights" className="text-sm font-bold text-white hover:text-accent uppercase tracking-widest transition-colors flex items-center gap-2">
+          <div className="flex items-center justify-between mb-12 border-b border-[#EAE8E5] pb-6">
+            <h2 className="text-2xl font-bold font-serif text-[#202022]">Recommended Reading</h2>
+            <Link href="/insights" className="text-sm font-bold text-[#FF5B3D] hover:underline uppercase tracking-widest transition-colors flex items-center gap-2">
               View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {latestInsights.filter(i => i.slug !== slug).slice(0, 3).map((item) => (
               <Link key={item.slug} href={`/insights/${item.slug}`} className="group">
-                <div className="space-y-4 border-l border-white/10 pl-6 group-hover:border-accent transition-colors h-full">
-                  <span className="text-xs font-bold uppercase tracking-widest text-accent">
+                <div className="space-y-4 border-l-2 border-[#EAE8E5] pl-6 group-hover:border-[#FF5B3D] transition-colors h-full">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#FF5B3D]">
                     {item.category}
                   </span>
-                  <h3 className="text-xl font-bold font-serif leading-snug group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-bold font-serif leading-snug text-[#202022] group-hover:text-[#FF5B3D] transition-colors">
                     {item.title}
                   </h3>
-                  <div className="text-sm text-primary-foreground/50">
+                  <div className="text-sm text-[#606064]">
                     {item.author}
                   </div>
                 </div>

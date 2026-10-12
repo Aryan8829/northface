@@ -10,17 +10,20 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-background">
-      <section className="bg-primary text-primary-foreground pt-32 pb-20">
+      <section className="bg-white text-[#202022] pt-32 pb-20 border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <Breadcrumb
             items={[{ label: "Terms of Service" }]}
-            className="mb-8 text-primary-foreground/50"
+            className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-white">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+              Search Governance
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
               Terms of Service &amp; Search Governance
             </h1>
-            <p className="text-xl text-primary-foreground/70 max-w-2xl font-light">
+            <p className="text-xl text-[#606064] max-w-2xl font-light">
               Last Updated: October 2026 &bull; Professional Search Standards
             </p>
           </div>

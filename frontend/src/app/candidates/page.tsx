@@ -25,21 +25,25 @@ const candidateCharter = [
     icon: Lock,
     title: "100% Written Consent Rule",
     description: "We will NEVER share your resume, identity, or portfolio with any organization without your explicit, mandate-specific written permission beforehand.",
+    accent: "#FF5B3D",
   },
   {
     icon: Users,
     title: "Direct Founder & Board Access",
     description: "Skip automated ATS resume screeners. Our search directors present you directly to CEOs, Founders, Board Members, and VPs of Engineering.",
+    accent: "#FF9A39",
   },
   {
     icon: Scale,
-    title: "Uncompromising Compensation Transparency",
+    title: "Total Compensation Transparency",
     description: "We provide truthful compensation ranges—including base salary, performance incentives, and clear cap-table equity structures—before first interviews.",
+    accent: "#E83379",
   },
   {
     icon: Compass,
     title: "Lifelong Career Navigation",
     description: "Whether you are actively exploring a move or simply desire a confidential sounding board on compensation and market trajectory, our doors are open.",
+    accent: "#FFC84B",
   },
 ];
 
@@ -87,36 +91,34 @@ const candidateFaqs = [
 
 export default function CandidatesPage() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary text-primary-foreground border-b border-border relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[130px] pointer-events-none" />
-
+    <main className="min-h-screen bg-white text-[#202022]">
+      {/* Editorial Hero on Pure White Canvas */}
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-white border-b border-[#EAE8E5] relative overflow-hidden">
         <div className="container-enterprise relative z-10">
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider text-accent border border-white/15">
-              <Sparkles className="h-3 w-3" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/20">
+              <Sparkles className="h-3.5 w-3.5" />
               <span>For Exceptional Talent &amp; Leaders</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-tight text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-tight text-[#202022]">
               Discreet career representation built on trust and respect.
             </h1>
 
-            <p className="text-lg sm:text-xl text-primary-foreground/80 font-light leading-relaxed">
+            <p className="text-lg sm:text-xl text-[#606064] font-light leading-relaxed">
               Your career is not a commodity. We represent senior technical specialists and executive leaders with complete confidentiality, honest market intelligence, and zero unsolicited resume distribution.
             </p>
 
-            <div className="pt-4 flex flex-wrap gap-4">
+            <div className="pt-2 flex flex-wrap gap-4">
               <a href="#candidate-intake">
-                <Button size="lg" className="h-13 px-7 rounded-sm bg-accent text-white hover:bg-accent/90 gap-2 font-semibold">
+                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-sm transition-colors">
                   <span>Register Confidentially</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <Link href="/jobs">
-                <Button size="lg" variant="outline" className="h-13 px-7 rounded-sm border-white/20 text-white hover:bg-white/10 gap-2">
-                  <Briefcase className="h-4 w-4 text-accent" />
+                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7] gap-2 text-xs font-semibold">
+                  <Briefcase className="h-3.5 w-3.5 text-[#FF5B3D]" />
                   <span>View Verified Mandates</span>
                 </Button>
               </Link>
@@ -126,14 +128,14 @@ export default function CandidatesPage() {
       </section>
 
       {/* Candidate Charter Section */}
-      <section className="py-24 md:py-32 bg-surface border-b border-border">
+      <section className="py-24 md:py-32 bg-white border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="max-w-2xl mb-16">
-            <span className="eyebrow mb-3 block">Our Candidate Charter</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
+            <span className="eyebrow mb-3 block text-[#FF5B3D]">Our Candidate Charter</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
               How we protect and elevate your career.
             </h2>
-            <p className="text-muted-foreground mt-4 text-base font-light">
+            <p className="text-[#606064] mt-3 text-sm sm:text-base font-light">
               Recruitment has lost its human touch in an age of automated scrapers and spam. We hold ourselves to a strict ethical standard.
             </p>
           </div>
@@ -142,12 +144,15 @@ export default function CandidatesPage() {
             {candidateCharter.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="p-8 rounded-2xl bg-background border border-border space-y-4 hover:border-accent/40 transition-colors">
-                  <div className="h-12 w-12 rounded-xl bg-accent-soft flex items-center justify-center">
-                    <Icon className="h-6 w-6 text-accent" />
+                <div key={item.title} className="p-8 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] space-y-4 hover:border-[#FF5B3D]/50 transition-colors">
+                  <div
+                    className="h-12 w-12 rounded-xl bg-white border border-[#EAE8E5] flex items-center justify-center"
+                    style={{ color: item.accent }}
+                  >
+                    <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-bold font-serif text-foreground">{item.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed font-light">{item.description}</p>
+                  <h3 className="text-lg font-bold font-serif text-[#202022]">{item.title}</h3>
+                  <p className="text-xs text-[#606064] leading-relaxed font-light">{item.description}</p>
                 </div>
               );
             })}
@@ -156,24 +161,24 @@ export default function CandidatesPage() {
       </section>
 
       {/* 4-Step Candidate Journey */}
-      <section className="py-24 md:py-32 bg-background border-b border-border">
+      <section className="py-24 md:py-32 bg-white border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="max-w-2xl mb-16">
-            <span className="eyebrow mb-3 block">The Representation Process</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
+            <span className="eyebrow mb-3 block text-[#FF9A39]">The Representation Process</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
               A bespoke, collaborative trajectory.
             </h2>
-            <p className="text-muted-foreground mt-4 text-base font-light">
+            <p className="text-[#606064] mt-3 text-sm sm:text-base font-light">
               From our first private conversation to year-one executive milestones, we act as your personal career strategist.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {candidateSteps.map((s) => (
-              <div key={s.step} className="p-6 rounded-xl bg-surface border border-border space-y-3">
-                <span className="text-3xl font-bold font-serif text-accent">{s.step}</span>
-                <h4 className="text-base font-bold text-foreground font-serif">{s.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed font-light">{s.description}</p>
+              <div key={s.step} className="p-6 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] space-y-3">
+                <span className="text-2xl font-bold font-serif text-[#FF9A39]">{s.step}</span>
+                <h4 className="text-sm font-bold text-[#202022] font-serif">{s.title}</h4>
+                <p className="text-xs text-[#606064] leading-relaxed font-light">{s.description}</p>
               </div>
             ))}
           </div>
@@ -181,31 +186,31 @@ export default function CandidatesPage() {
       </section>
 
       {/* Candidate Registration Form */}
-      <section id="candidate-intake" className="py-24 md:py-32 bg-surface border-b border-border">
+      <section id="candidate-intake" className="py-24 md:py-32 bg-white border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <span className="eyebrow block">Confidential Registration</span>
-              <h2 className="text-3xl sm:text-4xl font-bold font-serif leading-tight">
+              <span className="eyebrow block text-[#FF5B3D]">Confidential Registration</span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-serif leading-tight text-[#202022]">
                 Connect with our senior executive search directors.
               </h2>
-              <p className="text-muted-foreground text-base font-light leading-relaxed">
+              <p className="text-[#606064] text-sm sm:text-base font-light leading-relaxed">
                 Whether you are seeking your next venture-backed VP role or want to be considered for unadvertised stealth mandates, register below.
               </p>
 
-              <div className="p-6 rounded-xl bg-background border border-border space-y-4">
-                <div className="flex items-center gap-3">
+              <div className="p-6 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] space-y-3">
+                <div className="flex items-center gap-2.5">
                   <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                  <span className="text-xs font-bold text-foreground uppercase tracking-wider">The Confidentiality Guarantee</span>
+                  <span className="text-xs font-bold text-[#202022] uppercase tracking-wider">The Confidentiality Guarantee</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-[#606064] leading-relaxed font-light">
                   We maintain strict Chinese walls and never discuss candidate identities with outside parties without explicit consent. Your existing employment security is our highest priority.
                 </p>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <Link href="/jobs">
-                  <Button variant="outline" className="rounded-sm gap-2 text-xs font-semibold">
+                  <Button variant="outline" className="h-10 px-5 rounded-sm gap-2 text-xs font-semibold border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7]">
                     <span>Browse Current Verified Vacancies</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Button>
@@ -221,23 +226,23 @@ export default function CandidatesPage() {
       </section>
 
       {/* Candidate FAQs */}
-      <section className="py-24 md:py-32 bg-background border-b border-border">
+      <section className="py-24 md:py-32 bg-white border-b border-[#EAE8E5]">
         <div className="container-enterprise max-w-4xl">
-          <div className="text-center mb-16 space-y-4">
-            <span className="eyebrow block">Common Inquiries</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif leading-tight">
+          <div className="text-center mb-16 space-y-3">
+            <span className="eyebrow block text-[#FF5B3D]">Common Inquiries</span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif leading-tight text-[#202022]">
               Candidate representation frequently asked questions.
             </h2>
           </div>
 
           <div className="space-y-4">
             {candidateFaqs.map((faq, idx) => (
-              <div key={idx} className="p-6 rounded-xl bg-surface border border-border space-y-2">
+              <div key={idx} className="p-6 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] space-y-2">
                 <div className="flex items-start gap-3">
-                  <HelpCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                  <h4 className="text-base font-bold text-foreground font-serif">{faq.q}</h4>
+                  <HelpCircle className="h-4 w-4 text-[#FF5B3D] shrink-0 mt-0.5" />
+                  <h4 className="text-sm font-bold text-[#202022] font-serif">{faq.q}</h4>
                 </div>
-                <p className="text-sm text-muted-foreground pl-8 font-light leading-relaxed">{faq.a}</p>
+                <p className="text-xs sm:text-sm text-[#606064] pl-7 font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>

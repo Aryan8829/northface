@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const faqs = [
@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What are your search fee structures and engagement models?",
-    answer: "We offer three primary engagement models: Retained Executive Search (one-third on initiation, one-third on shortlist presentation, and one-third on placement execution), Contingent Direct-Hire for specialist individual contributors, and Embedded RPO for team build-outs.",
+    answer: "We offer three primary engagement models: Retained Executive Search (one-third on initiation, one-third on shortlist presentation, and one-third on placement execution), Contingent Direct-Hire for specialist individual contributors, and Embedded RPO for sprint team build-outs.",
   },
   {
     question: "How do you protect candidate confidentiality and current employment?",
@@ -35,15 +35,15 @@ export function FAQSection() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-surface border-b border-border">
+    <section className="py-24 md:py-32 bg-white border-t border-[#EAE8E5]">
       <div className="container-enterprise max-w-4xl">
-        <div className="text-center mb-16">
-          <span className="eyebrow block mb-3">07 / Transparent Guidance</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight">
+        <div className="text-center mb-16 space-y-3">
+          <span className="eyebrow block text-[#FF5B3D]">08 / Transparent Guidance</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground mt-4 text-base font-light">
-            Answers to common questions regarding our search protocols, timelines, and candidate representation.
+          <p className="text-sm sm:text-base text-[#606064] font-light max-w-xl mx-auto leading-relaxed">
+            Unvarnished answers regarding our search timelines, fee models, and candidate protection protocols.
           </p>
         </div>
 
@@ -53,23 +53,30 @@ export function FAQSection() {
             return (
               <div
                 key={faq.question}
-                className="border border-border rounded-xl bg-background overflow-hidden transition-colors"
+                className={cn(
+                  "border rounded-2xl overflow-hidden transition-all duration-200",
+                  isOpen ? "bg-[#FAF9F7] border-[#FF5B3D]/40 shadow-sm" : "bg-white border-[#EAE8E5] hover:border-[#EAE8E5]"
+                )}
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-lg font-serif transition-colors hover:text-accent"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg font-serif transition-colors text-[#202022]"
                   aria-expanded={isOpen}
                 >
-                  <span>{faq.question}</span>
+                  <div className="flex items-center gap-3">
+                    <HelpCircle className={cn("h-4 w-4 shrink-0 transition-colors", isOpen ? "text-[#FF5B3D]" : "text-[#606064]")} />
+                    <span>{faq.question}</span>
+                  </div>
                   <ChevronDown
                     className={cn(
-                      "h-5 w-5 text-muted-foreground shrink-0 transition-transform duration-200",
-                      isOpen && "rotate-180 text-accent"
+                      "h-4 w-4 shrink-0 text-[#606064] transition-transform duration-200",
+                      isOpen && "rotate-180 text-[#FF5B3D]"
                     )}
                   />
                 </button>
+
                 {isOpen && (
-                  <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed font-light border-t border-border/50 pt-4">
+                  <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-[#606064] font-light leading-relaxed border-t border-[#EAE8E5]/50 animate-in fade-in duration-150">
                     {faq.answer}
                   </div>
                 )}
