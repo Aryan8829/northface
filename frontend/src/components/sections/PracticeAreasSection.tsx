@@ -13,6 +13,9 @@ const practices = [
     shortName: "AI & Systems",
     slug: "technology",
     icon: Cpu,
+    accentColor: "#92FF5F",
+    bracketClass: "bracket-corners",
+    btnClass: "bg-[#92FF5F] text-[#0F3B27] hover:bg-white shadow-lime-glow",
     headline: "Architects of foundation models, high-performance distributed platforms, and sovereign infrastructure.",
     leadPartner: "Dr. Elena Rostova",
     partnerTitle: "Managing Partner, Technology & AI",
@@ -48,6 +51,9 @@ const practices = [
     shortName: "Quantitative Finance",
     slug: "financial-services",
     icon: TrendingUp,
+    accentColor: "#FF7036",
+    bracketClass: "bracket-corners-orange",
+    btnClass: "bg-[#FF7036] text-white hover:bg-[#E85D26] shadow-md shadow-[#FF7036]/30",
     headline: "Alpha researchers, ultra-low latency execution leads, and systematic portfolio directors.",
     leadPartner: "Marcus Vance",
     partnerTitle: "Managing Partner, Quantitative Capital",
@@ -83,6 +89,9 @@ const practices = [
     shortName: "Life Sciences & BioTech",
     slug: "healthcare",
     icon: HeartPulse,
+    accentColor: "#CFF1D2",
+    bracketClass: "bracket-corners",
+    btnClass: "bg-[#CFF1D2] text-[#0F3B27] hover:bg-white shadow-md",
     headline: "Translational medicine pioneers, computational biology directors, and clinical development leaders.",
     leadPartner: "Dr. Sarah Chen, MD",
     partnerTitle: "Managing Partner, Therapeutics Practice",
@@ -118,6 +127,9 @@ const practices = [
     shortName: "Industrial & Energy",
     slug: "energy",
     icon: Zap,
+    accentColor: "#BFF2F0",
+    bracketClass: "bracket-corners-ice",
+    btnClass: "bg-[#BFF2F0] text-[#0F3B27] hover:bg-white shadow-md",
     headline: "Executive leaders scaling grid storage, automated robotics, and sovereign manufacturing hubs.",
     leadPartner: "Julian Thorne",
     partnerTitle: "Managing Partner, Industrial Transition",
@@ -200,7 +212,14 @@ export function PracticeAreasSection() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <TabIcon className={`h-4 w-4 relative z-10 ${isActive ? "text-[#92FF5F]" : "text-[#0F3B27]"}`} />
+                <span 
+                  className="w-2 h-2 rounded-full relative z-10 shrink-0" 
+                  style={{ backgroundColor: practice.accentColor }} 
+                />
+                <TabIcon 
+                  className={`h-4 w-4 relative z-10 transition-colors ${isActive ? "" : "text-[#0F3B27]"}`} 
+                  style={isActive ? { color: practice.accentColor } : {}} 
+                />
                 <span className="relative z-10">{practice.shortName}</span>
               </button>
             );
@@ -220,13 +239,21 @@ export function PracticeAreasSection() {
             className="grid lg:grid-cols-12 gap-8 items-start"
           >
             {/* LEFT COLUMN: PRACTICE BLUEPRINT & ADVISORY DESK (Spans 5 cols) */}
-            <div className="lg:col-span-5 p-8 sm:p-10 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/25 shadow-elevated bracket-corners space-y-7 relative overflow-hidden">
-              <div className="flex items-center justify-between border-b border-[#92FF5F]/20 pb-4">
+            <div 
+              className={`lg:col-span-5 p-8 sm:p-10 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border shadow-elevated space-y-7 relative overflow-hidden ${activePractice.bracketClass}`}
+              style={{ borderColor: `${activePractice.accentColor}40` }}
+            >
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div className="flex items-center gap-2">
-                  <Icon className="h-5 w-5 text-[#92FF5F]" />
-                  <span className="text-xs font-mono font-bold tracking-wider text-[#92FF5F]">PRACTICE BENCHMARK</span>
+                  <Icon className="h-5 w-5" style={{ color: activePractice.accentColor }} />
+                  <span 
+                    className="text-xs font-mono font-bold tracking-wider"
+                    style={{ color: activePractice.accentColor }}
+                  >
+                    PRACTICE BENCHMARK
+                  </span>
                 </div>
-                <span className="text-[11px] font-mono text-[#CFF1D2]/80 uppercase">
+                <span className="text-[11px] font-mono text-[#F7F9F7]/80 uppercase">
                   ACTIVE DESK
                 </span>
               </div>
@@ -240,31 +267,46 @@ export function PracticeAreasSection() {
                 </p>
               </div>
 
-              {/* Practice Metrics Grid */}
+              {/* Practice Metrics Grid with Dynamic Colors */}
               <div className="grid grid-cols-2 gap-3.5 pt-2">
-                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15">
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-white/10">
                   <div className="text-[11px] font-mono text-[#CFF1D2]/70 uppercase">Mean Placement SLA</div>
-                  <div className="text-xl font-bold font-serif text-[#92FF5F] mt-0.5">{activePractice.slaDays} Days</div>
+                  <div 
+                    className="text-xl font-bold font-serif mt-0.5"
+                    style={{ color: activePractice.accentColor }}
+                  >
+                    {activePractice.slaDays} Days
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15">
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-white/10">
                   <div className="text-[11px] font-mono text-[#CFF1D2]/70 uppercase">Avg Compensation</div>
-                  <div className="text-xl font-bold font-serif text-[#92FF5F] mt-0.5">{activePractice.avgComp}</div>
+                  <div 
+                    className="text-xl font-bold font-serif mt-0.5"
+                    style={{ color: activePractice.accentColor }}
+                  >
+                    {activePractice.avgComp}
+                  </div>
                 </div>
               </div>
 
               {/* Practice Lead Partner */}
-              <div className="p-4 rounded-xl bg-[#144931]/80 border border-[#92FF5F]/20 space-y-1">
+              <div className="p-4 rounded-xl bg-[#144931]/80 border border-white/10 space-y-1">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">Practice Managing Director:</div>
                 <div className="text-sm font-bold text-[#F7F9F7]">{activePractice.leadPartner}</div>
                 <div className="text-xs text-[#CFF1D2]/80 font-light">{activePractice.partnerTitle}</div>
-                <div className="text-[11px] font-mono text-[#92FF5F] pt-1">Primary Hubs: {activePractice.hubs}</div>
+                <div 
+                  className="text-[11px] font-mono pt-1"
+                  style={{ color: activePractice.accentColor }}
+                >
+                  Primary Hubs: {activePractice.hubs}
+                </div>
               </div>
 
               <div className="pt-2">
                 <Link href={`/industries/${activePractice.slug}`}>
                   <Button 
-                    className="w-full bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] rounded-full h-12 text-xs font-bold font-mono uppercase tracking-wider shadow-lime-glow gap-2"
+                    className={`w-full rounded-full h-12 text-xs font-bold font-mono uppercase tracking-wider gap-2 transition-all ${activePractice.btnClass}`}
                   >
                     <span>View Complete Practice Intelligence</span>
                     <ArrowRight className="h-4 w-4" />
@@ -287,11 +329,14 @@ export function PracticeAreasSection() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: idx * 0.08 }}
-                    className="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card hover:border-[#92FF5F] transition-all group flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                    className="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card hover:shadow-md transition-all group flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                   >
                     <div className="space-y-1.5 max-w-lg">
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0F3B27]" />
+                        <span 
+                          className="w-2 h-2 rounded-full shrink-0" 
+                          style={{ backgroundColor: activePractice.accentColor }} 
+                        />
                         <h4 className="text-base sm:text-lg font-bold font-serif text-[#0F3B27] group-hover:text-[#164E34] transition-colors">
                           {role.title}
                         </h4>
@@ -308,7 +353,7 @@ export function PracticeAreasSection() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="rounded-full border-[#0F3B27]/20 text-[#0F3B27] hover:bg-[#0F3B27] hover:text-[#92FF5F] text-xs font-mono tracking-wider transition-colors"
+                        className="rounded-full border-[#0F3B27]/20 text-[#0F3B27] hover:bg-[#0F3B27] hover:text-white text-xs font-mono tracking-wider transition-colors"
                       >
                         Request Spec &rarr;
                       </Button>

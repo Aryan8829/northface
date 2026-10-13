@@ -24,7 +24,7 @@ export default function ReportsPage() {
           />
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="space-y-6 max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
                 Strategic Intelligence
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#0F3B27] font-serif">
@@ -47,7 +47,7 @@ export default function ReportsPage() {
               <div className="flex flex-col">
                 <span className="text-4xl font-bold font-serif text-[#0F3B27] mb-2 flex items-baseline gap-1">
                   {upcomingCount}
-                  <span className="w-2 h-2 rounded-full bg-[#92FF5F]" />
+                  <span className="w-2 h-2 rounded-full bg-[#FF7036] animate-pulse" />
                 </span>
                 <span className="text-xs font-semibold text-[#3D614E] uppercase tracking-widest">Upcoming</span>
               </div>

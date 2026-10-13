@@ -96,16 +96,18 @@ export function MomentumField() {
         const y = Math.random() * height;
         const isHub = i % 7 === 0;
 
-        // Assign colors strategically
+        // Assign colors strategically across full palette
         let color = COLOR_ICE;
         if (isHub) {
           color = COLOR_FOREST;
+        } else if (i % 4 === 0) {
+          color = COLOR_SPARK; // Designer Orange (#FF7036)
         } else if (i % 3 === 0) {
-          color = COLOR_LIME;
+          color = COLOR_LIME;  // Signal Lime (#92FF5F)
         } else if (i % 2 === 0) {
-          color = COLOR_MINT;
-        } else if (i % 11 === 0) {
-          color = COLOR_SPARK; // Very rare spark
+          color = COLOR_MINT;  // Mint (#CFF1D2)
+        } else {
+          color = COLOR_ICE;   // Ice (#BFF2F0)
         }
 
         nodes.push({
@@ -115,21 +117,22 @@ export function MomentumField() {
           y,
           vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
-          radius: isHub ? 3.6 : Math.random() * 1.8 + 1.2,
+          radius: isHub ? 3.8 : Math.random() * 2.0 + 1.4,
           color,
           isHub,
           pulsePhase: Math.random() * Math.PI * 2,
         });
       }
 
-      // Initialize photon energy packets traveling between nodes
+      // Initialize photon energy packets traveling between nodes with dynamic colors
       photons = [];
-      for (let p = 0; p < 8; p++) {
+      const packetColors = [COLOR_SPARK, COLOR_LIME, COLOR_ICE, COLOR_MINT];
+      for (let p = 0; p < 12; p++) {
         photons.push({
           fromNode: Math.floor(Math.random() * nodes.length),
           toNode: Math.floor(Math.random() * nodes.length),
           progress: Math.random(),
-          speed: Math.random() * 0.008 + 0.004,
+          speed: Math.random() * 0.009 + 0.004,
         });
       }
     };
@@ -165,14 +168,14 @@ export function MomentumField() {
       ctx.clearRect(0, 0, width, height);
 
       // =========================================================================
-      // LAYER 1: ETHEREAL GENERATIVE AURORA WAVES (Fluid Harmonic Ribbons)
+      // LAYER 1: MULTI-CHROMATIC GENERATIVE AURORA WAVES (Fluid Harmonic Ribbons)
       // =========================================================================
       // Wave 1: Soft Botanical Mint Wash
       ctx.beginPath();
-      ctx.moveTo(0, height * 0.25);
+      ctx.moveTo(0, height * 0.22);
       for (let x = 0; x <= width; x += 40) {
         const y =
-          height * 0.28 +
+          height * 0.24 +
           Math.sin(x * 0.0018 + time * 0.8) * 45 +
           Math.cos(x * 0.003 - time * 0.5) * 30;
         ctx.lineTo(x, y);
@@ -181,18 +184,18 @@ export function MomentumField() {
       ctx.lineTo(0, height);
       ctx.closePath();
       const gradMint = ctx.createLinearGradient(0, 0, width, height);
-      gradMint.addColorStop(0, "rgba(207, 241, 210, 0.28)");
-      gradMint.addColorStop(0.5, "rgba(191, 242, 240, 0.18)");
+      gradMint.addColorStop(0, "rgba(207, 241, 210, 0.32)");
+      gradMint.addColorStop(0.5, "rgba(191, 242, 240, 0.20)");
       gradMint.addColorStop(1, "rgba(247, 249, 247, 0)");
       ctx.fillStyle = gradMint;
       ctx.fill();
 
       // Wave 2: Ethereal Ice Cyan Undulation
       ctx.beginPath();
-      ctx.moveTo(0, height * 0.6);
+      ctx.moveTo(0, height * 0.55);
       for (let x = 0; x <= width; x += 40) {
         const y =
-          height * 0.62 +
+          height * 0.56 +
           Math.cos(x * 0.0022 - time * 0.7) * 50 +
           Math.sin(x * 0.004 + time * 0.6) * 25;
         ctx.lineTo(x, y);
@@ -201,10 +204,30 @@ export function MomentumField() {
       ctx.lineTo(0, height);
       ctx.closePath();
       const gradIce = ctx.createLinearGradient(width, 0, 0, height);
-      gradIce.addColorStop(0, "rgba(191, 242, 240, 0.25)");
-      gradIce.addColorStop(0.6, "rgba(146, 255, 95, 0.08)");
+      gradIce.addColorStop(0, "rgba(191, 242, 240, 0.28)");
+      gradIce.addColorStop(0.5, "rgba(146, 255, 95, 0.12)");
       gradIce.addColorStop(1, "rgba(247, 249, 247, 0)");
       ctx.fillStyle = gradIce;
+      ctx.fill();
+
+      // Wave 3: Warm Orange & Signal Lime Horizon Ribbon
+      ctx.beginPath();
+      ctx.moveTo(0, height * 0.82);
+      for (let x = 0; x <= width; x += 40) {
+        const y =
+          height * 0.80 +
+          Math.sin(x * 0.0024 + time * 0.9) * 40 +
+          Math.cos(x * 0.0016 - time * 0.4) * 35;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+      const gradOrange = ctx.createLinearGradient(0, height * 0.5, width, height);
+      gradOrange.addColorStop(0, "rgba(255, 112, 54, 0.14)");
+      gradOrange.addColorStop(0.5, "rgba(191, 242, 240, 0.12)");
+      gradOrange.addColorStop(1, "rgba(146, 255, 95, 0.10)");
+      ctx.fillStyle = gradOrange;
       ctx.fill();
 
       // =========================================================================

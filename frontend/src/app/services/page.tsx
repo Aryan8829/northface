@@ -31,7 +31,7 @@ export default function ServicesPage() {
             className="mb-8 text-[#3D614E]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
               Recruitment Frameworks
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#0F3B27] font-serif">
@@ -51,6 +51,13 @@ export default function ServicesPage() {
             {services.map((service, idx) => {
               const Icon = iconMap[service.icon] || Cpu;
               const isEven = idx % 2 === 0;
+              const colorSchemes = [
+                { iconBg: "bg-[#0F3B27] text-[#92FF5F] border-[#92FF5F]/30", hoverBorder: "hover:border-[#92FF5F]", bracket: "bracket-corners" },
+                { iconBg: "bg-[#FF7036] text-white border-[#FF7036]/30", hoverBorder: "hover:border-[#FF7036]", bracket: "bracket-corners-orange" },
+                { iconBg: "bg-[#BFF2F0] text-[#0F3B27] border-[#0F3B27]/15", hoverBorder: "hover:border-[#BFF2F0]", bracket: "bracket-corners-ice" },
+                { iconBg: "bg-[#CFF1D2] text-[#0F3B27] border-[#0F3B27]/15", hoverBorder: "hover:border-[#CFF1D2]", bracket: "bracket-corners" },
+              ];
+              const scheme = colorSchemes[idx % colorSchemes.length];
               
               return (
                 <div key={service.slug} className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start group">
@@ -58,7 +65,7 @@ export default function ServicesPage() {
                   {/* Text Side */}
                   <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                     <div className="sticky top-32">
-                      <div className="h-14 w-14 rounded-xl bg-[#0F3B27] text-[#92FF5F] flex items-center justify-center mb-8 border border-[#92FF5F]/30 group-hover:bg-[#92FF5F] group-hover:text-[#0F3B27] transition-all shadow-md">
+                      <div className={`h-14 w-14 rounded-xl flex items-center justify-center mb-8 border shadow-md transition-all ${scheme.iconBg}`}>
                         <Icon className="h-7 w-7" />
                       </div>
                       <span className="eyebrow block mb-3">{service.subtitle}</span>
@@ -82,7 +89,7 @@ export default function ServicesPage() {
 
                   {/* Capabilities / Sub-services Side */}
                   <div className={`lg:col-span-7 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#E1E8E3] shadow-sm space-y-8 bracket-corners hover:border-[#0F3B27]/40 hover:shadow-xl transition-all">
+                    <div className={`bg-white/95 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#E1E8E3] shadow-sm space-y-8 ${scheme.bracket} ${scheme.hoverBorder} hover:shadow-xl transition-all`}>
                       <div className="border-b border-[#E1E8E3] pb-6">
                         <h3 className="text-xs font-bold uppercase tracking-widest text-[#3D614E] mb-4">Core Practice Capabilities</h3>
                         <div className="flex flex-wrap gap-2.5">

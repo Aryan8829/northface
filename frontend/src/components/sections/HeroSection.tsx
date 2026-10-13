@@ -87,10 +87,10 @@ const SECTOR_MANDATES: Record<string, MandateProfile> = {
 };
 
 const SECTORS = [
-  { key: "ai", label: "Autonomous AI" },
-  { key: "quant", label: "Quantitative Alpha" },
-  { key: "biotech", label: "BioTech & Science" },
-  { key: "infra", label: "Sovereign Infra" },
+  { key: "ai", label: "Autonomous AI", color: "#92FF5F", dotClass: "bg-[#92FF5F]", bracketClass: "bracket-corners" },
+  { key: "quant", label: "Quantitative Alpha", color: "#FF7036", dotClass: "bg-[#FF7036]", bracketClass: "bracket-corners-orange" },
+  { key: "biotech", label: "BioTech & Science", color: "#CFF1D2", dotClass: "bg-[#CFF1D2]", bracketClass: "bracket-corners" },
+  { key: "infra", label: "Sovereign Infra", color: "#BFF2F0", dotClass: "bg-[#BFF2F0]", bracketClass: "bracket-corners-ice" },
 ];
 
 const containerVariants: Variants = {
@@ -170,16 +170,16 @@ export function HeroSection() {
               ========================================================================= */}
           <div className="lg:col-span-7 space-y-8">
             
-            {/* Live Search Telemetry Badge */}
+            {/* Live Search Telemetry Badge (Vibrant Orange & Ice Contrast) */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#0F3B27] text-[#92FF5F] shadow-sm">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#92FF5F] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#92FF5F]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7036] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7036]" />
                 </span>
                 LIVE SEARCH TELEMETRY
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-semibold bg-[#BFF2F0]/40 text-[#0F3B27] border border-[#0F3B27]/10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-semibold bg-[#BFF2F0] text-[#0F3B27] border border-[#0F3B27]/10 shadow-sm">
                 <ShieldCheck className="h-3.5 w-3.5 text-[#0F3B27]" />
                 Strict Discretion Protocols
               </span>
@@ -189,7 +189,7 @@ export function HeroSection() {
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#0F3B27] font-serif leading-[1.08]">
                 Appointing the{" "}
-                <span className="italic font-normal text-[#0F3B27] underline decoration-[#92FF5F] decoration-4 underline-offset-8">
+                <span className="italic font-normal text-[#0F3B27] underline decoration-[#FF7036] decoration-4 underline-offset-8">
                   rare leaders
                 </span>{" "}
                 who redefine industries.
@@ -199,7 +199,7 @@ export function HeroSection() {
               </p>
             </motion.div>
 
-            {/* Interactive Sector Switcher (Storytelling Component) */}
+            {/* Interactive Sector Switcher (Storytelling Component with Individual Color Accents) */}
             <motion.div variants={itemVariants} className="space-y-3 pt-1">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#3D614E]">
                 <Sliders className="h-3.5 w-3.5 text-[#0F3B27]" />
@@ -226,7 +226,10 @@ export function HeroSection() {
                         />
                       )}
                       <span className="relative z-10 flex items-center gap-1.5">
-                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#92FF5F]" />}
+                        <span 
+                          className="w-2 h-2 rounded-full transition-transform" 
+                          style={{ backgroundColor: s.color }} 
+                        />
                         {s.label}
                       </span>
                     </button>
@@ -235,12 +238,12 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Primary Action Buttons */}
+            {/* Primary Action Buttons (Strategic Orange + Forest Harmony) */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/employers">
                 <Button
                   size="lg"
-                  className="bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] hover:text-[#92FF5F] rounded-full h-14 px-8 text-sm font-bold tracking-wider uppercase transition-all duration-200 shadow-card hover:shadow-lime-glow group gap-2"
+                  className="bg-[#0F3B27] text-white hover:bg-[#082115] hover:text-[#92FF5F] rounded-full h-14 px-8 text-sm font-bold tracking-wider uppercase transition-all duration-200 shadow-card hover:shadow-lg group gap-2"
                 >
                   <span>Initiate Confidential Search</span>
                   <ArrowRight className="h-4 w-4 text-[#92FF5F] group-hover:translate-x-1 transition-transform" />
@@ -249,11 +252,11 @@ export function HeroSection() {
               
               <Link href="/candidates">
                 <Button
-                  variant="outline"
                   size="lg"
-                  className="border-[#0F3B27]/25 text-[#0F3B27] hover:bg-[#BFF2F0]/25 rounded-full h-14 px-7 text-sm font-semibold tracking-wider transition-colors"
+                  className="bg-[#FF7036] text-white hover:bg-[#E85D26] rounded-full h-14 px-8 text-sm font-bold tracking-wider uppercase transition-all duration-200 shadow-md shadow-[#FF7036]/25 group gap-2"
                 >
                   <span>Candidate Representation</span>
+                  <ArrowRight className="h-4 w-4 text-white group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </motion.div>
@@ -298,128 +301,179 @@ export function HeroSection() {
               ========================================================================= */}
           <div className="lg:col-span-5 relative">
             
-            {/* Subtle Ethereal Mint Aura behind Dossier */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#92FF5F]/20 via-[#BFF2F0]/30 to-[#CFF1D2]/20 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
+            {/* Multi-chromatic Ethereal Aura behind Dossier (Orange + Ice + Lime + Mint) */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-[#FF7036]/25 via-[#BFF2F0]/30 to-[#92FF5F]/20 rounded-3xl blur-2xl opacity-70 pointer-events-none" />
 
             <AnimatePresence mode="wait">
-              <motion.div
-                key={mandate.id}
-                initial={{ opacity: 0, y: 16, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -16, scale: 0.98 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="relative rounded-2xl bg-[#0F3B27] text-[#F7F9F7] p-7 md:p-8 border border-[#92FF5F]/25 shadow-elevated bracket-corners overflow-hidden"
-              >
-                {/* Background Radar Scanner Sweep Effect */}
-                <div className="absolute -right-16 -top-16 w-52 h-52 rounded-full border border-[#92FF5F]/15 pointer-events-none opacity-60">
-                  <div className="absolute inset-4 rounded-full border border-[#92FF5F]/10 animate-ping" />
-                  <div className="absolute inset-12 rounded-full border border-[#92FF5F]/20" />
-                  <div className="absolute top-1/2 left-0 right-0 h-px bg-[#92FF5F]/20" />
-                  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#92FF5F]/20" />
-                </div>
-
-                {/* Dossier Top Bar */}
-                <div className="flex items-center justify-between border-b border-[#92FF5F]/20 pb-4 mb-6 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#92FF5F] shadow-[0_0_8px_#92FF5F]" />
-                    <span className="text-xs font-mono font-bold tracking-widest text-[#92FF5F]">
-                      {mandate.id}
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#CFF1D2]/80 bg-[#144931] px-2.5 py-0.5 rounded border border-[#92FF5F]/20">
-                    {mandate.governance}
-                  </span>
-                </div>
-
-                {/* Role Profile Details */}
-                <div className="space-y-4 relative z-10">
-                  <div>
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#BFF2F0]/80">
-                      Target Mandate
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-bold font-serif text-[#F7F9F7] leading-snug mt-0.5">
-                      {mandate.role}
-                    </h3>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 pt-1">
-                    <div className="p-3 rounded-lg bg-[#082115]/80 border border-[#92FF5F]/15">
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
-                        Seniority / Level
-                      </div>
-                      <div className="text-xs font-semibold text-[#F7F9F7] mt-0.5 truncate">
-                        {mandate.level}
-                      </div>
+              {(() => {
+                const activeSectorConfig = SECTORS.find((s) => s.key === activeSector) || SECTORS[0];
+                return (
+                  <motion.div
+                    key={mandate.id}
+                    initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -16, scale: 0.98 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className={`relative rounded-2xl bg-[#0F3B27] text-[#F7F9F7] p-7 md:p-8 border shadow-elevated overflow-hidden ${activeSectorConfig.bracketClass}`}
+                    style={{ borderColor: `${activeSectorConfig.color}45` }}
+                  >
+                    {/* Background Radar Scanner Sweep Effect */}
+                    <div 
+                      className="absolute -right-16 -top-16 w-52 h-52 rounded-full border pointer-events-none opacity-60"
+                      style={{ borderColor: `${activeSectorConfig.color}25` }}
+                    >
+                      <div 
+                        className="absolute inset-4 rounded-full border animate-ping" 
+                        style={{ borderColor: `${activeSectorConfig.color}20` }}
+                      />
+                      <div 
+                        className="absolute inset-12 rounded-full border" 
+                        style={{ borderColor: `${activeSectorConfig.color}30` }}
+                      />
+                      <div 
+                        className="absolute top-1/2 left-0 right-0 h-px" 
+                        style={{ backgroundColor: `${activeSectorConfig.color}25` }}
+                      />
+                      <div 
+                        className="absolute left-1/2 top-0 bottom-0 w-px" 
+                        style={{ backgroundColor: `${activeSectorConfig.color}25` }}
+                      />
                     </div>
 
-                    <div className="p-3 rounded-lg bg-[#082115]/80 border border-[#92FF5F]/15">
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
-                        Jurisdiction
+                    {/* Dossier Top Bar */}
+                    <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 relative z-10">
+                      <div className="flex items-center gap-2">
+                        <span 
+                          className="w-2 h-2 rounded-full" 
+                          style={{ 
+                            backgroundColor: activeSectorConfig.color, 
+                            boxShadow: `0 0 8px ${activeSectorConfig.color}` 
+                          }} 
+                        />
+                        <span 
+                          className="text-xs font-mono font-bold tracking-widest"
+                          style={{ color: activeSectorConfig.color }}
+                        >
+                          {mandate.id}
+                        </span>
                       </div>
-                      <div className="text-xs font-semibold text-[#F7F9F7] mt-0.5 truncate">
-                        {mandate.location}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Compensation & Scarcity Gauge */}
-                  <div className="p-4 rounded-xl bg-[#144931]/60 border border-[#92FF5F]/20 space-y-3">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-[#CFF1D2] font-mono">Market Compensation:</span>
-                      <span className="font-bold text-[#92FF5F] font-mono">
-                        {mandate.compensation}
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#F7F9F7]/80 bg-[#144931] px-2.5 py-0.5 rounded border border-white/10">
+                        {mandate.governance}
                       </span>
                     </div>
 
-                    {/* Calibration Progress Bar */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-[11px] font-mono">
-                        <span className="text-[#F7F9F7]/80">Calibration Index</span>
-                        <span className="text-[#92FF5F] font-bold">{mandate.matchScore}% Match</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-[#082115] rounded-full overflow-hidden p-0.5">
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-[#92FF5F] via-[#BFF2F0] to-[#92FF5F] rounded-full"
-                          initial={{ width: "0%" }}
-                          animate={{ width: `${mandate.matchScore}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Mandate Competency Tags */}
-                  <div className="space-y-2 pt-1">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
-                      Core Specializations Evaluated:
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {mandate.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 rounded text-[11px] font-medium bg-[#082115] text-[#BFF2F0] border border-[#92FF5F]/20"
-                        >
-                          {tag}
+                    {/* Role Profile Details */}
+                    <div className="space-y-4 relative z-10">
+                      <div>
+                        <span className="text-xs font-mono uppercase tracking-wider text-[#BFF2F0]">
+                          Target Mandate
                         </span>
-                      ))}
+                        <h3 className="text-xl md:text-2xl font-bold font-serif text-[#F7F9F7] leading-snug mt-0.5">
+                          {mandate.role}
+                        </h3>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-1">
+                        <div className="p-3 rounded-lg bg-[#082115]/80 border border-white/10">
+                          <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
+                            Seniority / Level
+                          </div>
+                          <div className="text-xs font-semibold text-[#F7F9F7] mt-0.5 truncate">
+                            {mandate.level}
+                          </div>
+                        </div>
+
+                        <div className="p-3 rounded-lg bg-[#082115]/80 border border-white/10">
+                          <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
+                            Jurisdiction
+                          </div>
+                          <div className="text-xs font-semibold text-[#F7F9F7] mt-0.5 truncate">
+                            {mandate.location}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Compensation & Scarcity Gauge */}
+                      <div className="p-4 rounded-xl bg-[#144931]/60 border border-white/10 space-y-3">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-[#CFF1D2] font-mono">Market Compensation:</span>
+                          <span 
+                            className="font-bold font-mono text-sm"
+                            style={{ color: activeSectorConfig.color }}
+                          >
+                            {mandate.compensation}
+                          </span>
+                        </div>
+
+                        {/* Multi-Chromic Calibration Progress Bar */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between text-[11px] font-mono">
+                            <span className="text-[#F7F9F7]/80">Calibration Index</span>
+                            <span 
+                              className="font-bold"
+                              style={{ color: activeSectorConfig.color }}
+                            >
+                              {mandate.matchScore}% Match
+                            </span>
+                          </div>
+                          <div className="h-1.5 w-full bg-[#082115] rounded-full overflow-hidden p-0.5">
+                            <motion.div
+                              className="h-full bg-gradient-to-r from-[#92FF5F] via-[#FF7036] to-[#BFF2F0] rounded-full"
+                              initial={{ width: "0%" }}
+                              animate={{ width: `${mandate.matchScore}%` }}
+                              transition={{ duration: 0.8, ease: "easeOut" }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Mandate Competency Tags with Rich Multi-Color Badges */}
+                      <div className="space-y-2 pt-1">
+                        <div className="text-[11px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">
+                          Core Specializations Evaluated:
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {mandate.tags.map((tag, idx) => {
+                            const badgeColors = [
+                              "text-[#92FF5F] border-[#92FF5F]/30",
+                              "text-[#FF7036] border-[#FF7036]/30",
+                              "text-[#BFF2F0] border-[#BFF2F0]/30",
+                              "text-[#CFF1D2] border-[#CFF1D2]/30",
+                            ];
+                            const currentStyle = badgeColors[idx % badgeColors.length];
+                            return (
+                              <span
+                                key={tag}
+                                className={`px-2.5 py-1 rounded text-[11px] font-medium bg-[#082115] border ${currentStyle}`}
+                              >
+                                {tag}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Footer CTAs */}
+                      <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 text-xs text-[#CFF1D2]">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[#92FF5F]" />
+                          <span>{mandate.timelineDays} Days Avg Delivery</span>
+                        </div>
+
+                        <Link 
+                          href={`/jobs`} 
+                          className="group flex items-center gap-1 text-xs font-bold hover:underline uppercase tracking-wider font-mono transition-colors"
+                          style={{ color: activeSectorConfig.color }}
+                        >
+                          <span>View Mandates</span>
+                          <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </Link>
+                      </div>
+
                     </div>
-                  </div>
-
-                  {/* Footer CTAs */}
-                  <div className="pt-4 border-t border-[#92FF5F]/20 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-xs text-[#CFF1D2]">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#92FF5F]" />
-                      <span>{mandate.timelineDays} Days Avg Delivery</span>
-                    </div>
-
-                    <Link href={`/jobs`} className="group flex items-center gap-1 text-xs font-bold text-[#92FF5F] hover:underline uppercase tracking-wider font-mono">
-                      <span>View Mandates</span>
-                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
-                  </div>
-
-                </div>
-              </motion.div>
+                  </motion.div>
+                );
+              })()}
             </AnimatePresence>
 
           </div>

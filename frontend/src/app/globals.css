@@ -231,7 +231,74 @@
   border: 1px solid rgba(15, 59, 39, 0.1);
 }
 
-/* Distinctive Corner Brackets for High-End Engineering Aesthetics */
+/* Distinct Luxury Palette Card Archetypes */
+.card-forest {
+  background-color: #0F3B27;
+  color: #F7F9F7;
+  border: 1px solid rgba(146, 255, 95, 0.2);
+}
+
+.card-orange {
+  background-color: #FF7036;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card-ice {
+  background-color: #BFF2F0;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.12);
+}
+
+.card-mint {
+  background-color: #CFF1D2;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.12);
+}
+
+.card-lime {
+  background-color: #92FF5F;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.15);
+}
+
+/* Multi-Color Palette Pill Badges */
+.badge-orange {
+  background-color: #FF7036;
+  color: #FFFFFF;
+}
+
+.badge-orange-soft {
+  background-color: rgba(255, 112, 54, 0.12);
+  color: #FF7036;
+  border: 1px solid rgba(255, 112, 54, 0.28);
+}
+
+.badge-ice {
+  background-color: #BFF2F0;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.15);
+}
+
+.badge-mint {
+  background-color: #CFF1D2;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.15);
+}
+
+.badge-lime {
+  background-color: #92FF5F;
+  color: #0F3B27;
+  border: 1px solid rgba(15, 59, 39, 0.2);
+}
+
+.badge-forest {
+  background-color: #0F3B27;
+  color: #92FF5F;
+  border: 1px solid rgba(146, 255, 95, 0.25);
+}
+
+/* Distinct Corner Brackets for High-End Engineering Aesthetics */
 .bracket-corners {
   position: relative;
 }
@@ -258,6 +325,89 @@
   right: 8px;
   border-bottom: 2px solid #92FF5F;
   border-right: 2px solid #92FF5F;
+}
+
+.bracket-corners-orange {
+  position: relative;
+}
+.bracket-corners-orange::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #FF7036;
+  border-left: 2px solid #FF7036;
+  pointer-events: none;
+}
+.bracket-corners-orange::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #FF7036;
+  border-right: 2px solid #FF7036;
+  pointer-events: none;
+}
+
+.bracket-corners-ice {
+  position: relative;
+}
+.bracket-corners-ice::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #0F3B27;
+  border-left: 2px solid #0F3B27;
+  pointer-events: none;
+}
+.bracket-corners-ice::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #0F3B27;
+  border-right: 2px solid #0F3B27;
+  pointer-events: none;
+}
+
+/* Button Archetypes for Palette Harmony */
+.btn-orange {
+  background-color: #FF7036;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.btn-orange:hover {
+  background-color: #E85D26;
+  box-shadow: 0 8px 20px -4px rgba(255, 112, 54, 0.45);
+}
+
+.btn-ice {
+  background-color: #BFF2F0;
+  color: #0F3B27;
+  transition: all 0.2s ease;
+}
+.btn-ice:hover {
+  background-color: #A3EAE7;
+  color: #0F3B27;
+}
+
+.btn-mint {
+  background-color: #CFF1D2;
+  color: #0F3B27;
+  transition: all 0.2s ease;
+}
+.btn-mint:hover {
+  background-color: #B7E8BB;
+  color: #0F3B27;
 }
 
 /* Route stroke utility */

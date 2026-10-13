@@ -27,15 +27,15 @@ export function GlobalCTA() {
             cx="420" 
             cy="380" 
             r="4.5" 
-            fill="#92FF5F" 
+            fill="#FF7036" 
             animate={{ scale: [1, 1.6, 1], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 2.5, repeat: Infinity }}
           />
           <defs>
             <linearGradient id="cta-lime-loop-grad" x1="50" y1="50" x2="650" y2="450" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#92FF5F" stopOpacity="0.9" />
-              <stop offset="0.5" stopColor="#0F3B27" stopOpacity="0.7" />
-              <stop offset="1" stopColor="#BFF2F0" stopOpacity="0.4" />
+              <stop stopColor="#FF7036" stopOpacity="0.9" />
+              <stop offset="0.5" stopColor="#92FF5F" stopOpacity="0.8" />
+              <stop offset="1" stopColor="#BFF2F0" stopOpacity="0.7" />
             </linearGradient>
           </defs>
         </svg>
@@ -43,17 +43,18 @@ export function GlobalCTA() {
 
       <div className="container-enterprise relative z-10">
         <motion.div 
-          className="max-w-4xl mx-auto text-center space-y-8 p-10 md:p-16 rounded-3xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/30 shadow-elevated bracket-corners relative overflow-hidden"
+          className="max-w-4xl mx-auto text-center space-y-8 p-10 md:p-16 rounded-3xl bg-[#0F3B27] text-[#F7F9F7] border border-white/10 shadow-elevated bracket-corners-orange relative overflow-hidden"
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#92FF5F]/15 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Ambient Radial Glow (Multi-color) */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF7036]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#BFF2F0]/20 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#144931] text-xs font-mono font-bold uppercase tracking-wider text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm relative z-10">
-            <Sparkles className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#144931] text-xs font-mono font-bold uppercase tracking-wider text-[#FF7036] border border-[#FF7036]/30 shadow-sm relative z-10">
+            <Sparkles className="h-3.5 w-3.5 text-[#FF7036]" />
             <span>CONFIDENTIAL SEARCH CONSULTATION</span>
           </div>
 
@@ -69,7 +70,7 @@ export function GlobalCTA() {
             <Link href="/employers" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto h-14 px-8 rounded-full bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] text-xs font-mono font-bold tracking-wider uppercase shadow-lime-glow transition-all gap-2"
+                className="w-full sm:w-auto h-14 px-8 rounded-full bg-[#FF7036] text-white hover:bg-[#E85D26] text-xs font-mono font-bold tracking-wider uppercase shadow-md shadow-[#FF7036]/30 transition-all gap-2"
               >
                 <Building2 className="h-4 w-4" />
                 <span>Calibrate Employer Mandate</span>
@@ -79,9 +80,8 @@ export function GlobalCTA() {
 
             <Link href="/candidates" className="w-full sm:w-auto">
               <Button 
-                variant="outline" 
                 size="lg" 
-                className="w-full sm:w-auto h-14 px-8 rounded-full border border-[#92FF5F]/30 bg-[#144931]/60 text-xs font-mono font-bold tracking-wider uppercase text-[#F7F9F7] hover:bg-[#144931] hover:text-[#92FF5F] transition-colors gap-2"
+                className="w-full sm:w-auto h-14 px-8 rounded-full bg-[#BFF2F0] text-[#0F3B27] hover:bg-white text-xs font-mono font-bold tracking-wider uppercase shadow-sm transition-all gap-2"
               >
                 <UserCheck className="h-4 w-4" />
                 <span>Confidential Candidate Registration</span>

@@ -22,29 +22,37 @@ const candidateCharter = [
     icon: Lock,
     title: "100% Written Consent Rule",
     description: "We will NEVER share your resume, identity, or portfolio with any organization without your explicit, mandate-specific written permission beforehand.",
-    bg: "bg-[#CFF1D2]/40",
-    color: "text-[#0F3B27]",
+    bg: "bg-[#FF7036]/15",
+    color: "text-[#FF7036]",
+    bracket: "bracket-corners-orange",
+    border: "hover:border-[#FF7036]",
   },
   {
     icon: Users,
     title: "Direct Founder & Board Access",
     description: "Skip automated ATS resume screeners. Our search directors present you directly to CEOs, Founders, Board Members, and VPs of Engineering.",
-    bg: "bg-[#BFF2F0]/40",
+    bg: "bg-[#BFF2F0]",
     color: "text-[#0F3B27]",
+    bracket: "bracket-corners-ice",
+    border: "hover:border-[#BFF2F0]",
   },
   {
     icon: Scale,
     title: "Total Compensation Transparency",
     description: "We provide truthful compensation ranges—including base salary, performance incentives, and clear cap-table equity structures—before first interviews.",
-    bg: "bg-[#92FF5F]/20",
+    bg: "bg-[#92FF5F]/25",
     color: "text-[#0F3B27]",
+    bracket: "bracket-corners",
+    border: "hover:border-[#92FF5F]",
   },
   {
     icon: Compass,
     title: "Lifelong Career Navigation",
     description: "Whether you are actively exploring a move or simply desire a confidential sounding board on compensation and market trajectory, our doors are open.",
-    bg: "bg-[#F7F9F7]",
+    bg: "bg-[#CFF1D2]/60",
     color: "text-[#0F3B27]",
+    bracket: "bracket-corners",
+    border: "hover:border-[#CFF1D2]",
   },
 ];
 
@@ -102,8 +110,8 @@ export default function CandidatesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3B27] text-xs font-bold uppercase tracking-wider text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
-              <Sparkles className="h-3.5 w-3.5 text-[#92FF5F]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF7036]/10 text-xs font-bold uppercase tracking-wider text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
+              <Sparkles className="h-3.5 w-3.5 text-[#FF7036]" />
               <span>For Exceptional Talent &amp; Leaders</span>
             </div>
 
@@ -117,13 +125,13 @@ export default function CandidatesPage() {
 
             <div className="pt-2 flex flex-wrap gap-4">
               <a href="#candidate-intake">
-                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#0F3B27] text-white hover:bg-[#92FF5F] hover:text-[#0F3B27] gap-2 font-semibold text-xs shadow-md transition-all">
+                <Button size="lg" className="h-12 px-7 rounded-full bg-[#FF7036] text-white hover:bg-[#E85D26] gap-2 font-bold font-mono uppercase tracking-wider text-xs shadow-md shadow-[#FF7036]/25 transition-all">
                   <span>Register Confidentially</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <Link href="/jobs">
-                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#E1E8E3] bg-white text-[#0F3B27] hover:bg-[#F7F9F7] gap-2 text-xs font-semibold shadow-sm">
+                <Button size="lg" variant="outline" className="h-12 px-7 rounded-full border border-[#BFF2F0] bg-[#BFF2F0]/25 text-[#0F3B27] hover:bg-[#BFF2F0] gap-2 text-xs font-bold font-mono uppercase tracking-wider shadow-sm">
                   <Briefcase className="h-3.5 w-3.5 text-[#0F3B27]" />
                   <span>View Verified Mandates</span>
                 </Button>
@@ -150,7 +158,7 @@ export default function CandidatesPage() {
             {candidateCharter.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="p-8 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] space-y-4 hover:border-[#0F3B27]/40 hover:shadow-xl transition-all bracket-corners">
+                <div key={item.title} className={`p-8 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#E1E8E3] space-y-4 hover:shadow-xl transition-all ${item.bracket} ${item.border}`}>
                   <div className={`h-12 w-12 rounded-xl ${item.bg} border border-[#0F3B27]/10 flex items-center justify-center ${item.color}`}>
                     <Icon className="h-6 w-6" />
                   </div>

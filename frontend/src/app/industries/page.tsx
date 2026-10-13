@@ -27,7 +27,7 @@ export default function IndustriesPage() {
             className="mb-8 text-[#3D614E]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
               Sector Practices
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#0F3B27] font-serif">
@@ -45,17 +45,25 @@ export default function IndustriesPage() {
       <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {industries.map((industry) => {
+            {industries.map((industry, idx) => {
               const Icon = iconMap[industry.icon] || Cpu;
+              const industrySchemes = [
+                { icon: "bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30", hoverBorder: "hover:border-[#92FF5F]", bracket: "bracket-corners" },
+                { icon: "bg-[#FF7036] text-white border border-[#FF7036]/30", hoverBorder: "hover:border-[#FF7036]", bracket: "bracket-corners-orange" },
+                { icon: "bg-[#BFF2F0] text-[#0F3B27] border border-[#0F3B27]/15", hoverBorder: "hover:border-[#BFF2F0]", bracket: "bracket-corners-ice" },
+                { icon: "bg-[#CFF1D2] text-[#0F3B27] border border-[#0F3B27]/15", hoverBorder: "hover:border-[#CFF1D2]", bracket: "bracket-corners" },
+              ];
+              const scheme = industrySchemes[idx % industrySchemes.length];
+
               return (
                 <Link
                   key={industry.slug}
                   href={`/industries/${industry.slug}`}
                   className="group block"
                 >
-                  <div className="h-full p-8 md:p-10 border border-[#E1E8E3] rounded-2xl bg-white/90 backdrop-blur-sm hover:shadow-xl hover:border-[#0F3B27]/40 transition-all duration-300 bracket-corners">
+                  <div className={`h-full p-8 md:p-10 border border-[#E1E8E3] rounded-2xl bg-white/95 backdrop-blur-sm hover:shadow-xl ${scheme.hoverBorder} transition-all duration-300 ${scheme.bracket}`}>
                     <div className="flex items-start justify-between mb-6">
-                      <div className="p-3.5 bg-[#0F3B27] text-[#92FF5F] rounded-xl group-hover:bg-[#92FF5F] group-hover:text-[#0F3B27] transition-all shadow-sm">
+                      <div className={`p-3.5 rounded-xl transition-all shadow-sm ${scheme.icon}`}>
                         <Icon className="h-6 w-6 transition-colors" />
                       </div>
                       <div className="flex items-center gap-2">

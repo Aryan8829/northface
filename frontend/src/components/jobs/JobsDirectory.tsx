@@ -176,75 +176,103 @@ export function JobsDirectory({ initialJobs }: JobsDirectoryProps) {
       ) : (
         <div className="grid gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredJobs.map((job, idx) => (
-              <motion.div
-                key={job.slug}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                whileHover={{ 
-                  y: -4, 
-                  scale: 1.01,
-                  boxShadow: "0 18px 30px -10px rgba(255, 91, 61, 0.15)",
-                  transition: { type: "spring", stiffness: 350, damping: 20 }
-                }}
-                className="p-7 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] hover:border-[#92FF5F] shadow-card transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group bracket-corners"
-              >
-                <div className="space-y-3 max-w-3xl">
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#F7F9F7] text-[#0F3B27] border border-[#E1E8E3]">
-                      {job.department}
-                    </span>
-                    <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded bg-[#CFF1D2]/50 text-[#0F3B27] border border-[#0F3B27]/15">
-                      {job.experienceLevel}
-                    </span>
-                    <span className="text-xs font-mono font-semibold text-[#0F3B27] flex items-center gap-1.5 ml-1">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#92FF5F] opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#92FF5F]" />
+            {filteredJobs.map((job, idx) => {
+              const isFinance = job.department.toLowerCase().includes("finance") || job.department.toLowerCase().includes("quant");
+              const isHealth = job.department.toLowerCase().includes("health") || job.department.toLowerCase().includes("bio");
+              const isInfra = job.department.toLowerCase().includes("engineer") || job.department.toLowerCase().includes("platform");
+              
+              let bracketClass = "bracket-corners";
+              let deptBadge = "bg-[#F7F9F7] text-[#0F3B27] border border-[#E1E8E3]";
+              let btnClass = "bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115]";
+              let arrowColor = "text-[#92FF5F]";
+
+              if (isFinance) {
+                bracketClass = "bracket-corners-orange";
+                deptBadge = "bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/30 font-bold";
+                btnClass = "bg-[#FF7036] text-white hover:bg-[#E85D26] shadow-md shadow-[#FF7036]/25";
+                arrowColor = "text-white";
+              } else if (isHealth) {
+                bracketClass = "bracket-corners";
+                deptBadge = "bg-[#CFF1D2] text-[#0F3B27] border border-[#0F3B27]/15 font-bold";
+                btnClass = "bg-[#0F3B27] text-[#CFF1D2] hover:bg-[#082115]";
+                arrowColor = "text-[#CFF1D2]";
+              } else if (isInfra) {
+                bracketClass = "bracket-corners-ice";
+                deptBadge = "bg-[#BFF2F0] text-[#0F3B27] border border-[#0F3B27]/15 font-bold";
+                btnClass = "bg-[#0F3B27] text-[#BFF2F0] hover:bg-[#082115]";
+                arrowColor = "text-[#BFF2F0]";
+              }
+
+              return (
+                <motion.div
+                  key={job.slug}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  whileHover={{ 
+                    y: -4, 
+                    scale: 1.01,
+                    boxShadow: "0 18px 30px -10px rgba(15, 59, 39, 0.12)",
+                    transition: { type: "spring", stiffness: 350, damping: 20 }
+                  }}
+                  className={`p-7 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#E1E8E3] hover:shadow-card transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group ${bracketClass}`}
+                >
+                  <div className="space-y-3 max-w-3xl">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className={`text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded ${deptBadge}`}>
+                        {job.department}
                       </span>
-                      Active Mandate
-                    </span>
+                      <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded bg-[#F7F9F7] text-[#0F3B27] border border-[#0F3B27]/15">
+                        {job.experienceLevel}
+                      </span>
+                      <span className="text-xs font-mono font-semibold text-[#0F3B27] flex items-center gap-1.5 ml-1">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7036] opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7036]" />
+                        </span>
+                        Active Mandate
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold font-serif leading-snug text-[#0F3B27] group-hover:text-[#164E34] transition-colors">
+                      <Link href={`/jobs/${job.slug}`}>
+                        {job.title}
+                      </Link>
+                    </h3>
+
+                    <p className="text-sm text-[#3D614E] line-clamp-2 leading-relaxed font-light">
+                      {job.excerpt}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#3D614E] pt-1">
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5 text-[#0F3B27]" />
+                        <span>{job.location} ({job.workplaceType})</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Briefcase className="h-3.5 w-3.5 text-[#0F3B27]" />
+                        <span>{job.employmentType}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 font-semibold text-[#0F3B27] font-mono">
+                        <DollarSign className="h-3.5 w-3.5 text-[#0F3B27]" />
+                        <span>{job.salaryRange}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold font-serif leading-snug text-[#0F3B27] group-hover:text-[#164E34] transition-colors">
-                    <Link href={`/jobs/${job.slug}`}>
-                      {job.title}
+                  <div className="shrink-0 flex items-center pt-2 md:pt-0">
+                    <Link href={`/jobs/${job.slug}`} className="w-full md:w-auto">
+                      <Button className={`w-full md:w-auto rounded-full text-xs font-mono font-bold uppercase tracking-wider gap-2 transition-all ${btnClass}`}>
+                        <span>View Mandate</span>
+                        <ArrowRight className={`h-3.5 w-3.5 group-hover:translate-x-1 transition-transform ${arrowColor}`} />
+                      </Button>
                     </Link>
-                  </h3>
-
-                  <p className="text-sm text-[#3D614E] line-clamp-2 leading-relaxed font-light">
-                    {job.excerpt}
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#3D614E] pt-1">
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="h-3.5 w-3.5 text-[#0F3B27]" />
-                      <span>{job.location} ({job.workplaceType})</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Briefcase className="h-3.5 w-3.5 text-[#0F3B27]" />
-                      <span>{job.employmentType}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 font-semibold text-[#0F3B27] font-mono">
-                      <DollarSign className="h-3.5 w-3.5 text-[#0F3B27]" />
-                      <span>{job.salaryRange}</span>
-                    </div>
                   </div>
-                </div>
-
-                <div className="shrink-0 flex items-center pt-2 md:pt-0">
-                  <Link href={`/jobs/${job.slug}`} className="w-full md:w-auto">
-                    <Button className="w-full md:w-auto rounded-full text-xs font-mono font-bold uppercase tracking-wider gap-2 bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] shadow-lime-glow transition-all">
-                      <span>View Mandate</span>
-                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform text-[#92FF5F]" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
       )}

@@ -99,8 +99,8 @@ export default function EmployersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3B27] text-xs font-bold uppercase tracking-wider text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
-              <Building2 className="h-3.5 w-3.5 text-[#92FF5F]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF7036]/10 text-xs font-bold uppercase tracking-wider text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
+              <Building2 className="h-3.5 w-3.5 text-[#FF7036]" />
               <span>For Enterprise Leaders &amp; Founders</span>
             </div>
 
@@ -114,13 +114,13 @@ export default function EmployersPage() {
 
             <div className="pt-2 flex flex-wrap gap-4">
               <a href="#hiring-brief">
-                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#0F3B27] text-white hover:bg-[#92FF5F] hover:text-[#0F3B27] gap-2 font-semibold text-xs shadow-md transition-all">
+                <Button size="lg" className="h-12 px-7 rounded-full bg-[#FF7036] text-white hover:bg-[#E85D26] gap-2 font-bold font-mono uppercase tracking-wider text-xs shadow-md shadow-[#FF7036]/25 transition-all">
                   <span>Submit a Hiring Brief</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <a href="#hiring-models">
-                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#E1E8E3] bg-white text-[#0F3B27] hover:bg-[#F7F9F7] gap-2 text-xs font-semibold shadow-sm">
+                <Button size="lg" variant="outline" className="h-12 px-7 rounded-full border border-[#BFF2F0] bg-[#BFF2F0]/25 text-[#0F3B27] hover:bg-[#BFF2F0] gap-2 text-xs font-bold font-mono uppercase tracking-wider shadow-sm">
                   <span>Explore Search Models</span>
                 </Button>
               </a>
@@ -136,21 +136,24 @@ export default function EmployersPage() {
               </div>
               <div className="text-[11px] uppercase tracking-wider text-[#3D614E] font-semibold mt-1">Average Shortlist SLA</div>
             </div>
-            <div className="p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] shadow-sm bracket-corners">
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#0F3B27]">
+            <div className="p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] shadow-sm bracket-corners-orange">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#FF7036] flex items-baseline gap-1">
                 <AnimatedCounter value={94} suffix="%" duration={1.6} />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#FF7036]" />
               </div>
               <div className="text-[11px] uppercase tracking-wider text-[#3D614E] font-semibold mt-1">3-Year Retention Rate</div>
             </div>
-            <div className="p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] shadow-sm bracket-corners">
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#0F3B27]">
+            <div className="p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] shadow-sm bracket-corners-ice">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#0F3B27] flex items-baseline gap-1">
                 <AnimatedCounter value={98} suffix="%" duration={1.7} />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#BFF2F0]" />
               </div>
               <div className="text-[11px] uppercase tracking-wider text-[#3D614E] font-semibold mt-1">Offer Acceptance Rate</div>
             </div>
             <div className="p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] shadow-sm bracket-corners">
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#0F3B27]">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#0F3B27] flex items-baseline gap-1">
                 <AnimatedCounter value={12} suffix=" Mos" duration={1.4} />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#CFF1D2]" />
               </div>
               <div className="text-[11px] uppercase tracking-wider text-[#3D614E] font-semibold mt-1">Placement Guarantee</div>
             </div>
@@ -172,51 +175,59 @@ export default function EmployersPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {hiringModels.map((model) => (
-              <div
-                key={model.title}
-                className="p-8 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#E1E8E3] flex flex-col justify-between hover:border-[#0F3B27]/40 hover:shadow-xl transition-all duration-300 bracket-corners"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/20">
-                      {model.badge}
-                    </span>
+            {hiringModels.map((model, idx) => {
+              const cardStyles = [
+                { badge: "bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/20", bracket: "bracket-corners", checkColor: "text-[#92FF5F]" },
+                { badge: "bg-[#FF7036] text-white border border-[#FF7036]/30", bracket: "bracket-corners-orange", checkColor: "text-[#FF7036]" },
+                { badge: "bg-[#BFF2F0] text-[#0F3B27] border border-[#0F3B27]/15", bracket: "bracket-corners-ice", checkColor: "text-[#0F3B27]" },
+              ];
+              const style = cardStyles[idx % cardStyles.length];
+              return (
+                <div
+                  key={model.title}
+                  className={`p-8 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#E1E8E3] flex flex-col justify-between hover:shadow-xl transition-all duration-300 ${style.bracket}`}
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded ${style.badge}`}>
+                        {model.badge}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold font-serif text-[#0F3B27]">{model.title}</h3>
+                      <p className="text-xs font-semibold text-[#3D614E] mt-1">{model.target}</p>
+                    </div>
+
+                    <p className="text-xs text-[#3D614E] leading-relaxed font-light">
+                      {model.description}
+                    </p>
+
+                    <div className="pt-3 border-t border-[#E1E8E3] space-y-2">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-[#0F3B27]">Key Advantages</div>
+                      {model.features.map((feature, fIdx) => (
+                        <div key={fIdx} className="flex items-start gap-2 text-xs text-[#0F3B27]">
+                          <CheckCircle2 className={`h-3.5 w-3.5 shrink-0 mt-0.5 ${style.checkColor}`} />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-2xl font-bold font-serif text-[#0F3B27]">{model.title}</h3>
-                    <p className="text-xs font-semibold text-[#3D614E] mt-1">{model.target}</p>
-                  </div>
-
-                  <p className="text-xs text-[#3D614E] leading-relaxed font-light">
-                    {model.description}
-                  </p>
-
-                  <div className="pt-3 border-t border-[#E1E8E3] space-y-2">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#0F3B27]">Key Advantages</div>
-                    {model.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-[#0F3B27]">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[#0F3B27] shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+                  <div className="pt-6 mt-6 border-t border-[#E1E8E3]">
+                    <div className="text-xs text-[#3D614E] italic mb-4 font-light">
+                      <strong>Best for:</strong> {model.idealFor}
+                    </div>
+                    <a href="#hiring-brief" className="w-full block">
+                      <Button variant="outline" className="w-full rounded-full text-xs font-semibold gap-1.5 border-[#E1E8E3] text-[#0F3B27] hover:bg-[#0F3B27] hover:text-white transition-colors">
+                        <span>Select This Model</span>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </Button>
+                    </a>
                   </div>
                 </div>
-
-                <div className="pt-6 mt-6 border-t border-[#E1E8E3]">
-                  <div className="text-xs text-[#3D614E] italic mb-4 font-light">
-                    <strong>Best for:</strong> {model.idealFor}
-                  </div>
-                  <a href="#hiring-brief" className="w-full block">
-                    <Button variant="outline" className="w-full rounded-sm text-xs font-semibold gap-1.5 border-[#E1E8E3] text-[#0F3B27] hover:bg-[#0F3B27] hover:text-white transition-colors">
-                      <span>Select This Model</span>
-                      <ChevronRight className="h-3.5 w-3.5" />
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

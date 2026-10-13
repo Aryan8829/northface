@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-[#F7F9F7] text-[#0F3B27] border-t border-[#E1E8E3] pt-16 pb-12 relative z-10">
       {/* Decorative Ribbon Flourish */}
-      <RibbonDivider variant="loop" accentFrom="forest" accentTo="lime" className="mb-10" />
+      <RibbonDivider variant="loop" accentFrom="orange" accentTo="ice" className="mb-10" />
 
       <div className="container-enterprise">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">

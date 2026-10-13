@@ -156,7 +156,7 @@ export function Header() {
               <Link href="/jobs" tabIndex={-1}>
                 <Button
                   variant="outline"
-                  className="font-mono font-bold uppercase tracking-wider rounded-full text-xs px-5 h-11 border-[#0F3B27]/20 text-[#0F3B27] hover:bg-white shadow-sm"
+                  className="font-mono font-bold uppercase tracking-wider rounded-full text-xs px-5 h-11 border border-[#0F3B27]/15 bg-[#BFF2F0]/25 text-[#0F3B27] hover:bg-[#BFF2F0]/60 shadow-sm transition-all"
                 >
                   Active Roles
                 </Button>
@@ -164,9 +164,10 @@ export function Header() {
 
               <Link href="/employers" tabIndex={-1}>
                 <Button
-                  className="font-mono font-bold uppercase tracking-wider rounded-full px-6 h-11 text-xs bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] shadow-lime-glow transition-all"
+                  className="font-mono font-bold uppercase tracking-wider rounded-full px-6 h-11 text-xs bg-[#FF7036] text-white hover:bg-[#E85D26] shadow-md shadow-[#FF7036]/25 transition-all group gap-1.5"
                 >
                   <span>Hire Talent</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-white opacity-80 group-hover:scale-125 transition-transform" />
                 </Button>
               </Link>
             </div>
@@ -226,13 +227,13 @@ export function Header() {
 
             <div className="pt-4 flex flex-col gap-3">
               <Link href="/employers" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full h-12 rounded-full bg-[#0F3B27] text-[#92FF5F] hover:bg-[#0F3B27]/90 font-semibold text-xs gap-2 shadow-md">
+                <Button className="w-full h-12 rounded-full bg-[#FF7036] text-white hover:bg-[#E85D26] font-semibold text-xs gap-2 shadow-md">
                   <span>Hire Talent</span>
-                  <ArrowRight className="h-4 w-4 text-[#92FF5F]" />
+                  <ArrowRight className="h-4 w-4 text-white" />
                 </Button>
               </Link>
               <Link href="/jobs" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full h-12 rounded-full border-[#E1E8E3] text-[#0F3B27] hover:bg-[#F7F9F7] text-xs font-semibold">
+                <Button variant="outline" className="w-full h-12 rounded-full border border-[#0F3B27]/15 bg-[#BFF2F0]/30 text-[#0F3B27] hover:bg-[#BFF2F0] text-xs font-semibold">
                   <span>Explore Jobs</span>
                 </Button>
               </Link>

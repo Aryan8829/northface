@@ -20,11 +20,11 @@ export function ReportCard({ report }: ReportCardProps) {
         {/* Header / Industry Label */}
         <div className={cn(
           "px-6 py-4 flex items-center justify-between border-b border-border/50",
-          isUpcoming ? "bg-amber-500/10" : "bg-[#0F3B27]/5"
+          isUpcoming ? "bg-[#FF7036]/10 text-[#FF7036]" : "bg-[#BFF2F0]/25 text-[#0F3B27]"
         )}>
           <span className={cn(
             "text-xs font-bold uppercase tracking-widest",
-            isUpcoming ? "text-amber-500" : "text-primary"
+            isUpcoming ? "text-[#FF7036]" : "text-[#0F3B27]"
           )}>
             {report.industry} {isUpcoming && "- Pre-Order"}
           </span>
@@ -35,7 +35,7 @@ export function ReportCard({ report }: ReportCardProps) {
         
         {/* Main Content */}
         <div className="p-6 flex flex-col flex-1">
-          <h3 className="text-xl font-bold leading-snug mb-3 group-hover:text-accent transition-colors line-clamp-3">
+          <h3 className="text-xl font-bold leading-snug mb-3 group-hover:text-[#FF7036] transition-colors line-clamp-3">
             {report.title}
           </h3>
 
@@ -73,10 +73,10 @@ export function ReportCard({ report }: ReportCardProps) {
             </div>
 
             <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border/50">
-              <span className="flex items-center gap-1.5 text-xs font-semibold text-accent uppercase tracking-wider">
-                <TrendingUp className="h-3.5 w-3.5" /> CAGR
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-[#FF7036] uppercase tracking-wider">
+                <TrendingUp className="h-3.5 w-3.5 text-[#FF7036]" /> CAGR
               </span>
-              <span className="text-sm font-bold text-foreground">
+              <span className="text-sm font-bold text-[#FF7036]">
                 {report.cagr || "N/A"}
               </span>
             </div>
@@ -89,9 +89,9 @@ export function ReportCard({ report }: ReportCardProps) {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
             4,950
           </div>
-          <span className="flex items-center gap-2 text-sm font-bold text-primary group-hover:text-accent transition-colors">
+          <span className="flex items-center gap-2 text-sm font-bold text-[#0F3B27] group-hover:text-[#FF7036] transition-colors">
             {isUpcoming ? "Reserve Copy" : "View Intelligence"} 
-            <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#FF7036]" />
           </span>
         </div>
         

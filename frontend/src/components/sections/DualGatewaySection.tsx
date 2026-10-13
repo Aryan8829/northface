@@ -117,28 +117,28 @@ export function DualGatewaySection() {
             </div>
           </motion.div>
 
-          {/* Candidate Portal: Pure Soft White & Mint Frosted Pod (col-span-5) */}
+          {/* Candidate Portal: Ice & Mint Frosted Pod with High-Tension Orange Accents (col-span-5) */}
           <motion.div 
-            className="md:col-span-5 p-8 sm:p-12 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between group relative overflow-hidden"
+            className="md:col-span-5 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-white via-[#BFF2F0]/25 to-[#CFF1D2]/20 backdrop-blur-md border border-[#BFF2F0] shadow-card flex flex-col justify-between group relative overflow-hidden bracket-corners-orange"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
             whileHover={{ 
               y: -8, 
-              borderColor: "rgba(15, 59, 39, 0.3)",
-              boxShadow: "0 20px 40px -10px rgba(15, 59, 39, 0.08)",
+              borderColor: "rgba(255, 112, 54, 0.4)",
+              boxShadow: "0 24px 50px -10px rgba(255, 112, 54, 0.12)",
               transition: { type: "spring", stiffness: 350, damping: 22 }
             }}
           >
-            {/* Subtle Ice cyan wash at top */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#BFF2F0]/40 to-transparent rounded-full blur-xl pointer-events-none" />
+            {/* Multi-color ambient aura */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#FF7036]/15 via-[#BFF2F0]/30 to-transparent rounded-full blur-2xl pointer-events-none" />
 
             {/* Top Tag & Header */}
             <div className="space-y-6 relative z-10">
-              <div className="flex items-center justify-between border-b border-[#E1E8E3] pb-5">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#CFF1D2]/50 text-[#0F3B27] border border-[#0F3B27]/10">
-                  <UserCheck className="h-3.5 w-3.5 text-[#0F3B27]" />
+              <div className="flex items-center justify-between border-b border-[#BFF2F0] pb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#FF7036]/10 text-[#FF7036] border border-[#FF7036]/25">
+                  <UserCheck className="h-3.5 w-3.5 text-[#FF7036]" />
                   FOR EXECUTIVE CANDIDATES
                 </span>
                 <span className="text-xs font-mono text-[#3D614E]">
@@ -156,9 +156,9 @@ export function DualGatewaySection() {
               </div>
 
               {/* Zero-Spam Guarantee Box */}
-              <div className="p-4 rounded-xl bg-[#F7F9F7] border border-[#E1E8E3] space-y-2">
+              <div className="p-4 rounded-xl bg-white/85 border border-[#BFF2F0] shadow-sm space-y-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#0F3B27] font-mono">
-                  <Shield className="h-4 w-4 text-[#0F3B27]" />
+                  <Shield className="h-4 w-4 text-[#FF7036]" />
                   <span>Candidate Privacy Oath:</span>
                 </div>
                 <p className="text-xs text-[#3D614E] leading-relaxed font-light">
@@ -169,26 +169,26 @@ export function DualGatewaySection() {
               {/* Value Checklist */}
               <div className="space-y-2.5 pt-1 text-xs sm:text-sm text-[#0F3B27]">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-[#FF7036] shrink-0" />
                   <span>Access to unadvertised, confidential mandates</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-[#FF7036] shrink-0" />
                   <span>Objective compensation &amp; equity benchmarking</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-[#FF7036] shrink-0" />
                   <span>Direct debriefs with hiring managing partners</span>
                 </div>
               </div>
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-8 mt-6 border-t border-[#E1E8E3] flex flex-wrap items-center justify-between gap-4 relative z-10">
+            <div className="pt-8 mt-6 border-t border-[#BFF2F0] flex flex-wrap items-center justify-between gap-4 relative z-10">
               <Link href="/candidates">
                 <Button 
                   size="lg" 
-                  className="bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] hover:text-[#92FF5F] rounded-full h-13 px-7 text-xs font-bold tracking-wider uppercase transition-colors shadow-sm group gap-2"
+                  className="bg-[#FF7036] text-white hover:bg-[#E85D26] rounded-full h-13 px-7 text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#FF7036]/25 group gap-2"
                 >
                   <span>Submit Credentials</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

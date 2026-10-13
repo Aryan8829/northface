@@ -20,8 +20,8 @@ export default function JobsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3B27] text-xs font-mono font-bold uppercase tracking-wider text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
-              <Briefcase className="h-3.5 w-3.5 text-[#92FF5F]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF7036]/10 text-xs font-mono font-bold uppercase tracking-wider text-[#FF7036] border border-[#FF7036]/30 shadow-sm">
+              <Briefcase className="h-3.5 w-3.5 text-[#FF7036]" />
               <span>ACTIVE SEARCH HORIZON</span>
             </div>
 
@@ -43,15 +43,15 @@ export default function JobsPage() {
 
           {/* Stealth & Unadvertised Mandates Banner */}
           <motion.div 
-            className="mt-16 p-8 sm:p-12 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/25 shadow-elevated flex flex-col md:flex-row items-center justify-between gap-8 bracket-corners relative overflow-hidden"
+            className="mt-16 p-8 sm:p-12 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-white/10 shadow-elevated flex flex-col md:flex-row items-center justify-between gap-8 bracket-corners-orange relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="space-y-3 max-w-2xl relative z-10">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#92FF5F]">
-                <Lock className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#FF7036]">
+                <Lock className="h-3.5 w-3.5 text-[#FF7036]" />
                 <span>Stealth &amp; Unadvertised Mandates</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#F7F9F7]">
@@ -67,7 +67,7 @@ export default function JobsPage() {
             </div>
 
             <Link href="/candidates#candidate-intake" className="shrink-0 relative z-10">
-              <Button size="lg" className="h-12 px-7 rounded-full bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] gap-2 font-mono font-bold text-xs uppercase tracking-wider shadow-lime-glow transition-all">
+              <Button size="lg" className="h-12 px-7 rounded-full bg-[#FF7036] text-white hover:bg-[#E85D26] gap-2 font-mono font-bold text-xs uppercase tracking-wider shadow-md shadow-[#FF7036]/30 transition-all">
                 <span>Submit Confidential Dossier</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Button>
