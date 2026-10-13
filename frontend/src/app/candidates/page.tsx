@@ -1,5 +1,6 @@
+"use client";
+
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { 
   Lock, 
@@ -14,11 +15,7 @@ import {
 } from "lucide-react";
 import { CandidateIntakeForm } from "@/components/forms/CandidateIntakeForm";
 import { Button } from "@/components/ui/button";
-
-export const metadata: Metadata = {
-  title: "For Candidates | Confidential Career Representation | Nexus Talent Partners",
-  description: "Discreet career navigation, direct founder access, and transparent compensation advocacy for high-performing technical specialists and executive leaders.",
-};
+import { motion } from "framer-motion";
 
 const candidateCharter = [
   {
@@ -91,12 +88,17 @@ const candidateFaqs = [
 
 export default function CandidatesPage() {
   return (
-    <main className="min-h-screen bg-white text-[#202022]">
+    <main className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-white border-b border-[#EAE8E5] relative overflow-hidden">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-transparent border-b border-[#EAE8E5] relative overflow-hidden">
         <div className="container-enterprise relative z-10">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/20">
+          <motion.div 
+            className="max-w-3xl space-y-6"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/25 shadow-sm">
               <Sparkles className="h-3.5 w-3.5" />
               <span>For Exceptional Talent &amp; Leaders</span>
             </div>
@@ -111,19 +113,19 @@ export default function CandidatesPage() {
 
             <div className="pt-2 flex flex-wrap gap-4">
               <a href="#candidate-intake">
-                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-sm transition-colors">
+                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-md transition-all">
                   <span>Register Confidentially</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <Link href="/jobs">
-                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7] gap-2 text-xs font-semibold">
+                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#EAE8E5] bg-white text-[#202022] hover:bg-[#FAF9F7] gap-2 text-xs font-semibold shadow-sm">
                   <Briefcase className="h-3.5 w-3.5 text-[#FF5B3D]" />
                   <span>View Verified Mandates</span>
                 </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

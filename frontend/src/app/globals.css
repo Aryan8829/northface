@@ -185,6 +185,12 @@
   }
 }
 
+@keyframes dash {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .route-stroke {
     animation: none !important;

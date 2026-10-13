@@ -2,14 +2,21 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, Building2, UserCheck, CheckCircle2, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function DualGatewaySection() {
   return (
-    <section className="py-20 md:py-28 bg-white border-t border-[#EAE8E5] relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-transparent border-t border-[#EAE8E5] relative overflow-hidden">
       <div className="container-enterprise">
-        <div className="max-w-2xl mb-14">
+        <motion.div 
+          className="max-w-2xl mb-14"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="eyebrow block mb-3 text-[#FF5B3D]">01 / Audience Gateway</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
             Tailored representation for hiring leaders and exceptional talent.
@@ -17,27 +24,48 @@ export function DualGatewaySection() {
           <p className="text-sm sm:text-base text-[#606064] font-light mt-3 leading-relaxed">
             Whether you need a confidential executive search for your board or discreet stewardship for your next career move, we operate with zero false positives.
           </p>
-        </div>
+        </motion.div>
 
         {/* Asymmetrical Choice Panels */}
         <div className="grid md:grid-cols-12 gap-8 items-stretch">
           
           {/* Employer Panel: Slightly wider (col-span-7) */}
-          <div className="md:col-span-7 p-8 sm:p-10 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] hover:border-[#FF5B3D]/50 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+          <motion.div 
+            className="md:col-span-7 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] hover:border-[#FF5B3D]/50 shadow-sm flex flex-col justify-between group relative overflow-hidden"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ 
+              y: -8, 
+              scale: 1.015,
+              boxShadow: "0 20px 35px -10px rgba(255, 91, 61, 0.15)",
+              transition: { type: "spring", stiffness: 350, damping: 22 }
+            }}
+          >
             {/* Linear Route SVG Artwork in Card */}
-            <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none opacity-40 group-hover:opacity-85 transition-opacity" aria-hidden="true">
               <svg className="w-full h-full" viewBox="0 0 200 200" fill="none">
-                <path d="M200 20 C 120 40, 80 100, 100 200" stroke="#FF5B3D" strokeWidth="1.25" strokeDasharray="4 4" />
-                <circle cx="100" cy="200" r="3" fill="#FF5B3D" />
+                <motion.path 
+                  d="M200 20 C 120 40, 80 100, 100 200" 
+                  stroke="#FF5B3D" 
+                  strokeWidth="1.5" 
+                  strokeDasharray="4 4"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, ease: "easeInOut" }}
+                />
+                <circle cx="100" cy="200" r="3.5" fill="#FF5B3D" />
               </svg>
             </div>
 
             <div className="space-y-6 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="h-12 w-12 rounded-xl bg-white border border-[#EAE8E5] flex items-center justify-center text-[#FF5B3D] group-hover:bg-[#FF5B3D] group-hover:text-white transition-colors">
+                <div className="h-12 w-12 rounded-xl bg-[#FFF3EF] border border-[#FF5B3D]/25 flex items-center justify-center text-[#FF5B3D] group-hover:bg-[#FF5B3D] group-hover:text-white transition-colors duration-300 shadow-sm">
                   <Building2 className="h-6 w-6" />
                 </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-white border border-[#EAE8E5] text-[#202022]">
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FAF9F7] border border-[#EAE8E5] text-[#202022]">
                   18-Day SLA
                 </span>
               </div>
@@ -68,27 +96,49 @@ export function DualGatewaySection() {
 
             <div className="pt-8 mt-6 border-t border-[#EAE8E5] relative z-10">
               <Link href="/employers">
-                <Button className="h-11 px-6 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 text-xs font-semibold group transition-colors">
+                <Button className="h-11 px-6 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 text-xs font-semibold group transition-all duration-300 shadow-sm">
                   <span>Explore Search Retainers</span>
-                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
                 </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Candidate Panel: (col-span-5) */}
-          <div className="md:col-span-5 p-8 sm:p-10 rounded-2xl bg-white border border-[#EAE8E5] hover:border-[#FF9A39]/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+          <motion.div 
+            className="md:col-span-5 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] hover:border-[#FF9A39]/60 shadow-sm flex flex-col justify-between group relative overflow-hidden"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ 
+              y: -8, 
+              scale: 1.015,
+              boxShadow: "0 20px 35px -10px rgba(255, 154, 57, 0.15)",
+              transition: { type: "spring", stiffness: 350, damping: 22 }
+            }}
+          >
             {/* Linear Orbit Vector */}
-            <div className="absolute top-0 right-0 w-44 h-44 pointer-events-none opacity-30 group-hover:opacity-70 transition-opacity" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-44 h-44 pointer-events-none opacity-30 group-hover:opacity-80 transition-opacity" aria-hidden="true">
               <svg className="w-full h-full" viewBox="0 0 180 180" fill="none">
-                <circle cx="120" cy="60" r="50" stroke="#FF9A39" strokeWidth="1" strokeDasharray="3 3" />
-                <circle cx="120" cy="60" r="3" fill="#FF9A39" />
+                <motion.circle 
+                  cx="120" 
+                  cy="60" 
+                  r="50" 
+                  stroke="#FF9A39" 
+                  strokeWidth="1.2" 
+                  strokeDasharray="3 3"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "120px 60px" }}
+                />
+                <circle cx="120" cy="60" r="3.5" fill="#FF9A39" />
               </svg>
             </div>
 
             <div className="space-y-6 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="h-12 w-12 rounded-xl bg-[#FFF8EE] border border-[#FF9A39]/30 flex items-center justify-center text-[#FF9A39] group-hover:bg-[#FF9A39] group-hover:text-white transition-colors">
+                <div className="h-12 w-12 rounded-xl bg-[#FFF8EE] border border-[#FF9A39]/30 flex items-center justify-center text-[#FF9A39] group-hover:bg-[#FF9A39] group-hover:text-white transition-colors duration-300 shadow-sm">
                   <UserCheck className="h-6 w-6" />
                 </div>
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FFF8EE] text-[#FF9A39] border border-[#FF9A39]/30">
@@ -100,7 +150,7 @@ export function DualGatewaySection() {
                 <span className="text-xs font-bold uppercase tracking-widest text-[#FF9A39] mb-1.5 block">
                   For Executives &amp; Specialists
                 </span>
-                <h3 className="text-2xl font-bold font-serif mb-3 text-[#202022] leading-snug">
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif mb-3 text-[#202022] leading-snug">
                   Confidential career navigation and board access.
                 </h3>
                 <p className="text-[#606064] leading-relaxed text-sm font-light">
@@ -122,13 +172,13 @@ export function DualGatewaySection() {
 
             <div className="pt-8 mt-6 border-t border-[#EAE8E5] relative z-10">
               <Link href="/candidates">
-                <Button variant="outline" className="h-11 px-6 rounded-sm border-[#EAE8E5] text-[#202022] hover:bg-[#FFF8EE] hover:text-[#FF9A39] hover:border-[#FF9A39]/40 gap-2 text-xs font-semibold group transition-colors">
+                <Button variant="outline" className="h-11 px-6 rounded-sm border-[#EAE8E5] bg-white text-[#202022] hover:bg-[#FFF8EE] hover:text-[#FF9A39] hover:border-[#FF9A39]/50 gap-2 text-xs font-semibold group transition-all duration-300 shadow-sm">
                   <span>Candidate Representation</span>
-                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
                 </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

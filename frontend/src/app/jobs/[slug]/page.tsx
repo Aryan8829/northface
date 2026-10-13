@@ -57,10 +57,10 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
     .slice(0, 2);
 
   return (
-    <main className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Header on Pure White Canvas */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white text-[#202022] border-b border-[#EAE8E5] relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] rounded-full bg-[#FFF3EF] blur-[120px] pointer-events-none" />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-transparent text-[#202022] border-b border-[#EAE8E5] relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] rounded-full bg-[#FFF3EF]/60 blur-[120px] pointer-events-none" />
 
         <div className="container-enterprise relative z-10">
           <div className="max-w-4xl space-y-6">
@@ -282,6 +282,6 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

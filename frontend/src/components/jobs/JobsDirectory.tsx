@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Search, MapPin, Briefcase, DollarSign, ArrowRight, X, Sparkles, Filter } from "lucide-react";
 import { Job } from "@/data/jobs";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface JobsDirectoryProps {
   initialJobs: Job[];
@@ -174,61 +175,77 @@ export function JobsDirectory({ initialJobs }: JobsDirectoryProps) {
         </div>
       ) : (
         <div className="grid gap-6">
-          {filteredJobs.map((job) => (
-            <div
-              key={job.slug}
-              className="p-7 rounded-2xl bg-surface border border-border hover:border-accent/50 hover:shadow-premium transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group"
-            >
-              <div className="space-y-3 max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-secondary text-primary font-sans">
-                    {job.department}
-                  </span>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent border border-accent/20">
-                    {job.experienceLevel}
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-600 flex items-center gap-1.5 ml-1">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Active Mandate
-                  </span>
+          <AnimatePresence mode="popLayout">
+            {filteredJobs.map((job, idx) => (
+              <motion.div
+                key={job.slug}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                whileHover={{ 
+                  y: -4, 
+                  scale: 1.01,
+                  boxShadow: "0 18px 30px -10px rgba(255, 91, 61, 0.15)",
+                  transition: { type: "spring", stiffness: 350, damping: 20 }
+                }}
+                className="p-7 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] hover:border-[#FF5B3D]/50 shadow-sm transition-colors duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group"
+              >
+                <div className="space-y-3 max-w-3xl">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FAF9F7] text-[#202022] border border-[#EAE8E5] font-sans">
+                      {job.department}
+                    </span>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/25">
+                      {job.experienceLevel}
+                    </span>
+                    <span className="text-xs font-semibold text-emerald-600 flex items-center gap-1.5 ml-1">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                      </span>
+                      Active Mandate
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif leading-snug group-hover:text-[#FF5B3D] transition-colors">
+                    <Link href={`/jobs/${job.slug}`}>
+                      {job.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-sm text-[#606064] line-clamp-2 leading-relaxed font-light">
+                    {job.excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#606064] pt-1">
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5 text-[#FF5B3D]" />
+                      <span>{job.location} ({job.workplaceType})</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Briefcase className="h-3.5 w-3.5 text-[#FF5B3D]" />
+                      <span>{job.employmentType}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-semibold text-[#202022]">
+                      <DollarSign className="h-3.5 w-3.5 text-[#FF5B3D]" />
+                      <span>{job.salaryRange}</span>
+                    </div>
+                  </div>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold font-serif leading-snug group-hover:text-accent transition-colors">
-                  <Link href={`/jobs/${job.slug}`}>
-                    {job.title}
+                <div className="shrink-0 flex items-center pt-2 md:pt-0">
+                  <Link href={`/jobs/${job.slug}`} className="w-full md:w-auto">
+                    <Button className="w-full md:w-auto rounded-sm text-xs font-semibold gap-2 bg-[#202022] text-white hover:bg-[#FF5B3D] shadow-sm transition-all">
+                      <span>View Mandate</span>
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
                   </Link>
-                </h3>
-
-                <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed font-light">
-                  {job.excerpt}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-muted-foreground pt-1">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-accent" />
-                    <span>{job.location} ({job.workplaceType})</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Briefcase className="h-3.5 w-3.5 text-accent" />
-                    <span>{job.employmentType}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 font-semibold text-foreground">
-                    <DollarSign className="h-3.5 w-3.5 text-accent" />
-                    <span>{job.salaryRange}</span>
-                  </div>
                 </div>
-              </div>
-
-              <div className="shrink-0 flex items-center pt-2 md:pt-0">
-                <Link href={`/jobs/${job.slug}`} className="w-full md:w-auto">
-                  <Button className="w-full md:w-auto rounded-sm text-xs font-semibold gap-2 bg-foreground text-background hover:bg-accent hover:text-white transition-colors">
-                    <span>View Mandate</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       )}
     </div>

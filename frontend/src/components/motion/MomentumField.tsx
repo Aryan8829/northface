@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useSyncExternalStore } from "react";
+import React, { useEffect, useRef, useSyncExternalStore } from "react";
 
 // Client-safe media query subscription for reduced motion
 function subscribeReducedMotion(callback: () => void) {
@@ -18,6 +18,26 @@ function getReducedMotionServerSnapshot() {
   return false;
 }
 
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  color: string;
+  baseAlpha: number;
+  orbitAngle: number;
+  orbitSpeed: number;
+}
+
+const PALETTE = [
+  "#FF5B3D", // Signal Coral
+  "#FF9A39", // Tangerine
+  "#E83379", // Raspberry
+  "#FFC84B", // Sunshine
+  "#C6E86B", // Lime
+];
+
 export function MomentumField() {
   const prefersReduced = useSyncExternalStore(
     subscribeReducedMotion,
@@ -25,39 +45,193 @@ export function MomentumField() {
     getReducedMotionServerSnapshot
   );
 
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: -1000, y: -1000, active: false });
 
   useEffect(() => {
     if (prefersReduced) return;
 
-    let frameId: number;
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      // Calculate normalized offset from center: -1 to 1
-      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-      // Max displacement 12px
-      targetX = nx * 10;
-      targetY = ny * 10;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas) return;
+      const dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.scale(dpr, dpr);
     };
 
-    const updateSmooth = () => {
-      currentX += (targetX - currentX) * 0.05;
-      currentY += (targetY - currentY) * 0.05;
-      setMouseOffset({ x: currentX, y: currentY });
-      frameId = requestAnimationFrame(updateSmooth);
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    // Track mouse coordinates
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
+      mouseRef.current.active = true;
+    };
+
+    const handleMouseLeave = () => {
+      mouseRef.current.active = false;
+      mouseRef.current.x = -1000;
+      mouseRef.current.y = -1000;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    frameId = requestAnimationFrame(updateSmooth);
+    window.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+
+    // Initialize 65 particle nodes representing talent constellation
+    const particleCount = Math.min(Math.floor((width * height) / 22000), 75);
+    const particles: Particle[] = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      const color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 2 + 1.2,
+        color,
+        baseAlpha: Math.random() * 0.4 + 0.35,
+        orbitAngle: Math.random() * Math.PI * 2,
+        orbitSpeed: (Math.random() - 0.5) * 0.02,
+      });
+    }
+
+    // Animation Loop
+    let time = 0;
+    const render = () => {
+      time += 0.015;
+      ctx.clearRect(0, 0, width, height);
+
+      const mouse = mouseRef.current;
+      const connectionDist = 135;
+      const mouseDistThreshold = 180;
+
+      // Draw interactive connections between close particles
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectionDist) {
+            const alpha = (1 - dist / connectionDist) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 91, 61, ${alpha})`;
+            ctx.lineWidth = 0.75;
+            ctx.stroke();
+          }
+        }
+
+        // Draw connection from particle to mouse if nearby
+        if (mouse.active) {
+          const mdx = p1.x - mouse.x;
+          const mdy = p1.y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+          if (mdist < mouseDistThreshold) {
+            const mAlpha = (1 - mdist / mouseDistThreshold) * 0.38;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(255, 91, 61, ${mAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Gentle magnetic attraction to cursor
+            p1.x -= (mdx / mdist) * 0.4;
+            p1.y -= (mdy / mdist) * 0.4;
+          }
+        }
+      }
+
+      // Draw mouse interactive glowing aura
+      if (mouse.active) {
+        const gradient = ctx.createRadialGradient(
+          mouse.x,
+          mouse.y,
+          0,
+          mouse.x,
+          mouse.y,
+          140
+        );
+        gradient.addColorStop(0, "rgba(255, 91, 61, 0.12)");
+        gradient.addColorStop(0.5, "rgba(255, 154, 57, 0.05)");
+        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 140, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Update and draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Natural organic drift
+        p.orbitAngle += p.orbitSpeed;
+        p.x += p.vx + Math.cos(p.orbitAngle + time) * 0.15;
+        p.y += p.vy + Math.sin(p.orbitAngle + time) * 0.15;
+
+        // Wrap around boundaries
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+        if (p.y < -10) p.y = height + 10;
+        if (p.y > height + 10) p.y = -10;
+
+        // Pulse alpha gently
+        const pulseAlpha = p.baseAlpha + Math.sin(time * 2 + i) * 0.15;
+
+        // Draw particle dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0.15, Math.min(pulseAlpha, 0.85));
+        ctx.fill();
+
+        // Soft outer ring on primary coral nodes
+        if (p.color === "#FF5B3D" || p.color === "#E83379") {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
+          ctx.strokeStyle = p.color;
+          ctx.lineWidth = 0.5;
+          ctx.globalAlpha = Math.max(0.08, pulseAlpha * 0.35);
+          ctx.stroke();
+        }
+
+        ctx.globalAlpha = 1;
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(frameId);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(animationFrameId);
     };
   }, [prefersReduced]);
 
@@ -66,82 +240,39 @@ export function MomentumField() {
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
     >
-      {/* Journey Thread 1: Top-Right Fluid Vector Arc */}
+      {/* Dynamic 60FPS Interactive Particle Network Canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+      />
+
+      {/* Floating Animated Ambient Blobs (Living organic energy) */}
+      <div className="absolute top-12 right-[10%] w-[550px] h-[550px] rounded-full bg-[#FFF3EF]/70 blur-[130px] animate-[pulse_8s_ease-in-out_infinite] pointer-events-none" />
+      <div className="absolute bottom-20 left-[5%] w-[480px] h-[480px] rounded-full bg-[#FFF8EE]/65 blur-[120px] animate-[pulse_10s_ease-in-out_infinite] delay-1000 pointer-events-none" />
+      <div className="absolute top-[45vh] left-[35%] w-[380px] h-[380px] rounded-full bg-[#FFFBE8]/50 blur-[100px] animate-[pulse_12s_ease-in-out_infinite] delay-2000 pointer-events-none" />
+
+      {/* Continuous Animated SVG Journey Streams */}
       <svg
-        className="absolute -top-24 right-0 w-[55vw] max-w-[850px] h-[750px] opacity-[0.35] transition-transform duration-700 ease-out"
-        style={{
-          transform: prefersReduced
-            ? "none"
-            : `translate3d(${mouseOffset.x * 0.8}px, ${mouseOffset.y * 0.8}px, 0)`,
-        }}
-        viewBox="0 0 850 750"
+        className="absolute -top-20 right-0 w-[60vw] max-w-[900px] h-[800px] opacity-40 pointer-events-none"
+        viewBox="0 0 900 800"
         fill="none"
       >
         <path
-          d="M850 50 C 550 120, 280 280, 220 520 C 180 680, 320 740, 500 720"
-          stroke="#FF5B3D"
-          strokeWidth="1.25"
-          strokeDasharray="8 8"
+          d="M900 60 C 600 130, 300 290, 240 540 C 200 700, 350 770, 550 740"
+          stroke="url(#ambient-stream-grad)"
+          strokeWidth="1.5"
+          strokeDasharray="6 8"
           strokeLinecap="round"
+          className="animate-[dash_35s_linear_infinite]"
         />
-        <circle cx="220" cy="520" r="4" fill="#FF5B3D" />
-        <circle cx="220" cy="520" r="9" stroke="#FF5B3D" strokeWidth="0.75" strokeOpacity="0.4" />
+        <defs>
+          <linearGradient id="ambient-stream-grad" x1="900" y1="60" x2="240" y2="540" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#FF5B3D" stopOpacity="0.8" />
+            <stop offset="0.6" stopColor="#FF9A39" stopOpacity="0.5" />
+            <stop offset="1" stopColor="#E83379" stopOpacity="0.2" />
+          </linearGradient>
+        </defs>
       </svg>
-
-      {/* Journey Thread 2: Mid-Left Orbiting Route */}
-      <svg
-        className="absolute top-[40vh] -left-20 w-[45vw] max-w-[650px] h-[600px] opacity-[0.28] transition-transform duration-700 ease-out"
-        style={{
-          transform: prefersReduced
-            ? "none"
-            : `translate3d(${-mouseOffset.x * 0.6}px, ${-mouseOffset.y * 0.6}px, 0)`,
-        }}
-        viewBox="0 0 650 600"
-        fill="none"
-      >
-        <path
-          d="M0 450 C 180 430, 340 320, 380 180 C 420 50, 320 0, 180 40"
-          stroke="#FF9A39"
-          strokeWidth="1"
-          strokeLinecap="round"
-        />
-        <circle cx="380" cy="180" r="3.5" fill="#FF9A39" />
-        <circle cx="380" cy="180" r="8" stroke="#FF9A39" strokeWidth="0.75" strokeOpacity="0.5" />
-      </svg>
-
-      {/* Floating Signal A: Soft Coral Energy Bloom (Upper Right) */}
-      <div
-        className="absolute top-16 right-[12%] w-[420px] h-[420px] rounded-full bg-[#FFF3EF] blur-[110px] opacity-70 transition-transform duration-1000 ease-out"
-        style={{
-          transform: prefersReduced
-            ? "none"
-            : `translate3d(${mouseOffset.x * 1.2}px, ${mouseOffset.y * 1.2}px, 0)`,
-        }}
-      />
-
-      {/* Floating Signal B: Soft Tangerine Warmth (Lower Left) */}
-      <div
-        className="absolute bottom-24 left-[8%] w-[380px] h-[380px] rounded-full bg-[#FFF8EE] blur-[100px] opacity-60 transition-transform duration-1000 ease-out"
-        style={{
-          transform: prefersReduced
-            ? "none"
-            : `translate3d(${-mouseOffset.x * 1.1}px, ${-mouseOffset.y * 1.1}px, 0)`,
-        }}
-      />
-
-      {/* Micro Marker Signals (Tiny geometric waypoints) */}
-      <div
-        className="hidden md:block absolute top-[28vh] left-[15%] w-2 h-2 rounded-full bg-[#FF5B3D]/30"
-        style={{
-          transform: prefersReduced ? "none" : `translate3d(${mouseOffset.x * 0.4}px, ${mouseOffset.y * 0.4}px, 0)`,
-        }}
-      />
-      <div
-        className="hidden md:block absolute top-[65vh] right-[18%] w-1.5 h-1.5 rounded-full bg-[#E83379]/30"
-        style={{
-          transform: prefersReduced ? "none" : `translate3d(${-mouseOffset.x * 0.5}px, ${-mouseOffset.y * 0.5}px, 0)`,
-        }}
-      />
     </div>
   );
 }

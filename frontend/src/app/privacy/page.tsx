@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <section className="bg-white text-[#202022] pt-32 pb-20 border-b border-[#EAE8E5]">
+    <div className="min-h-screen bg-transparent text-[#202022]">
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <Breadcrumb
             items={[{ label: "Privacy Policy" }]}
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container-enterprise max-w-4xl">
           <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-bold prose-p:leading-relaxed">
             <h2>1. Our Commitment to Discretion</h2>
@@ -94,6 +94,6 @@ export default function PrivacyPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

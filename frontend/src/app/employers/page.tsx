@@ -1,5 +1,6 @@
+"use client";
+
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { 
   Building2, 
@@ -13,11 +14,8 @@ import {
 } from "lucide-react";
 import { EmployerBriefForm } from "@/components/forms/EmployerBriefForm";
 import { Button } from "@/components/ui/button";
-
-export const metadata: Metadata = {
-  title: "For Employers | Executive Search & Specialist Hiring | Nexus Talent Partners",
-  description: "Retained executive search, specialized individual contributor hiring, and embedded talent partners with an 18-day average shortlist SLA and 12-month placement guarantee.",
-};
+import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
+import { motion } from "framer-motion";
 
 const hiringModels = [
   {
@@ -91,12 +89,17 @@ const vettingRigorSteps = [
 
 export default function EmployersPage() {
   return (
-    <main className="min-h-screen bg-white text-[#202022]">
+    <main className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-white border-b border-[#EAE8E5] relative overflow-hidden">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-transparent border-b border-[#EAE8E5] relative overflow-hidden">
         <div className="container-enterprise relative z-10">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/20">
+          <motion.div 
+            className="max-w-3xl space-y-6"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/25 shadow-sm">
               <Building2 className="h-3.5 w-3.5" />
               <span>For Enterprise Leaders &amp; Founders</span>
             </div>
@@ -111,35 +114,43 @@ export default function EmployersPage() {
 
             <div className="pt-2 flex flex-wrap gap-4">
               <a href="#hiring-brief">
-                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-sm transition-colors">
+                <Button size="lg" className="h-12 px-7 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-md transition-all">
                   <span>Submit a Hiring Brief</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </a>
               <a href="#hiring-models">
-                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7] gap-2 text-xs font-semibold">
+                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm border-[#EAE8E5] bg-white text-[#202022] hover:bg-[#FAF9F7] gap-2 text-xs font-semibold shadow-sm">
                   <span>Explore Search Models</span>
                 </Button>
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Performance Proof Bar */}
-          <div className="mt-14 pt-8 border-t border-[#EAE8E5] grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#FF5B3D]">18 Days</div>
+          {/* Performance Proof Bar with Animated Counters */}
+          <div className="mt-14 pt-8 border-t border-[#EAE8E5] grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-[#EAE8E5] shadow-sm">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#FF5B3D]">
+                <AnimatedCounter value={18} suffix=" Days" duration={1.5} />
+              </div>
               <div className="text-[11px] uppercase tracking-wider text-[#606064] font-semibold mt-1">Average Shortlist SLA</div>
             </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#202022]">94%</div>
+            <div className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-[#EAE8E5] shadow-sm">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#202022]">
+                <AnimatedCounter value={94} suffix="%" duration={1.6} />
+              </div>
               <div className="text-[11px] uppercase tracking-wider text-[#606064] font-semibold mt-1">3-Year Retention Rate</div>
             </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#202022]">98%</div>
+            <div className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-[#EAE8E5] shadow-sm">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#202022]">
+                <AnimatedCounter value={98} suffix="%" duration={1.7} />
+              </div>
               <div className="text-[11px] uppercase tracking-wider text-[#606064] font-semibold mt-1">Offer Acceptance Rate</div>
             </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#FF9A39]">12 Months</div>
+            <div className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-[#EAE8E5] shadow-sm">
+              <div className="text-3xl sm:text-4xl font-bold font-serif text-[#FF9A39]">
+                <AnimatedCounter value={12} suffix=" Mos" duration={1.4} />
+              </div>
               <div className="text-[11px] uppercase tracking-wider text-[#606064] font-semibold mt-1">Placement Guarantee</div>
             </div>
           </div>

@@ -20,7 +20,7 @@ export default function IndustriesPage() {
   return (
     <>
       {/* Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container mx-auto px-4 md:px-6">
           <Breadcrumb
             items={[{ label: "Industries" }]}
@@ -42,7 +42,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Industry Grid */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {industries.map((industry) => {
@@ -53,10 +53,10 @@ export default function IndustriesPage() {
                   href={`/industries/${industry.slug}`}
                   className="group block"
                 >
-                  <div className="h-full p-8 md:p-10 border border-border rounded-lg bg-card hover:shadow-xl hover:border-accent/30 transition-all duration-300">
+                  <div className="h-full p-8 md:p-10 border border-[#EAE8E5] rounded-xl bg-white/90 backdrop-blur-sm hover:shadow-xl hover:border-[#FF5B3D]/30 transition-all duration-300">
                     <div className="flex items-start justify-between mb-6">
-                      <div className="p-3 bg-secondary rounded-md group-hover:bg-accent/10 transition-colors">
-                        <Icon className="h-6 w-6 text-primary group-hover:text-accent transition-colors" />
+                      <div className="p-3 bg-[#FFF3EF] rounded-md group-hover:bg-[#FF5B3D]/15 transition-colors">
+                        <Icon className="h-6 w-6 text-[#FF5B3D] transition-colors" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-accent">{industry.reportCount}</span>

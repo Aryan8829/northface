@@ -43,7 +43,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
   return (
     <>
       {/* Enterprise Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
         <div className="container-enterprise relative z-10">
           <Breadcrumb
             items={[
@@ -131,7 +131,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
       </section>
 
       {/* Report Content Sections */}
-      <section className="py-20 md:py-32 bg-background border-b border-border">
+      <section className="py-20 md:py-32 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
             

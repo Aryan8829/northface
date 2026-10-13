@@ -71,10 +71,10 @@ const caseStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 relative overflow-hidden border-b border-[#EAE8E5]">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 relative overflow-hidden border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF]/60 blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
@@ -96,47 +96,47 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-24 md:py-32 bg-background border-b border-border">
+      <section className="py-24 md:py-32 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-2 gap-10">
             {caseStudies.map((study) => (
               <div 
                 key={study.slug}
-                className="bg-surface rounded-2xl border border-border p-8 md:p-12 flex flex-col justify-between hover:border-accent/40 hover:shadow-premium transition-all duration-300"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#EAE8E5] p-8 md:p-12 flex flex-col justify-between hover:border-[#FF5B3D]/40 hover:shadow-xl transition-all duration-300"
               >
                 <div className="space-y-6">
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
-                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-secondary text-primary">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#EAE8E5] pb-5">
+                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FFF3EF] text-[#FF5B3D]">
                       {study.category}
                     </span>
-                    <span className="text-xs font-semibold text-muted-foreground">
+                    <span className="text-xs font-semibold text-[#606064]">
                       {study.client}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-bold font-serif leading-snug text-foreground">
+                  <h3 className="text-2xl md:text-3xl font-bold font-serif leading-snug text-[#202022]">
                     {study.title}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed font-light">
+                  <p className="text-sm text-[#606064] leading-relaxed font-light">
                     {study.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-background border border-border">
+                  <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#FAF9F7] border border-[#EAE8E5]">
                     <div>
-                      <div className="text-xl font-bold font-serif text-accent">{study.metric}</div>
-                      <div className="text-[11px] text-muted-foreground uppercase tracking-wider font-semibold mt-0.5">Primary SLA</div>
+                      <div className="text-xl font-bold font-serif text-[#FF5B3D]">{study.metric}</div>
+                      <div className="text-[11px] text-[#606064] uppercase tracking-wider font-semibold mt-0.5">Primary SLA</div>
                     </div>
                     <div>
-                      <div className="text-xl font-bold font-serif text-foreground">{study.subMetric}</div>
-                      <div className="text-[11px] text-muted-foreground uppercase tracking-wider font-semibold mt-0.5">Durability Metric</div>
+                      <div className="text-xl font-bold font-serif text-[#202022]">{study.subMetric}</div>
+                      <div className="text-[11px] text-[#606064] uppercase tracking-wider font-semibold mt-0.5">Durability Metric</div>
                     </div>
                   </div>
 
                   <div className="space-y-2 pt-2">
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Key Mandate Deliverables</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#606064]">Key Mandate Deliverables</div>
                     {study.outcomes.map((outcome, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-foreground">
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#202022]">
                         <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{outcome}</span>
                       </div>
@@ -184,6 +184,6 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

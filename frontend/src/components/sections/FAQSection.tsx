@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -35,9 +36,15 @@ export function FAQSection() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-white border-t border-[#EAE8E5]">
+    <section className="py-24 md:py-32 bg-transparent border-t border-[#EAE8E5]">
       <div className="container-enterprise max-w-4xl">
-        <div className="text-center mb-16 space-y-3">
+        <motion.div 
+          className="text-center mb-16 space-y-3"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="eyebrow block text-[#FF5B3D]">08 / Transparent Guidance</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
             Frequently Asked Questions
@@ -45,18 +52,24 @@ export function FAQSection() {
           <p className="text-sm sm:text-base text-[#606064] font-light max-w-xl mx-auto leading-relaxed">
             Unvarnished answers regarding our search timelines, fee models, and candidate protection protocols.
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div
+              <motion.div
                 key={faq.question}
                 className={cn(
-                  "border rounded-2xl overflow-hidden transition-all duration-200",
-                  isOpen ? "bg-[#FAF9F7] border-[#FF5B3D]/40 shadow-sm" : "bg-white border-[#EAE8E5] hover:border-[#EAE8E5]"
+                  "border rounded-2xl overflow-hidden transition-all duration-300",
+                  isOpen 
+                    ? "bg-white border-[#FF5B3D]/50 shadow-md" 
+                    : "bg-white/85 backdrop-blur-sm border-[#EAE8E5] hover:border-[#FF5B3D]/30 hover:bg-white shadow-sm"
                 )}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
                 <button
                   onClick={() => toggle(idx)}
@@ -67,20 +80,35 @@ export function FAQSection() {
                     <HelpCircle className={cn("h-4 w-4 shrink-0 transition-colors", isOpen ? "text-[#FF5B3D]" : "text-[#606064]")} />
                     <span>{faq.question}</span>
                   </div>
-                  <ChevronDown
-                    className={cn(
-                      "h-4 w-4 shrink-0 text-[#606064] transition-transform duration-200",
-                      isOpen && "rotate-180 text-[#FF5B3D]"
-                    )}
-                  />
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 shrink-0 transition-colors",
+                        isOpen ? "text-[#FF5B3D]" : "text-[#606064]"
+                      )}
+                    />
+                  </motion.div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-[#606064] font-light leading-relaxed border-t border-[#EAE8E5]/50 animate-in fade-in duration-150">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-[#606064] font-light leading-relaxed border-t border-[#EAE8E5]/60">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>

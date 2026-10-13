@@ -36,8 +36,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   return (
     <>
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF]/60 blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-10">
           <Breadcrumb
@@ -73,7 +73,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       </section>
 
       {/* Main Content Layout with Sticky Sidebar */}
-      <section className="py-20 md:py-32 bg-background border-b border-border">
+      <section className="py-20 md:py-32 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 relative">
             

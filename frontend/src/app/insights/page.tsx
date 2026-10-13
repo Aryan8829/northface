@@ -17,7 +17,7 @@ export default function InsightsPage() {
   return (
     <>
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <Breadcrumb
             items={[{ label: "Insights" }]}
@@ -81,9 +81,9 @@ export default function InsightsPage() {
       </section>
 
       {/* Grid */}
-      <section className="py-24 md:py-32 bg-background border-b border-border">
+      <section className="py-24 md:py-32 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise">
-          <div className="flex items-end justify-between mb-16 border-b border-border pb-6">
+          <div className="flex items-end justify-between mb-16 border-b border-[#EAE8E5] pb-6">
             <h2 className="text-2xl font-bold font-serif">Latest Publications</h2>
             <Link href="#" className="text-sm font-bold text-primary hover:text-accent uppercase tracking-widest transition-colors flex items-center gap-2">
               View Archive <ArrowRight className="h-4 w-4" />
@@ -93,28 +93,28 @@ export default function InsightsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
             {remainingInsights.map((insight) => (
               <Link key={insight.slug} href={`/insights/${insight.slug}`} className="group flex flex-col h-full">
-                <div className="aspect-[4/3] bg-surface relative overflow-hidden rounded-lg mb-6 border border-border">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent z-10" />
+                <div className="aspect-[4/3] bg-white/90 relative overflow-hidden rounded-xl mb-6 border border-[#EAE8E5] shadow-sm">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF5B3D]/5 to-transparent z-10" />
                   <div className="absolute top-4 left-4 z-20">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary bg-background/90 px-3 py-1 rounded-sm border border-border">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#FF5B3D] bg-[#FFF3EF] px-3 py-1 rounded-sm border border-[#FF5B3D]/20">
                       {insight.category}
                     </span>
                   </div>
                 </div>
                 
                 <div className="space-y-4 flex-1 flex flex-col">
-                  <h3 className="text-2xl font-bold leading-snug group-hover:text-accent transition-colors font-serif">
+                  <h3 className="text-2xl font-bold leading-snug group-hover:text-[#FF5B3D] transition-colors font-serif">
                     {insight.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed flex-1 line-clamp-3">
+                  <p className="text-[#606064] leading-relaxed flex-1 line-clamp-3 font-light text-sm">
                     {insight.excerpt}
                   </p>
                   
                   <div className="pt-4 mt-auto flex items-center justify-between text-sm">
-                    <span className="font-bold text-foreground">
+                    <span className="font-bold text-[#202022]">
                       {insight.author}
                     </span>
-                    <span className="text-muted-foreground font-medium">
+                    <span className="text-[#606064] font-medium text-xs">
                       {new Date(insight.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function InsightsPage() {
       </section>
       
       {/* Newsletter */}
-      <section className="py-24 bg-surface border-b border-border">
+      <section className="py-24 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise max-w-4xl text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold font-serif">Get our latest thinking</h2>
           <p className="text-lg text-muted-foreground">Subscribe to receive our weekly dispatch of strategic insights and macro-economic analysis.</p>

@@ -41,7 +41,7 @@ export default async function IndustryDetailPage({ params }: PageProps) {
   return (
     <>
       {/* Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#EAE8E5]">
         <div className="container mx-auto px-4 md:px-6">
           <Breadcrumb
             items={[
@@ -91,7 +91,7 @@ export default async function IndustryDetailPage({ params }: PageProps) {
       </section>
 
       {/* Sub-Categories */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">
@@ -170,7 +170,7 @@ export default async function IndustryDetailPage({ params }: PageProps) {
       </section>
 
       {/* Related Services */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">

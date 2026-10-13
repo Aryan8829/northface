@@ -33,10 +33,10 @@ export default async function InsightDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <article className="bg-background min-h-screen pt-24 md:pt-32 pb-24">
+      <article className="bg-transparent text-[#202022] min-h-screen pt-24 md:pt-32 pb-24">
         
         {/* Navigation / Progress Bar Area */}
-        <div className="border-b border-border bg-background/80 backdrop-blur-md sticky top-16 z-40 hidden md:block">
+        <div className="border-b border-[#EAE8E5] bg-white/80 backdrop-blur-md sticky top-16 z-40 hidden md:block">
           <div className="container-enterprise h-14 flex items-center justify-between">
             <Link href="/insights" className="flex items-center text-sm font-bold text-muted-foreground hover:text-primary transition-colors">
               <ArrowLeft className="h-4 w-4 mr-2" /> Back to Insights

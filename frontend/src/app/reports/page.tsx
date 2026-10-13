@@ -16,7 +16,7 @@ export default function ReportsPage() {
   return (
     <>
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="relative min-h-[45vh] flex items-center bg-white text-[#202022] overflow-hidden pt-32 pb-20 border-b border-[#EAE8E5]">
+      <section className="relative min-h-[45vh] flex items-center bg-transparent text-[#202022] overflow-hidden pt-32 pb-20 border-b border-[#EAE8E5]">
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Reports" }]}
@@ -54,7 +54,7 @@ export default function ReportsPage() {
       </section>
 
       {/* Catalog Layout */}
-      <section className="py-12 md:py-20 bg-background border-b border-border">
+      <section className="py-12 md:py-20 bg-transparent border-b border-[#EAE8E5]">
         <div className="container-enterprise">
           <Suspense fallback={<div className="h-96 flex items-center justify-center text-muted-foreground font-semibold">Initializing data sets...</div>}>
             <ReportListingClient />

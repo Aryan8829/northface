@@ -57,10 +57,10 @@ function ContactTabs() {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="bg-white text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#FFF3EF] blur-[140px] pointer-events-none" />
+      <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#FFF3EF]/70 blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-20">
           <Breadcrumb
@@ -68,7 +68,7 @@ export default function ContactPage() {
             className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/25 shadow-sm">
               Discreet Engagement
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
@@ -82,7 +82,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-20">
             

@@ -1,24 +1,26 @@
+"use client";
+
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Briefcase, ArrowRight, ShieldCheck, Lock } from "lucide-react";
 import { jobs } from "@/data/jobs";
 import { JobsDirectory } from "@/components/jobs/JobsDirectory";
 import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-  title: "Verified Executive & Specialist Mandates | Nexus Talent Partners",
-  description: "Browse verified retained executive search mandates, quantitative trading roles, and specialist engineering appointments. Total salary transparency and direct board access.",
-};
-
 export default function JobsPage() {
   return (
-    <main className="min-h-screen bg-white text-[#202022]">
+    <main className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Header on Pure White Canvas */}
-      <section className="pt-28 pb-14 md:pt-36 md:pb-18 bg-white border-b border-[#EAE8E5] relative overflow-hidden">
+      <section className="pt-28 pb-14 md:pt-36 md:pb-18 bg-transparent border-b border-[#EAE8E5] relative overflow-hidden">
         <div className="container-enterprise relative z-10">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/20">
+          <motion.div 
+            className="max-w-3xl space-y-4"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/25 shadow-sm">
               <Briefcase className="h-3.5 w-3.5" />
               <span>Active Search Mandates</span>
             </div>
@@ -30,17 +32,23 @@ export default function JobsPage() {
             <p className="text-base sm:text-lg text-[#606064] font-light leading-relaxed">
               Explore active retained searches across technology, quantitative finance, healthcare, and engineering. Every listed opportunity features verified compensation transparency and direct hiring team access.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Directory Section */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="py-14 md:py-20 bg-transparent">
         <div className="container-enterprise">
           <JobsDirectory initialJobs={jobs} />
 
           {/* Stealth & Unadvertised Mandates Banner */}
-          <div className="mt-16 p-8 sm:p-10 rounded-2xl bg-[#FAF9F7] border border-[#EAE8E5] flex flex-col md:flex-row items-center justify-between gap-8">
+          <motion.div 
+            className="mt-16 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 hover:border-[#FF5B3D]/40 transition-colors"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FF5B3D]">
                 <Lock className="h-3.5 w-3.5" />
@@ -59,12 +67,12 @@ export default function JobsPage() {
             </div>
 
             <Link href="/candidates#candidate-intake" className="shrink-0">
-              <Button size="lg" className="h-11 px-6 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-sm transition-colors">
+              <Button size="lg" className="h-11 px-6 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 font-semibold text-xs shadow-md transition-all">
                 <span>Submit Confidential Profile</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>

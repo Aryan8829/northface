@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, Crown, Users2, Clock4, Layers, Cpu, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -64,9 +65,15 @@ const solutions = [
 
 export function RecruitmentSolutionsSection() {
   return (
-    <section className="py-24 md:py-32 bg-white border-t border-[#EAE8E5]">
+    <section className="py-24 md:py-32 bg-transparent border-t border-[#EAE8E5]">
       <div className="container-enterprise">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+        <motion.div 
+          className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="max-w-2xl">
             <span className="eyebrow block mb-3 text-[#FF9A39]">03 / Talent Solutions</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
@@ -78,37 +85,50 @@ export function RecruitmentSolutionsSection() {
           </div>
 
           <Link href="/services">
-            <Button variant="outline" className="h-11 px-5 rounded-sm border-[#EAE8E5] text-xs font-semibold text-[#202022] hover:bg-[#FAF9F7] gap-2 shrink-0">
+            <Button variant="outline" className="h-11 px-5 rounded-sm border-[#EAE8E5] bg-white text-xs font-semibold text-[#202022] hover:bg-[#FAF9F7] hover:border-[#FF9A39]/40 gap-2 shrink-0 shadow-sm transition-all">
               <span>View All Frameworks</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Button>
           </Link>
-        </div>
+        </motion.div>
 
-        {/* Magazine-style Mosaic Grid */}
+        {/* Magazine-style Mosaic Grid with Staggered Entrance & Spring Hover */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {solutions.map((sol) => {
+          {solutions.map((sol, index) => {
             const Icon = sol.icon;
             return (
-              <div
+              <motion.div
                 key={sol.title}
-                className={`p-8 rounded-2xl border border-[#EAE8E5] flex flex-col justify-between hover:border-[#FF9A39]/60 hover:shadow-lg transition-all duration-300 group ${
-                  sol.featured ? "bg-[#FAF9F7]" : "bg-white"
+                className={`p-8 rounded-2xl border border-[#EAE8E5] flex flex-col justify-between hover:border-[#FF9A39]/60 shadow-sm transition-colors duration-300 group relative overflow-hidden ${
+                  sol.featured ? "bg-white/95 backdrop-blur-sm" : "bg-white/85 backdrop-blur-sm"
                 }`}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.018,
+                  boxShadow: "0 22px 35px -12px rgba(255, 154, 57, 0.16)",
+                  transition: { type: "spring", stiffness: 350, damping: 22 }
+                }}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-xl font-bold font-serif text-[#FF9A39]">
                       {sol.num}
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white border border-[#EAE8E5] text-[#606064]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#FAF9F7] border border-[#EAE8E5] text-[#606064]">
                       {sol.badge}
                     </span>
                   </div>
 
-                  <div className="h-10 w-10 rounded-xl bg-white border border-[#EAE8E5] flex items-center justify-center text-[#202022] group-hover:text-[#FF5B3D] transition-colors">
+                  <motion.div 
+                    className="h-11 w-11 rounded-xl bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center text-[#202022] group-hover:text-[#FF5B3D] group-hover:bg-[#FFF3EF] group-hover:border-[#FF5B3D]/30 transition-all duration-300 shadow-sm"
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                  >
                     <Icon className="h-5 w-5" />
-                  </div>
+                  </motion.div>
 
                   <div>
                     <h3 className="text-xl font-bold font-serif text-[#202022] group-hover:text-[#FF5B3D] transition-colors leading-snug">
@@ -128,10 +148,10 @@ export function RecruitmentSolutionsSection() {
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#202022] group-hover:text-[#FF5B3D] transition-colors"
                   >
                     <span>Explore Practice</span>
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
