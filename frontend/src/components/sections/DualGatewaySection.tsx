@@ -8,174 +8,198 @@ import { Button } from "@/components/ui/button";
 
 export function DualGatewaySection() {
   return (
-    <section className="py-20 md:py-28 bg-transparent border-t border-[#EAE8E5] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-transparent border-t border-[#E1E8E3] relative overflow-hidden">
       <div className="container-enterprise">
         <motion.div 
-          className="max-w-2xl mb-14"
+          className="max-w-3xl mb-16"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <span className="eyebrow block mb-3 text-[#FF5B3D]">01 / Audience Gateway</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
-            Tailored representation for hiring leaders and exceptional talent.
+          <span className="eyebrow block mb-3">01 / AUDIENCE GATEWAY</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#0F3B27]">
+            Tailored representation for hiring leadership and tier-one talent.
           </h2>
-          <p className="text-sm sm:text-base text-[#606064] font-light mt-3 leading-relaxed">
-            Whether you need a confidential executive search for your board or discreet stewardship for your next career move, we operate with zero false positives.
+          <p className="text-base text-[#3D614E] font-light mt-3 leading-relaxed max-w-2xl">
+            Whether you require discreet executive search for an upcoming board mandate or confidential stewardship for your career horizon, we operate with rigorous data fidelity.
           </p>
         </motion.div>
 
-        {/* Asymmetrical Choice Panels */}
+        {/* Asymmetrical Architectural Portals */}
         <div className="grid md:grid-cols-12 gap-8 items-stretch">
           
-          {/* Employer Panel: Slightly wider (col-span-7) */}
+          {/* Employer Portal: Flagship Deep Forest Architectural Pod (col-span-7) */}
           <motion.div 
-            className="md:col-span-7 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] hover:border-[#FF5B3D]/50 shadow-sm flex flex-col justify-between group relative overflow-hidden"
+            className="md:col-span-7 p-8 sm:p-12 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/25 shadow-elevated flex flex-col justify-between group relative overflow-hidden bracket-corners"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
             whileHover={{ 
               y: -8, 
-              scale: 1.015,
-              boxShadow: "0 20px 35px -10px rgba(255, 91, 61, 0.15)",
+              boxShadow: "0 24px 50px -10px rgba(15, 59, 39, 0.35)",
               transition: { type: "spring", stiffness: 350, damping: 22 }
             }}
           >
-            {/* Linear Route SVG Artwork in Card */}
-            <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none opacity-40 group-hover:opacity-85 transition-opacity" aria-hidden="true">
-              <svg className="w-full h-full" viewBox="0 0 200 200" fill="none">
-                <motion.path 
-                  d="M200 20 C 120 40, 80 100, 100 200" 
-                  stroke="#FF5B3D" 
-                  strokeWidth="1.5" 
-                  strokeDasharray="4 4"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                />
-                <circle cx="100" cy="200" r="3.5" fill="#FF5B3D" />
-              </svg>
-            </div>
+            {/* Ambient Kinetic Glow in Card */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#92FF5F]/15 via-[#BFF2F0]/10 to-transparent rounded-full blur-2xl pointer-events-none" />
 
+            {/* Top Tag & Header */}
             <div className="space-y-6 relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="h-12 w-12 rounded-xl bg-[#FFF3EF] border border-[#FF5B3D]/25 flex items-center justify-center text-[#FF5B3D] group-hover:bg-[#FF5B3D] group-hover:text-white transition-colors duration-300 shadow-sm">
-                  <Building2 className="h-6 w-6" />
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FAF9F7] border border-[#EAE8E5] text-[#202022]">
-                  18-Day SLA
+              <div className="flex items-center justify-between border-b border-[#92FF5F]/20 pb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#144931] text-[#92FF5F] border border-[#92FF5F]/30">
+                  <Building2 className="h-3.5 w-3.5 text-[#92FF5F]" />
+                  FOR ENTERPRISE BOARDS &amp; FOUNDERS
+                </span>
+                <span className="text-xs font-mono text-[#CFF1D2]/80">
+                  RETAINED PARTNERSHIP
                 </span>
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#FF5B3D] mb-1.5 block">
-                  For Boards, Founders &amp; Talent Executives
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold font-serif mb-3 text-[#202022] leading-snug">
-                  Appoint leaders who compound organizational value.
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif leading-tight text-[#F7F9F7]">
+                  Appoint transformational executive leadership.
                 </h3>
-                <p className="text-[#606064] leading-relaxed text-sm font-light">
-                  From foundational CTO appointments to scaling 50-person machine learning squads, we execute retained search and embedded talent sprints with zero resume padding.
+                <p className="text-sm sm:text-base text-[#CFF1D2]/90 leading-relaxed font-light mt-3">
+                  Direct partnership with our Managing Directors. We conduct exhaustive global market mapping, passive candidate calibration, and multi-stage competency profiling to resolve your most critical mandates.
                 </p>
               </div>
 
-              <div className="space-y-2 pt-2 border-t border-[#EAE8E5]">
-                <div className="flex items-center gap-2 text-xs text-[#202022] font-medium">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#FF5B3D]" />
-                  <span>Retained Executive Search &amp; Embedded RPO Models</span>
+              {/* Core Search SLA Deliverables */}
+              <div className="grid sm:grid-cols-2 gap-3.5 pt-2">
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15 text-xs text-[#F7F9F7]">
+                  <div className="font-mono text-[#92FF5F] font-bold text-sm">18-Day Shortlist SLA</div>
+                  <div className="text-[11px] text-[#CFF1D2]/70 mt-0.5">Average presentation of calibrated slate</div>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#202022] font-medium">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#FF5B3D]" />
-                  <span>12-Month Free Replacement Placement Warranty</span>
+
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15 text-xs text-[#F7F9F7]">
+                  <div className="font-mono text-[#92FF5F] font-bold text-sm">12-Month Warranty</div>
+                  <div className="text-[11px] text-[#CFF1D2]/70 mt-0.5">Unconditional replacement guarantee</div>
+                </div>
+              </div>
+
+              {/* Value Checklist */}
+              <div className="space-y-2.5 pt-1 text-xs sm:text-sm text-[#F7F9F7]">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#92FF5F] shrink-0" />
+                  <span>Dedicated Managing Director assigned to every search</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#92FF5F] shrink-0" />
+                  <span>Zero off-limits conflicts in mid-market tech &amp; quantitative finance</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#92FF5F] shrink-0" />
+                  <span>Transparent weekly candidate calibration telemetry</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-[#EAE8E5] relative z-10">
+            {/* Bottom Actions */}
+            <div className="pt-8 mt-6 border-t border-[#92FF5F]/20 flex flex-wrap items-center justify-between gap-4 relative z-10">
               <Link href="/employers">
-                <Button className="h-11 px-6 rounded-sm bg-[#202022] text-white hover:bg-[#FF5B3D] gap-2 text-xs font-semibold group transition-all duration-300 shadow-sm">
-                  <span>Explore Search Retainers</span>
-                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
+                <Button 
+                  size="lg" 
+                  className="bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] hover:text-[#0F3B27] rounded-full h-13 px-7 text-xs font-bold tracking-wider uppercase transition-all shadow-lime-glow group gap-2"
+                >
+                  <span>Submit Hiring Mandate</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
+              </Link>
+              
+              <Link 
+                href="/services/executive-search" 
+                className="text-xs font-mono tracking-wider text-[#CFF1D2] hover:text-[#92FF5F] transition-colors"
+              >
+                Search Methodology &rarr;
               </Link>
             </div>
           </motion.div>
 
-          {/* Candidate Panel: (col-span-5) */}
+          {/* Candidate Portal: Pure Soft White & Mint Frosted Pod (col-span-5) */}
           <motion.div 
-            className="md:col-span-5 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#EAE8E5] hover:border-[#FF9A39]/60 shadow-sm flex flex-col justify-between group relative overflow-hidden"
+            className="md:col-span-5 p-8 sm:p-12 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between group relative overflow-hidden"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
             whileHover={{ 
               y: -8, 
-              scale: 1.015,
-              boxShadow: "0 20px 35px -10px rgba(255, 154, 57, 0.15)",
+              borderColor: "rgba(15, 59, 39, 0.3)",
+              boxShadow: "0 20px 40px -10px rgba(15, 59, 39, 0.08)",
               transition: { type: "spring", stiffness: 350, damping: 22 }
             }}
           >
-            {/* Linear Orbit Vector */}
-            <div className="absolute top-0 right-0 w-44 h-44 pointer-events-none opacity-30 group-hover:opacity-80 transition-opacity" aria-hidden="true">
-              <svg className="w-full h-full" viewBox="0 0 180 180" fill="none">
-                <motion.circle 
-                  cx="120" 
-                  cy="60" 
-                  r="50" 
-                  stroke="#FF9A39" 
-                  strokeWidth="1.2" 
-                  strokeDasharray="3 3"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  style={{ transformOrigin: "120px 60px" }}
-                />
-                <circle cx="120" cy="60" r="3.5" fill="#FF9A39" />
-              </svg>
-            </div>
+            {/* Subtle Ice cyan wash at top */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#BFF2F0]/40 to-transparent rounded-full blur-xl pointer-events-none" />
 
+            {/* Top Tag & Header */}
             <div className="space-y-6 relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="h-12 w-12 rounded-xl bg-[#FFF8EE] border border-[#FF9A39]/30 flex items-center justify-center text-[#FF9A39] group-hover:bg-[#FF9A39] group-hover:text-white transition-colors duration-300 shadow-sm">
-                  <UserCheck className="h-6 w-6" />
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FFF8EE] text-[#FF9A39] border border-[#FF9A39]/30">
-                  100% Consent
+              <div className="flex items-center justify-between border-b border-[#E1E8E3] pb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#CFF1D2]/50 text-[#0F3B27] border border-[#0F3B27]/10">
+                  <UserCheck className="h-3.5 w-3.5 text-[#0F3B27]" />
+                  FOR EXECUTIVE CANDIDATES
+                </span>
+                <span className="text-xs font-mono text-[#3D614E]">
+                  CONFIDENTIAL VAULT
                 </span>
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#FF9A39] mb-1.5 block">
-                  For Executives &amp; Specialists
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold font-serif mb-3 text-[#202022] leading-snug">
-                  Confidential career navigation and board access.
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif leading-tight text-[#0F3B27]">
+                  Discreet advisory for top-tier careers.
                 </h3>
-                <p className="text-[#606064] leading-relaxed text-sm font-light">
-                  We advocate for your trajectory with complete salary transparency, zero unsolicited CV distribution, and direct access to founders.
+                <p className="text-sm sm:text-base text-[#3D614E] leading-relaxed font-light mt-3">
+                  We maintain ongoing relationships with preeminent engineering directors, C-suite executives, and quantitative researchers. Your profile is handled with utmost discretion.
                 </p>
               </div>
 
-              <div className="space-y-2 pt-2 border-t border-[#EAE8E5]">
-                <div className="flex items-center gap-2 text-xs text-[#202022] font-medium">
-                  <Shield className="h-3.5 w-3.5 text-[#FF9A39]" />
-                  <span>The 100% Prior Written Consent Standard</span>
+              {/* Zero-Spam Guarantee Box */}
+              <div className="p-4 rounded-xl bg-[#F7F9F7] border border-[#E1E8E3] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0F3B27] font-mono">
+                  <Shield className="h-4 w-4 text-[#0F3B27]" />
+                  <span>Candidate Privacy Oath:</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#202022] font-medium">
-                  <Sparkles className="h-3.5 w-3.5 text-[#FF9A39]" />
-                  <span>Stealth &amp; Unadvertised Mandate Introductions</span>
+                <p className="text-xs text-[#3D614E] leading-relaxed font-light">
+                  We never submit candidate credentials to any enterprise client without prior, explicit written authorization for that specific mandate.
+                </p>
+              </div>
+
+              {/* Value Checklist */}
+              <div className="space-y-2.5 pt-1 text-xs sm:text-sm text-[#0F3B27]">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <span>Access to unadvertised, confidential mandates</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <span>Objective compensation &amp; equity benchmarking</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0" />
+                  <span>Direct debriefs with hiring managing partners</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-[#EAE8E5] relative z-10">
+            {/* Bottom Actions */}
+            <div className="pt-8 mt-6 border-t border-[#E1E8E3] flex flex-wrap items-center justify-between gap-4 relative z-10">
               <Link href="/candidates">
-                <Button variant="outline" className="h-11 px-6 rounded-sm border-[#EAE8E5] bg-white text-[#202022] hover:bg-[#FFF8EE] hover:text-[#FF9A39] hover:border-[#FF9A39]/50 gap-2 text-xs font-semibold group transition-all duration-300 shadow-sm">
-                  <span>Candidate Representation</span>
-                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
+                <Button 
+                  size="lg" 
+                  className="bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] hover:text-[#92FF5F] rounded-full h-13 px-7 text-xs font-bold tracking-wider uppercase transition-colors shadow-sm group gap-2"
+                >
+                  <span>Submit Credentials</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
+              </Link>
+              
+              <Link 
+                href="/jobs" 
+                className="text-xs font-mono tracking-wider text-[#3D614E] hover:text-[#0F3B27] transition-colors"
+              >
+                Browse Active Mandates &rarr;
               </Link>
             </div>
           </motion.div>

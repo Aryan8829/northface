@@ -1,24 +1,45 @@
 /**
- * Motion design tokens and presets for the "Human Momentum" design system.
- * Pure-white canvas with warm signal handoffs.
+ * Luxury Motion Design Tokens for Nexus Talent Partners.
+ * Deep Forest Green, Signal Lime, Soft White, Ice, and Mint Palette.
  */
 
-export type AccentColor = "coral" | "orange" | "raspberry" | "yellow" | "lime";
+export type AccentColor =
+  | "forest"
+  | "lime"
+  | "ice"
+  | "mint"
+  | "persimmon"
+  | "coral"
+  | "orange"
+  | "raspberry"
+  | "yellow";
 
 export const accentHexMap: Record<AccentColor, string> = {
-  coral: "#FF5B3D",
-  orange: "#FF9A39",
-  raspberry: "#E83379",
-  yellow: "#FFC84B",
-  lime: "#C6E86B",
+  forest: "#0F3B27",
+  lime: "#92FF5F",
+  ice: "#BFF2F0",
+  mint: "#CFF1D2",
+  persimmon: "#FF7036",
+
+  // Backward-compatible mappings aligned to the luxury palette
+  coral: "#0F3B27",
+  orange: "#92FF5F",
+  raspberry: "#0F3B27",
+  yellow: "#92FF5F",
 };
 
 export const accentWashMap: Record<AccentColor, string> = {
-  coral: "#FFF3EF",
-  orange: "#FFF8EE",
-  raspberry: "#FDF2F7",
-  yellow: "#FEFBEB",
-  lime: "#F7FEE7",
+  forest: "rgba(15, 59, 39, 0.08)",
+  lime: "rgba(146, 255, 95, 0.15)",
+  ice: "rgba(191, 242, 240, 0.35)",
+  mint: "rgba(207, 241, 210, 0.35)",
+  persimmon: "rgba(255, 112, 54, 0.15)",
+
+  // Backward-compatible mappings
+  coral: "rgba(15, 59, 39, 0.06)",
+  orange: "rgba(146, 255, 95, 0.12)",
+  raspberry: "rgba(191, 242, 240, 0.3)",
+  yellow: "rgba(207, 241, 210, 0.3)",
 };
 
 export const motionPresets = {

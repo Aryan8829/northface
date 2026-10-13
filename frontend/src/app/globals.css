@@ -42,23 +42,30 @@
   --text-label: 0.75rem;
   --text-label--line-height: 1;
 
-  /* 2. COLOR SYSTEM (White Canvas + Warm Signal Tokens) */
+  /* 2. COLOR SYSTEM (Luxury Deep Forest + Signal Lime + Ice/Mint Tokens) */
   --color-canvas: #FFFFFF;
-  --color-ink: #202022;
-  --color-ink-muted: #606064;
-  --color-line: #EAE8E5;
-  --color-surface-soft: #FAF9F7;
+  --color-canvas-soft: #F7F9F7;
+  --color-ink: #0F3B27;
+  --color-ink-dark: #082115;
+  --color-ink-muted: #3D614E;
+  --color-line: #E1E8E3;
+  --color-line-dark: rgba(15, 59, 39, 0.12);
 
-  /* Vibrant Signal Accents */
-  --color-signal-coral: #FF5B3D;
-  --color-signal-orange: #FF9A39;
-  --color-signal-raspberry: #E83379;
-  --color-signal-yellow: #FFC84B;
-  --color-signal-lime: #C6E86B;
+  /* Elite Brand Palette Swatches */
+  --color-forest: #0F3B27;          /* Pantone 5535 C / Move Green */
+  --color-forest-deep: #082115;     /* Deep Midnight Forest */
+  --color-forest-surface: #144931;  /* Rich Forest Card */
+  --color-signal-lime: #92FF5F;     /* Pantone 902 C / Electric Signal Lime */
+  --color-soft-white: #F7F9F7;      /* Pantone 656 C / Soft White */
+  --color-ice: #BFF2F0;             /* Pantone 9480 C / Ethereal Ice */
+  --color-mint: #CFF1D2;            /* Pantone 2253 C / Botanical Mint */
+  --color-persimmon: #FF7036;       /* Pantone 1645 C / High-Tension Spark */
 
-  /* Delicate Washes */
-  --color-coral-wash: #FFF3EF;
-  --color-peach-wash: #FFF8EE;
+  /* Delicate Architectural Washes */
+  --color-ice-wash: rgba(191, 242, 240, 0.35);
+  --color-mint-wash: rgba(207, 241, 210, 0.35);
+  --color-lime-wash: rgba(146, 255, 95, 0.12);
+  --color-forest-wash: rgba(15, 59, 39, 0.05);
 
   /* Theme mappings */
   --color-border: hsl(var(--border));
@@ -88,15 +95,16 @@
   --color-card-foreground: hsl(var(--card-foreground));
 
   /* 3. SHADOWS & RADIUS */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 
-  --shadow-subtle: 0 2px 10px 0 rgba(32, 32, 34, 0.03);
-  --shadow-card: 0 4px 20px -2px rgba(32, 32, 34, 0.05);
-  --shadow-elevated: 0 20px 40px -10px rgba(32, 32, 34, 0.08);
+  --shadow-subtle: 0 2px 10px 0 rgba(15, 59, 39, 0.03);
+  --shadow-card: 0 4px 24px -2px rgba(15, 59, 39, 0.06);
+  --shadow-elevated: 0 20px 48px -10px rgba(15, 59, 39, 0.12);
+  --shadow-lime-glow: 0 0 24px rgba(146, 255, 95, 0.35);
 
   /* 4. CONTAINER SYSTEM */
   --container-width: 1440px;
@@ -104,50 +112,50 @@
 
 @layer base {
   :root {
-    /* PURE WHITE STAGE AS THE UNBREAKABLE BASE */
-    --background: 0 0% 100%;       /* #FFFFFF pure white */
-    --surface: 0 0% 100%;          /* #FFFFFF pure white */
-    --surface-elevated: 40 20% 98%;/* #FAF9F7 soft paper */
-    --foreground: 240 3% 13%;      /* #202022 near-black ink */
+    /* PURE SOFT WHITE CANVAS WITH DEEP FOREST INK */
+    --background: 120 7% 97%;       /* #F7F9F7 soft white */
+    --surface: 0 0% 100%;           /* #FFFFFF pure white */
+    --surface-elevated: 120 7% 97%; /* #F7F9F7 */
+    --foreground: 154 59% 15%;      /* #0F3B27 deep forest green ink */
 
     --card: 0 0% 100%;
-    --card-foreground: 240 3% 13%;
+    --card-foreground: 154 59% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 3% 13%;
+    --popover-foreground: 154 59% 15%;
 
-    /* Near-black primary button / ink fill */
-    --primary: 240 3% 13%;          /* #202022 ink */
-    --primary-foreground: 0 0% 100%;/* #FFFFFF */
+    /* Deep Forest Primary Action */
+    --primary: 154 59% 15%;         /* #0F3B27 forest green */
+    --primary-foreground: 101 100% 68%; /* #92FF5F signal lime */
 
-    --secondary: 40 18% 97%;        /* #FAF9F7 soft paper */
-    --secondary-foreground: 240 3% 13%;
+    --secondary: 125 57% 94%;       /* Pale mint soft tint */
+    --secondary-foreground: 154 59% 15%;
 
-    --muted: 40 12% 95%;
-    --muted-foreground: 240 2% 39%; /* #606064 secondary ink */
+    --muted: 120 7% 93%;
+    --muted-foreground: 154 23% 31%; /* #3D614E secondary forest ink */
 
-    /* Signature Coral Accent (#FF5B3D) */
-    --accent: 9 100% 62%;           /* #FF5B3D */
-    --accent-foreground: 0 0% 100%;
-    --accent-soft: 14 100% 97%;     /* #FFF3EF coral wash */
+    /* Electric Signal Lime Accent (#92FF5F) */
+    --accent: 101 100% 68%;          /* #92FF5F */
+    --accent-foreground: 154 59% 15%;
+    --accent-soft: 101 100% 93%;
 
-    --border: 36 10% 91%;           /* #EAE8E5 hairline */
-    --border-strong: 36 10% 82%;
-    --input: 36 10% 91%;
-    --ring: 9 100% 62%;             /* #FF5B3D */
+    --border: 135 12% 89%;          /* #E1E8E3 hairline green-gray */
+    --border-strong: 135 15% 80%;
+    --input: 135 12% 89%;
+    --ring: 101 100% 68%;           /* #92FF5F */
   }
 
   body {
-    background-color: #FFFFFF !important;
-    color: #202022;
+    background-color: #F7F9F7 !important;
+    color: #0F3B27;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: #FF5B3D;
-    color: #FFFFFF;
+    background-color: #0F3B27;
+    color: #92FF5F;
   }
 }
 
@@ -168,9 +176,88 @@
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FF5B3D;
+  color: #0F3B27;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #92FF5F;
+  box-shadow: 0 0 10px #92FF5F;
+}
+
+/* Luxury Glassmorphism & Architectural Pods */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 59, 39, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(146, 255, 95, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(15, 59, 39, 0.1);
+}
+
+.glass-forest {
+  background: rgba(15, 59, 39, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(146, 255, 95, 0.25);
+  color: #F7F9F7;
+  box-shadow: 0 24px 60px -15px rgba(8, 33, 21, 0.4);
+}
+
+.glass-ice {
+  background: rgba(191, 242, 240, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 59, 39, 0.1);
+}
+
+.glass-mint {
+  background: rgba(207, 241, 210, 0.32);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 59, 39, 0.1);
+}
+
+/* Distinctive Corner Brackets for High-End Engineering Aesthetics */
+.bracket-corners {
+  position: relative;
+}
+
+.bracket-corners::before,
+.bracket-corners::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.bracket-corners::before {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid #92FF5F;
+  border-left: 2px solid #92FF5F;
+}
+
+.bracket-corners::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid #92FF5F;
+  border-right: 2px solid #92FF5F;
 }
 
 /* Route stroke utility */

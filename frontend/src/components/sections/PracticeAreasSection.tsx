@@ -3,240 +3,323 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Cpu, TrendingUp, HeartPulse, Zap, Factory, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Cpu, TrendingUp, HeartPulse, Zap, CheckCircle2, DollarSign, Award, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const practices = [
   {
     id: "tech",
-    name: "Technology, AI & Cloud",
+    name: "Artificial Intelligence & Distributed Systems",
+    shortName: "AI & Systems",
     slug: "technology",
     icon: Cpu,
-    headline: "Architects of foundation models, distributed platforms, and hyper-scale infrastructure.",
+    headline: "Architects of foundation models, high-performance distributed platforms, and sovereign infrastructure.",
+    leadPartner: "Dr. Elena Rostova",
+    partnerTitle: "Managing Partner, Technology & AI",
+    slaDays: 16,
+    avgComp: "$580,000",
+    hubs: "San Francisco, London, Seattle",
     roles: [
-      "VP / Head of Machine Learning",
-      "Principal Distributed Systems Architect",
-      "Chief Information Security Officer (CISO)",
-      "Head of Developer Platform",
+      {
+        title: "VP of Machine Learning Infrastructure",
+        pedigree: "Ex-Google DeepMind / Anthropic / Meta FAIR",
+        comp: "$650k – $950k + Equity",
+      },
+      {
+        title: "Principal Distributed Systems Architect",
+        pedigree: "Kernel/Rust/C++ HPC Background",
+        comp: "$450k – $650k + Carry",
+      },
+      {
+        title: "Chief Information Security Officer (CISO)",
+        pedigree: "Enterprise Zero-Trust / Hyperscale",
+        comp: "$500k – $750k + Stock",
+      },
+      {
+        title: "Head of Foundation Model Research",
+        pedigree: "Top NeurIPS / ICML Publications",
+        comp: "$800k – $1.2M Total",
+      },
     ],
-    mandates: "320+ Executive & Staff Placements",
-    accent: "#FF5B3D",
   },
   {
     id: "finance",
-    name: "Quantitative Finance & FinTech",
+    name: "Quantitative Finance & Algorithmic Trading",
+    shortName: "Quantitative Finance",
     slug: "financial-services",
     icon: TrendingUp,
-    headline: "Alpha researchers, low-latency execution developers, and algorithmic risk leadership.",
+    headline: "Alpha researchers, ultra-low latency execution leads, and systematic portfolio directors.",
+    leadPartner: "Marcus Vance",
+    partnerTitle: "Managing Partner, Quantitative Capital",
+    slaDays: 14,
+    avgComp: "$850,000",
+    hubs: "New York, Zurich, Chicago",
     roles: [
-      "Head of Quantitative Research",
-      "Senior Low-Latency C++ Engineer",
-      "Chief Risk Officer (CRO)",
-      "Head of Institutional Compliance",
+      {
+        title: "Head of Quantitative Alpha Research",
+        pedigree: "Ex-Citadel / Millennium / Point72",
+        comp: "$1.0M – $2.5M Base + PnL",
+      },
+      {
+        title: "Ultra-Low Latency C++ Trading Lead",
+        pedigree: "Sub-microsecond FPGA / Kernel bypass",
+        comp: "$550k – $900k + Bonus",
+      },
+      {
+        title: "Chief Risk Officer (CRO) — Multi-Strategy",
+        pedigree: "Ex-Tier 1 Investment Bank / Prop Fund",
+        comp: "$700k – $1.1M Total",
+      },
+      {
+        title: "Systematic Futures & FX Portfolio Manager",
+        pedigree: "Verifiable 5-year Sharpe > 2.5 Track Record",
+        comp: "Direct PnL Formulaic Split",
+      },
     ],
-    mandates: "210+ Quant & Trading Placements",
-    accent: "#FF9A39",
   },
   {
     id: "health",
-    name: "Healthcare & Life Sciences",
+    name: "Life Sciences, BioTech & Therapeutics",
+    shortName: "Life Sciences & BioTech",
     slug: "healthcare",
     icon: HeartPulse,
-    headline: "Physician executives, clinical development directors, and regulatory affairs pioneers.",
+    headline: "Translational medicine pioneers, computational biology directors, and clinical development leaders.",
+    leadPartner: "Dr. Sarah Chen, MD",
+    partnerTitle: "Managing Partner, Therapeutics Practice",
+    slaDays: 19,
+    avgComp: "$520,000",
+    hubs: "Boston, Basel, San Francisco",
     roles: [
-      "Chief Medical Officer (CMO)",
-      "VP Clinical Development & Oncology",
-      "Head of Computational Biology",
-      "Director of Regulatory Strategy",
+      {
+        title: "Chief Scientific Officer (CSO)",
+        pedigree: "Phase II/III Clinical Stage Track Record",
+        comp: "$550k – $800k + Equity",
+      },
+      {
+        title: "VP of Computational Biology & Genomics",
+        pedigree: "Ex-Broad Institute / Genentech",
+        comp: "$420k – $600k + Options",
+      },
+      {
+        title: "Chief Medical Officer (CMO)",
+        pedigree: "Oncology / Immunology Specialist MD",
+        comp: "$600k – $850k + Equity",
+      },
+      {
+        title: "Head of Global Regulatory Affairs",
+        pedigree: "Direct FDA / EMA Drug Approval History",
+        comp: "$400k – $550k + Equity",
+      },
     ],
-    mandates: "140+ BioPharma Placements",
-    accent: "#E83379",
   },
   {
     id: "cleantech",
-    name: "Industrial & CleanTech",
+    name: "Industrial Systems & Sovereign Infrastructure",
+    shortName: "Industrial & Energy",
     slug: "energy",
     icon: Zap,
-    headline: "Engineers and operational executives scaling battery storage, smart grids, and robotics.",
+    headline: "Executive leaders scaling grid storage, automated robotics, and sovereign manufacturing hubs.",
+    leadPartner: "Julian Thorne",
+    partnerTitle: "Managing Partner, Industrial Transition",
+    slaDays: 18,
+    avgComp: "$490,000",
+    hubs: "Frankfurt, Austin, Singapore",
     roles: [
-      "VP Grid Operations",
-      "Principal Battery Chemistry Scientist",
-      "Head of Autonomous Systems",
-      "Director of Sustainable Supply Chains",
+      {
+        title: "Chief Operating Officer — Hyperscale Fab",
+        pedigree: "Semiconductor / Gigafactory Leadership",
+        comp: "$500k – $750k + Carry",
+      },
+      {
+        title: "VP of Robotics & Autonomous Hardware",
+        pedigree: "Ex-Tesla / Boston Dynamics / Kuka",
+        comp: "$450k – $650k + Equity",
+      },
+      {
+        title: "Head of Energy Storage & Grid Systems",
+        pedigree: "Utility Scale Battery Storage Specialist",
+        comp: "$380k – $520k + Equity",
+      },
+      {
+        title: "Chief Supply Chain & Sovereign Sourcing Officer",
+        pedigree: "Tier-1 Global Dual-Source Resilience",
+        comp: "$420k – $600k + Equity",
+      },
     ],
-    mandates: "95+ Energy Infrastructure Placements",
-    accent: "#FFC84B",
-  },
-  {
-    id: "operations",
-    name: "Enterprise Operations",
-    slug: "manufacturing",
-    icon: Factory,
-    headline: "Operational architects transforming procurement, lean manufacturing, and global logistics.",
-    roles: [
-      "Chief Operating Officer (COO)",
-      "VP Global Logistics",
-      "Director of Continuous Improvement",
-      "Head of Sourcing & Procurement",
-    ],
-    mandates: "115+ Enterprise Operations Placements",
-    accent: "#C6E86B",
   },
 ];
 
 export function PracticeAreasSection() {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const current = practices[activeIdx];
-  const Icon = current.icon;
+  const [activeTab, setActiveTab] = useState(practices[0].id);
+  const activePractice = practices.find((p) => p.id === activeTab) || practices[0];
+  const Icon = activePractice.icon;
 
   return (
-    <section className="py-24 md:py-32 bg-transparent border-t border-[#EAE8E5]">
+    <section className="py-24 md:py-32 bg-transparent border-t border-[#E1E8E3] relative overflow-hidden" aria-labelledby="practices-heading">
       <div className="container-enterprise">
+        
+        {/* Section Header */}
         <motion.div 
-          className="max-w-2xl mb-16"
+          className="max-w-3xl mb-14"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <span className="eyebrow block mb-3 text-[#FF9A39]">04 / Practice Desks</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
-            Domain expertise led by former industry practitioners.
+          <span className="eyebrow block mb-3">04 // DOMAIN VERTICALS</span>
+          <h2 id="practices-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#0F3B27]">
+            Specialized practice desks led by former industry operators.
           </h2>
-          <p className="text-sm sm:text-base text-[#606064] font-light mt-3 leading-relaxed">
-            Our search directors have built systems, traded markets, and managed clinical trials. We understand the unwritten technical nuances that separate average talent from industry outliers.
+          <p className="text-base text-[#3D614E] font-light mt-3 leading-relaxed max-w-2xl">
+            We do not employ generalist headhunters. Every search desk is anchored by partners who speak the domain language, evaluate technical depth, and command direct access to passive candidates.
           </p>
         </motion.div>
 
-        {/* Interactive Editorial Index Layout */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Left Column: Typographic Specialty List (col-span-6) */}
-          <div className="lg:col-span-6 space-y-2">
-            {practices.map((practice, idx) => {
-              const isActive = activeIdx === idx;
-              return (
-                <button
-                  key={practice.id}
-                  onClick={() => setActiveIdx(idx)}
-                  className={`w-full text-left p-5 sm:p-6 rounded-xl border transition-all duration-300 flex items-center justify-between group relative overflow-hidden ${
-                    isActive
-                      ? "bg-white border-[#EAE8E5] shadow-md"
-                      : "bg-white/60 backdrop-blur-sm border-transparent hover:bg-white hover:border-[#EAE8E5]"
-                  }`}
-                  aria-pressed={isActive}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activePracticeMarker"
-                      className="absolute left-0 top-0 bottom-0 w-1.5"
-                      style={{ backgroundColor: practice.accent }}
-                      transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                    />
-                  )}
+        {/* =========================================================================
+            INTERACTIVE PRACTICE TAB NAVIGATOR
+            ========================================================================= */}
+        <div className="flex flex-wrap gap-2.5 p-2 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-sm mb-12 max-w-fit">
+          {practices.map((practice) => {
+            const isActive = practice.id === activeTab;
+            const TabIcon = practice.icon;
 
-                  <div className="flex items-center gap-4 pl-1">
-                    <span className="text-xs font-bold text-[#606064] font-mono">
-                      0{idx + 1}
-                    </span>
-                    <span
-                      className={`text-lg sm:text-xl font-bold font-serif transition-colors ${
-                        isActive ? "text-[#202022]" : "text-[#606064] group-hover:text-[#202022]"
-                      }`}
-                    >
-                      {practice.name}
-                    </span>
-                  </div>
-
-                  <motion.span
-                    className="h-3 w-3 rounded-full shrink-0"
-                    style={{ backgroundColor: practice.accent }}
-                    animate={{ scale: isActive ? 1.25 : 0.7, opacity: isActive ? 1 : 0.3 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right Column: Dynamic Preview Card with AnimatePresence */}
-          <div className="lg:col-span-6">
-            <AnimatePresence mode="wait">
-              <motion.div 
-                key={current.id}
-                className="p-8 sm:p-10 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE8E5] shadow-lg space-y-6"
-                initial={{ opacity: 0, y: 15, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -15, scale: 0.98 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            return (
+              <button
+                key={practice.id}
+                onClick={() => setActiveTab(practice.id)}
+                className={`relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 flex items-center gap-2 ${
+                  isActive
+                    ? "text-[#F7F9F7]"
+                    : "text-[#3D614E] hover:text-[#0F3B27] hover:bg-[#F7F9F7]"
+                }`}
               >
-                <div className="flex items-center justify-between pb-4 border-b border-[#EAE8E5]">
-                  <div className="flex items-center gap-3">
-                    <motion.div 
-                      className="h-10 w-10 rounded-xl bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center text-[#202022] shadow-sm"
-                      whileHover={{ scale: 1.1, rotate: 6 }}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </motion.div>
-                    <div>
-                      <h4 className="text-base font-bold text-[#202022] font-serif">{current.name}</h4>
-                      <span className="text-[11px] text-[#606064]">{current.mandates}</span>
-                    </div>
-                  </div>
-
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FAF9F7] border border-[#EAE8E5]"
-                    style={{ color: current.accent }}
-                  >
-                    Specialized Desk
-                  </span>
-                </div>
-
-                <p className="text-base text-[#202022] font-serif italic leading-relaxed">
-                  &ldquo;{current.headline}&rdquo;
-                </p>
-
-                <div className="space-y-3 pt-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#606064] block">
-                    Typical Search Mandates
-                  </span>
-                  <div className="grid sm:grid-cols-2 gap-2.5">
-                    {current.roles.map((role, i) => (
-                      <motion.div
-                        key={role}
-                        className="p-3 rounded-lg bg-[#FAF9F7] border border-[#EAE8E5] text-xs font-medium text-[#202022] flex items-start gap-2 hover:bg-white hover:border-[#FF5B3D]/30 transition-all"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.06 }}
-                        whileHover={{ x: 3 }}
-                      >
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[#FF5B3D] shrink-0 mt-0.5" />
-                        <span className="leading-snug">{role}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-[#EAE8E5] flex items-center justify-between">
-                  <Link
-                    href={`/industries/${current.slug}`}
-                    className="text-xs font-bold text-[#202022] hover:text-[#FF5B3D] transition-colors flex items-center gap-1.5 group"
-                  >
-                    <span>View Practice Details</span>
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-
-                  <Link
-                    href="/contact?type=employer"
-                    className="text-xs font-semibold text-[#FF5B3D] hover:underline"
-                  >
-                    Inquire With Sector Lead &rarr;
-                  </Link>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
+                {isActive && (
+                  <motion.div
+                    layoutId="activePracticeMarker"
+                    className="absolute inset-0 bg-[#0F3B27] rounded-xl shadow-sm"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <TabIcon className={`h-4 w-4 relative z-10 ${isActive ? "text-[#92FF5F]" : "text-[#0F3B27]"}`} />
+                <span className="relative z-10">{practice.shortName}</span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* =========================================================================
+            STORYTELLING PRACTICE DOSSIER DECK (ANIMATE PRESENCE)
+            ========================================================================= */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePractice.id}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid lg:grid-cols-12 gap-8 items-start"
+          >
+            {/* LEFT COLUMN: PRACTICE BLUEPRINT & ADVISORY DESK (Spans 5 cols) */}
+            <div className="lg:col-span-5 p-8 sm:p-10 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/25 shadow-elevated bracket-corners space-y-7 relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-[#92FF5F]/20 pb-4">
+                <div className="flex items-center gap-2">
+                  <Icon className="h-5 w-5 text-[#92FF5F]" />
+                  <span className="text-xs font-mono font-bold tracking-wider text-[#92FF5F]">PRACTICE BENCHMARK</span>
+                </div>
+                <span className="text-[11px] font-mono text-[#CFF1D2]/80 uppercase">
+                  ACTIVE DESK
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#F7F9F7] leading-snug">
+                  {activePractice.name}
+                </h3>
+                <p className="text-sm text-[#CFF1D2]/90 leading-relaxed font-light mt-3">
+                  {activePractice.headline}
+                </p>
+              </div>
+
+              {/* Practice Metrics Grid */}
+              <div className="grid grid-cols-2 gap-3.5 pt-2">
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15">
+                  <div className="text-[11px] font-mono text-[#CFF1D2]/70 uppercase">Mean Placement SLA</div>
+                  <div className="text-xl font-bold font-serif text-[#92FF5F] mt-0.5">{activePractice.slaDays} Days</div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-[#082115] border border-[#92FF5F]/15">
+                  <div className="text-[11px] font-mono text-[#CFF1D2]/70 uppercase">Avg Compensation</div>
+                  <div className="text-xl font-bold font-serif text-[#92FF5F] mt-0.5">{activePractice.avgComp}</div>
+                </div>
+              </div>
+
+              {/* Practice Lead Partner */}
+              <div className="p-4 rounded-xl bg-[#144931]/80 border border-[#92FF5F]/20 space-y-1">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-[#CFF1D2]/70">Practice Managing Director:</div>
+                <div className="text-sm font-bold text-[#F7F9F7]">{activePractice.leadPartner}</div>
+                <div className="text-xs text-[#CFF1D2]/80 font-light">{activePractice.partnerTitle}</div>
+                <div className="text-[11px] font-mono text-[#92FF5F] pt-1">Primary Hubs: {activePractice.hubs}</div>
+              </div>
+
+              <div className="pt-2">
+                <Link href={`/industries/${activePractice.slug}`}>
+                  <Button 
+                    className="w-full bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] rounded-full h-12 text-xs font-bold font-mono uppercase tracking-wider shadow-lime-glow gap-2"
+                  >
+                    <span>View Complete Practice Intelligence</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: ACTIVE TARGET ROLE PROFILES (Spans 7 cols) */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#3D614E] pb-1 flex items-center justify-between">
+                <span>Active Specializations Currently Calibrated:</span>
+                <span className="text-[#0F3B27] font-bold">4 Verified Mandates</span>
+              </div>
+
+              <div className="grid gap-3.5">
+                {activePractice.roles.map((role, idx) => (
+                  <motion.div
+                    key={role.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card hover:border-[#92FF5F] transition-all group flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  >
+                    <div className="space-y-1.5 max-w-lg">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0F3B27]" />
+                        <h4 className="text-base sm:text-lg font-bold font-serif text-[#0F3B27] group-hover:text-[#164E34] transition-colors">
+                          {role.title}
+                        </h4>
+                      </div>
+                      <div className="text-xs text-[#3D614E] font-light">
+                        Pedigree: <span className="font-semibold text-[#0F3B27]">{role.pedigree}</span>
+                      </div>
+                      <div className="text-xs font-mono text-[#0F3B27] font-bold">
+                        Benchmark: {role.comp}
+                      </div>
+                    </div>
+
+                    <Link href={`/jobs`} className="shrink-0">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border-[#0F3B27]/20 text-[#0F3B27] hover:bg-[#0F3B27] hover:text-[#92FF5F] text-xs font-mono tracking-wider transition-colors"
+                      >
+                        Request Spec &rarr;
+                      </Button>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
       </div>
     </section>
   );

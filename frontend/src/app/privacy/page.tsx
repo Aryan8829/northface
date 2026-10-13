@@ -17,13 +17,13 @@ export default function PrivacyPage() {
             className="mb-8 text-[#606064]"
           />
           <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
               Data Protection
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
+            <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-[#0F3B27]">
               Privacy Policy &amp; Candidate Data Governance
             </h1>
-            <p className="text-xl text-[#606064] max-w-2xl font-light">
+            <p className="text-xl text-[#3D614E] max-w-2xl font-light">
               Last Updated: October 2026 &bull; Strict Discretion Protocols
             </p>
           </div>

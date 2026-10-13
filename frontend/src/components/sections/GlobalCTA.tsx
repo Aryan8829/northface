@@ -4,17 +4,17 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Building2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Building2, UserCheck, ShieldCheck, Sparkles } from "lucide-react";
 
 export function GlobalCTA() {
   return (
-    <section className="bg-transparent py-24 md:py-32 border-t border-[#EAE8E5] relative overflow-hidden">
-      {/* Decorative Warm Closing Loop SVG with Animated Draw */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none select-none opacity-45" aria-hidden="true">
+    <section className="bg-transparent py-24 md:py-32 border-t border-[#E1E8E3] relative overflow-hidden">
+      {/* Decorative Closing Loop SVG with Animated Draw */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none select-none opacity-30" aria-hidden="true">
         <svg className="w-full h-full" viewBox="0 0 700 500" fill="none">
           <motion.path
             d="M50 250 C 50 100, 250 40, 450 60 C 650 80, 680 280, 520 420 C 380 520, 180 440, 150 320 C 130 220, 220 180, 350 200 C 480 220, 500 320, 420 380"
-            stroke="url(#cta-loop-grad)"
+            stroke="url(#cta-lime-loop-grad)"
             strokeWidth="1.75"
             strokeDasharray="6 6"
             strokeLinecap="round"
@@ -27,15 +27,15 @@ export function GlobalCTA() {
             cx="420" 
             cy="380" 
             r="4.5" 
-            fill="#FF5B3D" 
+            fill="#92FF5F" 
             animate={{ scale: [1, 1.6, 1], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 2.5, repeat: Infinity }}
           />
           <defs>
-            <linearGradient id="cta-loop-grad" x1="50" y1="50" x2="650" y2="450" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#FF5B3D" stopOpacity="0.8" />
-              <stop offset="0.5" stopColor="#FF9A39" stopOpacity="0.6" />
-              <stop offset="1" stopColor="#E83379" stopOpacity="0.7" />
+            <linearGradient id="cta-lime-loop-grad" x1="50" y1="50" x2="650" y2="450" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#92FF5F" stopOpacity="0.9" />
+              <stop offset="0.5" stopColor="#0F3B27" stopOpacity="0.7" />
+              <stop offset="1" stopColor="#BFF2F0" stopOpacity="0.4" />
             </linearGradient>
           </defs>
         </svg>
@@ -43,49 +43,61 @@ export function GlobalCTA() {
 
       <div className="container-enterprise relative z-10">
         <motion.div 
-          className="max-w-3xl mx-auto text-center space-y-7 p-10 md:p-14 rounded-3xl bg-white/90 backdrop-blur-md border border-[#EAE8E5] shadow-xl"
+          className="max-w-4xl mx-auto text-center space-y-8 p-10 md:p-16 rounded-3xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/30 shadow-elevated bracket-corners relative overflow-hidden"
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF3EF] text-xs font-bold uppercase tracking-wider text-[#FF5B3D] border border-[#FF5B3D]/25 shadow-sm">
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#92FF5F]/15 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#144931] text-xs font-mono font-bold uppercase tracking-wider text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm relative z-10">
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Confidential Leadership Appointments</span>
+            <span>CONFIDENTIAL SEARCH CONSULTATION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#202022] leading-[1.12]">
-            Build the leadership team that defines your trajectory.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#F7F9F7] leading-[1.12] relative z-10">
+            Build the leadership tier that defines your decade.
           </h2>
 
-          <p className="text-base sm:text-lg text-[#606064] max-w-2xl mx-auto font-light leading-relaxed">
-            Partner with dedicated search directors to secure exceptional executives and critical engineering specialists—backed by our uncompromised 12-month placement guarantee.
+          <p className="text-base sm:text-lg text-[#CFF1D2]/85 font-light max-w-2xl mx-auto leading-relaxed relative z-10">
+            Whether scoping a confidential board succession or seeking discreet executive representation, initiate a dialogue directly with our practice partners.
           </p>
 
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact?type=employer">
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Button size="lg" className="h-12 px-8 rounded-sm text-xs font-semibold gap-2 bg-[#202022] text-white hover:bg-[#FF5B3D] shadow-md hover:shadow-lg hover:shadow-[#FF5B3D]/25 transition-all">
-                  <Building2 className="h-3.5 w-3.5" />
-                  <span>Submit a Hiring Brief</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Button>
-              </motion.div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3 relative z-10">
+            <Link href="/employers" className="w-full sm:w-auto">
+              <Button 
+                size="lg" 
+                className="w-full sm:w-auto h-14 px-8 rounded-full bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] text-xs font-mono font-bold tracking-wider uppercase shadow-lime-glow transition-all gap-2"
+              >
+                <Building2 className="h-4 w-4" />
+                <span>Calibrate Employer Mandate</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
             </Link>
 
-            <Link href="/jobs">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button size="lg" variant="outline" className="h-12 px-7 rounded-sm text-xs font-semibold gap-2 border-[#EAE8E5] bg-white text-[#202022] hover:bg-[#FAF9F7] hover:border-[#FF5B3D]/30 shadow-sm transition-all">
-                  <Briefcase className="h-3.5 w-3.5 text-[#FF5B3D]" />
-                  <span>Explore Verified Mandates</span>
-                </Button>
-              </motion.div>
+            <Link href="/candidates" className="w-full sm:w-auto">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto h-14 px-8 rounded-full border border-[#92FF5F]/30 bg-[#144931]/60 text-xs font-mono font-bold tracking-wider uppercase text-[#F7F9F7] hover:bg-[#144931] hover:text-[#92FF5F] transition-colors gap-2"
+              >
+                <UserCheck className="h-4 w-4" />
+                <span>Confidential Candidate Registration</span>
+              </Button>
             </Link>
           </div>
 
-          <div className="pt-4 flex items-center justify-center gap-2 text-xs text-[#606064] font-medium">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            <span>18-Day Shortlist SLA &bull; 12-Month Guarantee &bull; 100% Discretion</span>
+          <div className="pt-6 border-t border-[#92FF5F]/20 flex flex-wrap items-center justify-center gap-6 text-xs text-[#CFF1D2]/80 font-mono relative z-10">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="h-4 w-4 text-[#92FF5F]" />
+              Strict Discretion Guaranteed
+            </span>
+            <span>&bull;</span>
+            <span>18-Day Mean Shortlist SLA</span>
+            <span>&bull;</span>
+            <span>12-Month Replacement Warranty</span>
           </div>
         </motion.div>
       </div>

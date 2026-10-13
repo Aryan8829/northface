@@ -11,7 +11,7 @@ interface AppShellProps {
 
 export function AppShell({ children, hideCTA = false }: AppShellProps) {
   return (
-    <div className="relative min-h-screen bg-white text-[#202022] flex flex-col selection:bg-[#FF5B3D] selection:text-white">
+    <div className="relative min-h-screen bg-[#F7F9F7] text-[#0F3B27] flex flex-col selection:bg-[#0F3B27] selection:text-[#92FF5F]">
       {/* Living Ambient Momentum Field (Site-wide decorative layer) */}
       <MomentumField />
 

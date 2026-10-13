@@ -58,10 +58,10 @@ export default async function ReportDetailPage({ params }: PageProps) {
             {/* Left — Title & Meta */}
             <div className="lg:col-span-8 space-y-6">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-bold uppercase tracking-widest bg-[#FFF3EF] text-[#FF5B3D] px-3 py-1 rounded-sm border border-[#FF5B3D]/20">
+                <span className="text-xs font-bold uppercase tracking-widest bg-[#0F3B27] text-[#92FF5F] px-3 py-1 rounded-sm border border-[#92FF5F]/30 shadow-sm">
                   {report.industry}
                 </span>
-                <span className="text-xs font-bold uppercase tracking-widest bg-[#FAF9F7] text-[#606064] px-3 py-1 rounded-sm border border-[#EAE8E5]">
+                <span className="text-xs font-bold uppercase tracking-widest bg-[#F7F9F7] text-[#3D614E] px-3 py-1 rounded-sm border border-[#E1E8E3]">
                   {report.category}
                 </span>
                 {isUpcoming && (
@@ -70,40 +70,40 @@ export default async function ReportDetailPage({ params }: PageProps) {
                   </span>
                 )}
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#202022] font-serif text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#0F3B27] font-serif text-balance">
                 {report.title}
               </h1>
-              <p className="text-xl text-[#606064] leading-relaxed max-w-3xl font-light">
+              <p className="text-xl text-[#3D614E] leading-relaxed max-w-3xl font-light">
                 {report.excerpt}
               </p>
               
-              <div className="flex flex-wrap gap-x-8 gap-y-4 pt-6 border-t border-[#EAE8E5] mt-8">
-                <div className="flex items-center gap-3 text-sm text-[#202022] font-medium">
-                  <div className="h-10 w-10 rounded-full bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center">
-                    <Calendar className="h-4 w-4 text-[#FF5B3D]" />
+              <div className="flex flex-wrap gap-x-8 gap-y-4 pt-6 border-t border-[#E1E8E3] mt-8">
+                <div className="flex items-center gap-3 text-sm text-[#0F3B27] font-medium">
+                  <div className="h-10 w-10 rounded-full bg-[#F7F9F7] border border-[#E1E8E3] flex items-center justify-center">
+                    <Calendar className="h-4 w-4 text-[#0F3B27]" />
                   </div>
                   <div>
-                    <div className="text-[#606064] text-xs uppercase tracking-widest mb-0.5">{isUpcoming ? "Expected" : "Published"}</div>
+                    <div className="text-[#3D614E] text-xs uppercase tracking-widest mb-0.5">{isUpcoming ? "Expected" : "Published"}</div>
                     {new Date(report.publishedDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 text-sm text-[#202022] font-medium">
-                  <div className="h-10 w-10 rounded-full bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center">
-                    <FileText className="h-4 w-4 text-[#FF5B3D]" />
+                <div className="flex items-center gap-3 text-sm text-[#0F3B27] font-medium">
+                  <div className="h-10 w-10 rounded-full bg-[#F7F9F7] border border-[#E1E8E3] flex items-center justify-center">
+                    <FileText className="h-4 w-4 text-[#0F3B27]" />
                   </div>
                   <div>
-                    <div className="text-[#606064] text-xs uppercase tracking-widest mb-0.5">Pages</div>
+                    <div className="text-[#3D614E] text-xs uppercase tracking-widest mb-0.5">Pages</div>
                     {report.pages}
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-sm text-[#202022] font-medium">
-                  <div className="h-10 w-10 rounded-full bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center">
-                    <MapPin className="h-4 w-4 text-[#FF5B3D]" />
+                <div className="flex items-center gap-3 text-sm text-[#0F3B27] font-medium">
+                  <div className="h-10 w-10 rounded-full bg-[#F7F9F7] border border-[#E1E8E3] flex items-center justify-center">
+                    <MapPin className="h-4 w-4 text-[#0F3B27]" />
                   </div>
                   <div>
-                    <div className="text-[#606064] text-xs uppercase tracking-widest mb-0.5">Region</div>
+                    <div className="text-[#3D614E] text-xs uppercase tracking-widest mb-0.5">Region</div>
                     {report.region}
                   </div>
                 </div>
@@ -111,17 +111,20 @@ export default async function ReportDetailPage({ params }: PageProps) {
             </div>
 
             {/* Right — Highlights */}
-            <div className="lg:col-span-4 lg:pl-12 lg:border-l border-[#EAE8E5] flex flex-col gap-8">
+            <div className="lg:col-span-4 lg:pl-12 lg:border-l border-[#E1E8E3] flex flex-col gap-8">
               {report.marketSize && (
                 <div>
-                  <div className="text-5xl font-bold font-serif text-[#202022] mb-2">{report.marketSize}</div>
-                  <div className="text-sm font-semibold text-[#606064] uppercase tracking-widest">Market Size ({report.forecastPeriod.split('-')[1] || "2032"})</div>
+                  <div className="text-5xl font-bold font-serif text-[#0F3B27] mb-2">{report.marketSize}</div>
+                  <div className="text-sm font-semibold text-[#3D614E] uppercase tracking-widest">Market Size ({report.forecastPeriod.split('-')[1] || "2032"})</div>
                 </div>
               )}
               {report.cagr && (
                 <div>
-                  <div className="text-5xl font-bold font-serif text-[#FF5B3D] mb-2">{report.cagr}</div>
-                  <div className="text-sm font-semibold text-[#606064] uppercase tracking-widest">CAGR ({report.forecastPeriod})</div>
+                  <div className="text-5xl font-bold font-serif text-[#0F3B27] mb-2 flex items-baseline gap-1">
+                    {report.cagr}
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#92FF5F]" />
+                  </div>
+                  <div className="text-sm font-semibold text-[#3D614E] uppercase tracking-widest">CAGR ({report.forecastPeriod})</div>
                 </div>
               )}
             </div>

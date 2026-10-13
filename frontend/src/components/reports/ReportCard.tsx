@@ -15,12 +15,12 @@ export function ReportCard({ report }: ReportCardProps) {
 
   return (
     <Link href={`/reports/${report.slug}`} className="group block h-full">
-      <div className="h-full border border-border rounded-xl bg-surface hover:shadow-premium hover:border-accent/40 transition-all duration-300 flex flex-col overflow-hidden">
+      <div className="h-full border border-border rounded-xl bg-surface/90 backdrop-blur-sm hover:shadow-xl hover:border-[#0F3B27]/40 transition-all duration-300 flex flex-col overflow-hidden bracket-corners">
         
         {/* Header / Industry Label */}
         <div className={cn(
           "px-6 py-4 flex items-center justify-between border-b border-border/50",
-          isUpcoming ? "bg-amber-500/5" : "bg-primary/5"
+          isUpcoming ? "bg-amber-500/10" : "bg-[#0F3B27]/5"
         )}>
           <span className={cn(
             "text-xs font-bold uppercase tracking-widest",

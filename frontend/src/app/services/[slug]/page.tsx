@@ -37,7 +37,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     <>
       {/* Editorial Hero on Pure White Canvas */}
       <section className="bg-transparent text-[#202022] pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden border-b border-[#EAE8E5]">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF]/60 blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#BFF2F0]/30 blur-[140px] pointer-events-none" />
         
         <div className="container-enterprise relative z-10">
           <Breadcrumb
@@ -49,21 +49,21 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           />
           <div className="grid lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8 space-y-6">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
                 {service.subtitle}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#0F3B27] font-serif">
                 {service.title}
               </h1>
-              <p className="text-xl md:text-2xl text-[#606064] max-w-3xl leading-relaxed font-light mt-6">
+              <p className="text-xl md:text-2xl text-[#3D614E] max-w-3xl leading-relaxed font-light mt-6">
                 {service.heroDescription}
               </p>
             </div>
             
-            <div className="lg:col-span-4 lg:pl-12 lg:border-l border-[#EAE8E5] flex flex-col items-start lg:items-end text-left lg:text-right">
+            <div className="lg:col-span-4 lg:pl-12 lg:border-l border-[#E1E8E3] flex flex-col items-start lg:items-end text-left lg:text-right">
               <Link href="/contact" className="w-full">
-                <Button size="lg" className="w-full bg-[#FF5B3D] text-white hover:bg-[#FF5B3D]/90 rounded-sm h-14 px-8 text-base font-bold gap-2 group shadow-sm">
-                  Discuss Your Needs
+                <Button size="lg" className="w-full bg-[#0F3B27] text-white hover:bg-[#92FF5F] hover:text-[#0F3B27] transition-all rounded-sm h-14 px-8 text-base font-bold gap-2 group shadow-md">
+                  <span>Discuss Your Needs</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -186,22 +186,19 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Enterprise Testimonial block on Pure White Canvas */}
-      <section className="py-24 md:py-32 bg-white text-[#202022] relative overflow-hidden border-t border-[#EAE8E5]">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#FFF3EF]/60 rounded-full blur-[140px]" />
-        </div>
+      {/* Enterprise Testimonial block on Soft White Canvas */}
+      <section className="py-24 md:py-32 bg-transparent text-[#0F3B27] relative overflow-hidden border-t border-[#E1E8E3]">
         <div className="container-enterprise relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-10 p-10 md:p-16 rounded-3xl bg-[#FAF9F7] border border-[#EAE8E5]">
-            <Quote className="h-12 w-12 text-[#FF5B3D] mx-auto opacity-75" />
-            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-serif leading-snug text-[#202022] font-normal">
+          <div className="max-w-4xl mx-auto text-center space-y-10 p-10 md:p-16 rounded-3xl bg-[#0F3B27] text-white border border-[#92FF5F]/20 shadow-2xl bracket-corners">
+            <Quote className="h-12 w-12 text-[#92FF5F] mx-auto opacity-90" />
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-serif leading-snug text-white font-normal">
               &ldquo;{service.testimonial.quote}&rdquo;
             </blockquote>
-            <div className="space-y-1 pt-6 border-t border-[#EAE8E5] w-fit mx-auto min-w-[280px]">
-              <div className="font-bold text-lg text-[#202022]">
+            <div className="space-y-1 pt-6 border-t border-white/15 w-fit mx-auto min-w-[280px]">
+              <div className="font-bold text-lg text-[#92FF5F]">
                 {service.testimonial.author}
               </div>
-              <div className="text-[#606064] text-sm font-medium">
+              <div className="text-white/75 text-sm font-light">
                 {service.testimonial.role}, {service.testimonial.company}
               </div>
             </div>

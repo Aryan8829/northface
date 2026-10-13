@@ -16,37 +16,40 @@ export default function ReportsPage() {
   return (
     <>
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="relative min-h-[45vh] flex items-center bg-transparent text-[#202022] overflow-hidden pt-32 pb-20 border-b border-[#EAE8E5]">
+      <section className="relative min-h-[45vh] flex items-center bg-transparent text-[#0F3B27] overflow-hidden pt-32 pb-20 border-b border-[#E1E8E3]">
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Reports" }]}
-            className="mb-8 text-[#606064]"
+            className="mb-8 text-[#3D614E]"
           />
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="space-y-6 max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
                 Strategic Intelligence
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#202022] font-serif">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#0F3B27] font-serif">
                 Market Intelligence Library
               </h1>
-              <p className="text-xl text-[#606064] leading-relaxed font-light">
+              <p className="text-xl text-[#3D614E] leading-relaxed font-light">
                 Unbiased, data-driven intelligence across major industry verticals. 
                 Access the ground-truth reality your organization needs to make decisive talent and leadership moves.
               </p>
             </div>
-            <div className="flex gap-8 lg:justify-end border-l-2 border-[#EAE8E5] pl-6 lg:pl-8">
+            <div className="flex gap-8 lg:justify-end border-l-2 border-[#E1E8E3] pl-6 lg:pl-8">
               <div className="flex flex-col">
-                <span className="text-4xl font-bold font-serif text-[#202022] mb-2">{reports.length}</span>
-                <span className="text-xs font-semibold text-[#606064] uppercase tracking-widest">Total Reports</span>
+                <span className="text-4xl font-bold font-serif text-[#0F3B27] mb-2">{reports.length}</span>
+                <span className="text-xs font-semibold text-[#3D614E] uppercase tracking-widest">Total Reports</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-4xl font-bold font-serif text-[#202022] mb-2">{publishedCount}</span>
-                <span className="text-xs font-semibold text-[#606064] uppercase tracking-widest">Published</span>
+                <span className="text-4xl font-bold font-serif text-[#0F3B27] mb-2">{publishedCount}</span>
+                <span className="text-xs font-semibold text-[#3D614E] uppercase tracking-widest">Published</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-4xl font-bold font-serif text-[#FF5B3D] mb-2">{upcomingCount}</span>
-                <span className="text-xs font-semibold text-[#606064] uppercase tracking-widest">Upcoming</span>
+                <span className="text-4xl font-bold font-serif text-[#0F3B27] mb-2 flex items-baseline gap-1">
+                  {upcomingCount}
+                  <span className="w-2 h-2 rounded-full bg-[#92FF5F]" />
+                </span>
+                <span className="text-xs font-semibold text-[#3D614E] uppercase tracking-widest">Upcoming</span>
               </div>
             </div>
           </div>

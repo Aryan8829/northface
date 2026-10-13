@@ -52,38 +52,38 @@ export default async function IndustryDetailPage({ params }: PageProps) {
           />
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
                 Industry Practice
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#202022] font-serif">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#0F3B27] font-serif">
                 {industry.name}
               </h1>
-              <p className="text-xl text-[#606064] max-w-2xl leading-relaxed font-light">
+              <p className="text-xl text-[#3D614E] max-w-2xl leading-relaxed font-light">
                 {industry.heroDescription}
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link href="/contact">
-                  <Button size="lg" className="bg-[#FF5B3D] text-white hover:bg-[#FF5B3D]/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-sm">
-                    Inquire for Sector Practice
+                  <Button size="lg" className="bg-[#0F3B27] text-white hover:bg-[#92FF5F] hover:text-[#0F3B27] rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-md transition-all">
+                    <span>Inquire for Sector Practice</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <Link href="/jobs">
-                  <Button size="lg" variant="outline" className="border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7] rounded-sm h-13 px-8 text-base font-semibold">
-                    View Practice Mandates
+                  <Button size="lg" variant="outline" className="border-[#E1E8E3] text-[#0F3B27] hover:bg-[#F7F9F7] rounded-sm h-13 px-8 text-base font-semibold">
+                    <span>View Practice Mandates</span>
                   </Button>
                 </Link>
               </div>
             </div>
             {/* Stats */}
             <div className="hidden lg:grid grid-cols-2 gap-6">
-              <div className="bg-[#FAF9F7] border border-[#EAE8E5] rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold font-serif text-[#202022] mb-1">{industry.reportCount}</div>
-                <div className="text-xs uppercase tracking-wider text-[#606064] font-semibold">Published Reports</div>
+              <div className="bg-white/90 backdrop-blur-sm border border-[#E1E8E3] rounded-2xl p-6 text-center bracket-corners shadow-sm">
+                <div className="text-3xl font-bold font-serif text-[#0F3B27] mb-1">{industry.reportCount}</div>
+                <div className="text-xs uppercase tracking-wider text-[#3D614E] font-semibold">Published Reports</div>
               </div>
-              <div className="bg-[#FAF9F7] border border-[#EAE8E5] rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold font-serif text-[#FF5B3D] mb-1">{industry.subCategories.length}</div>
-                <div className="text-xs uppercase tracking-wider text-[#606064] font-semibold">Practice Desks</div>
+              <div className="bg-white/90 backdrop-blur-sm border border-[#E1E8E3] rounded-2xl p-6 text-center bracket-corners shadow-sm">
+                <div className="text-3xl font-bold font-serif text-[#0F3B27] mb-1">{industry.subCategories.length}</div>
+                <div className="text-xs uppercase tracking-wider text-[#3D614E] font-semibold">Practice Desks</div>
               </div>
             </div>
           </div>
@@ -207,20 +207,20 @@ export default async function IndustryDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* CTA on Pure White Canvas */}
-      <section className="py-24 md:py-32 bg-white text-[#202022] border-t border-[#EAE8E5]">
+      {/* CTA on Soft White Canvas */}
+      <section className="py-24 md:py-32 bg-transparent text-[#0F3B27] border-t border-[#E1E8E3]">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-8 p-10 md:p-14 rounded-3xl bg-[#FAF9F7] border border-[#EAE8E5]">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202022] leading-tight font-serif">
+          <div className="max-w-3xl mx-auto text-center space-y-8 p-10 md:p-14 rounded-3xl bg-[#0F3B27] text-white border border-[#92FF5F]/20 shadow-2xl bracket-corners">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-serif">
               Need Specialized Leadership in {industry.name}?
             </h2>
-            <p className="text-xl text-[#606064] max-w-xl mx-auto font-light">
+            <p className="text-xl text-white/80 max-w-xl mx-auto font-light">
               Our dedicated practice directors connect high-growth enterprises and established leaders in the {industry.name.toLowerCase()} sector.
             </p>
             <div className="pt-4">
               <Link href="/contact">
-                <Button size="lg" className="bg-[#FF5B3D] text-white hover:bg-[#FF5B3D]/90 rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-sm">
-                  Consult With Our Practice Lead
+                <Button size="lg" className="bg-[#92FF5F] text-[#0F3B27] hover:bg-white rounded-sm h-13 px-8 text-base font-semibold gap-2 group shadow-md transition-colors">
+                  <span>Consult With Our Practice Lead</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

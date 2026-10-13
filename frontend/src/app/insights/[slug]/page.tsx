@@ -161,22 +161,22 @@ export default async function InsightDetailPage({ params }: PageProps) {
       <section className="py-24 bg-white text-[#202022] border-t border-[#EAE8E5]">
         <div className="container-enterprise">
           <div className="flex items-center justify-between mb-12 border-b border-[#EAE8E5] pb-6">
-            <h2 className="text-2xl font-bold font-serif text-[#202022]">Recommended Reading</h2>
-            <Link href="/insights" className="text-sm font-bold text-[#FF5B3D] hover:underline uppercase tracking-widest transition-colors flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-serif text-[#0F3B27]">Recommended Reading</h2>
+            <Link href="/insights" className="text-sm font-bold text-[#0F3B27] hover:text-[#0F3B27]/80 uppercase tracking-widest transition-colors flex items-center gap-2">
               View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {latestInsights.filter(i => i.slug !== slug).slice(0, 3).map((item) => (
               <Link key={item.slug} href={`/insights/${item.slug}`} className="group">
-                <div className="space-y-4 border-l-2 border-[#EAE8E5] pl-6 group-hover:border-[#FF5B3D] transition-colors h-full">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#FF5B3D]">
+                <div className="space-y-4 border-l-2 border-[#E1E8E3] pl-6 group-hover:border-[#0F3B27] transition-colors h-full">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#0F3B27] bg-[#F7F9F7] px-2 py-0.5 rounded border border-[#E1E8E3]">
                     {item.category}
                   </span>
-                  <h3 className="text-xl font-bold font-serif leading-snug text-[#202022] group-hover:text-[#FF5B3D] transition-colors">
+                  <h3 className="text-xl font-bold font-serif leading-snug text-[#0F3B27] group-hover:opacity-80 transition-opacity">
                     {item.title}
                   </h3>
-                  <div className="text-sm text-[#606064]">
+                  <div className="text-sm text-[#3D614E]">
                     {item.author}
                   </div>
                 </div>

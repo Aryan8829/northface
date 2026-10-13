@@ -73,22 +73,20 @@ export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-transparent text-[#202022]">
       {/* Editorial Hero on Pure White Canvas */}
-      <section className="bg-transparent text-[#202022] pt-32 pb-20 relative overflow-hidden border-b border-[#EAE8E5]">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFF3EF]/60 blur-[140px] pointer-events-none" />
-        
+      <section className="bg-transparent text-[#0F3B27] pt-32 pb-20 relative overflow-hidden border-b border-[#E1E8E3]">
         <div className="container-enterprise relative z-20">
           <Breadcrumb
             items={[{ label: "Case Studies" }]}
-            className="mb-8 text-[#606064]"
+            className="mb-8 text-[#3D614E]"
           />
           <div className="max-w-4xl space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF3EF] text-[#FF5B3D] border border-[#FF5B3D]/20">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0F3B27] text-[#92FF5F] border border-[#92FF5F]/30 shadow-sm">
               Proven Search Outcomes
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#202022] font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[#0F3B27] font-serif">
               Impact measured in organizational trajectory.
             </h1>
-            <p className="text-xl md:text-2xl text-[#606064] max-w-2xl leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#3D614E] max-w-2xl leading-relaxed font-light">
               We do not measure our success by resumes submitted. We measure success by the durability, cultural elevation, and performance of the leaders we place.
             </p>
           </div>
@@ -96,48 +94,51 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-24 md:py-32 bg-transparent border-b border-[#EAE8E5]">
+      <section className="py-24 md:py-32 bg-transparent border-b border-[#E1E8E3]">
         <div className="container-enterprise">
           <div className="grid lg:grid-cols-2 gap-10">
             {caseStudies.map((study) => (
               <div 
                 key={study.slug}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#EAE8E5] p-8 md:p-12 flex flex-col justify-between hover:border-[#FF5B3D]/40 hover:shadow-xl transition-all duration-300"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#E1E8E3] p-8 md:p-12 flex flex-col justify-between hover:border-[#0F3B27]/40 hover:shadow-xl transition-all duration-300 bracket-corners"
               >
                 <div className="space-y-6">
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#EAE8E5] pb-5">
-                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#FFF3EF] text-[#FF5B3D]">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E1E8E3] pb-5">
+                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#0F3B27] text-[#92FF5F]">
                       {study.category}
                     </span>
-                    <span className="text-xs font-semibold text-[#606064]">
+                    <span className="text-xs font-semibold text-[#3D614E]">
                       {study.client}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-bold font-serif leading-snug text-[#202022]">
+                  <h3 className="text-2xl md:text-3xl font-bold font-serif leading-snug text-[#0F3B27]">
                     {study.title}
                   </h3>
 
-                  <p className="text-sm text-[#606064] leading-relaxed font-light">
+                  <p className="text-sm text-[#3D614E] leading-relaxed font-light">
                     {study.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#FAF9F7] border border-[#EAE8E5]">
+                  <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#F7F9F7] border border-[#E1E8E3]">
                     <div>
-                      <div className="text-xl font-bold font-serif text-[#FF5B3D]">{study.metric}</div>
-                      <div className="text-[11px] text-[#606064] uppercase tracking-wider font-semibold mt-0.5">Primary SLA</div>
+                      <div className="text-xl font-bold font-serif text-[#0F3B27] flex items-baseline gap-1">
+                        {study.metric}
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#92FF5F]" />
+                      </div>
+                      <div className="text-[11px] text-[#3D614E] uppercase tracking-wider font-semibold mt-0.5">Primary SLA</div>
                     </div>
                     <div>
-                      <div className="text-xl font-bold font-serif text-[#202022]">{study.subMetric}</div>
-                      <div className="text-[11px] text-[#606064] uppercase tracking-wider font-semibold mt-0.5">Durability Metric</div>
+                      <div className="text-xl font-bold font-serif text-[#0F3B27]">{study.subMetric}</div>
+                      <div className="text-[11px] text-[#3D614E] uppercase tracking-wider font-semibold mt-0.5">Durability Metric</div>
                     </div>
                   </div>
 
                   <div className="space-y-2 pt-2">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#606064]">Key Mandate Deliverables</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#0F3B27]">Key Mandate Deliverables</div>
                     {study.outcomes.map((outcome, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#202022]">
-                        <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#3D614E]">
+                        <CheckCircle2 className="h-4 w-4 text-[#0F3B27] shrink-0 mt-0.5" />
                         <span>{outcome}</span>
                       </div>
                     ))}

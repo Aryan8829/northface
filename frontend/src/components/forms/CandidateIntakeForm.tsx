@@ -254,7 +254,7 @@ export function CandidateIntakeForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="h-11 px-6 rounded-sm bg-accent text-white hover:bg-accent/90 gap-2 font-semibold"
+          className="h-11 px-7 rounded-sm bg-[#0F3B27] text-white hover:bg-[#92FF5F] hover:text-[#0F3B27] hover:shadow-lg transition-all gap-2 font-semibold text-xs"
         >
           {isSubmitting ? (
             <span>Securing Submission...</span>

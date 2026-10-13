@@ -25,15 +25,15 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#EAE8E5] text-[#202022] transition-colors duration-200">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-[#F7F9F7]/95 backdrop-blur-md border-b border-[#E1E8E3] text-[#0F3B27] transition-colors duration-200">
         <div className="container-enterprise">
           <div className="flex items-center justify-between h-20">
             
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 z-50 group">
-              <div className="font-serif font-bold text-2xl tracking-tight text-[#202022] flex items-center gap-1.5">
+              <div className="font-serif font-bold text-2xl tracking-tight text-[#0F3B27] flex items-center gap-2">
                 <span>Nexus</span>
-                <span className="text-[#FF5B3D] text-[11px] uppercase tracking-widest font-sans font-bold px-1.5 py-0.5 rounded bg-[#FFF3EF] border border-[#FF5B3D]/20">
+                <span className="text-[#92FF5F] text-[11px] uppercase tracking-widest font-mono font-bold px-2 py-0.5 rounded-full bg-[#0F3B27] border border-[#92FF5F]/30 shadow-sm">
                   Talent
                 </span>
               </div>
@@ -52,8 +52,8 @@ export function Header() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "text-sm font-semibold transition-colors hover:text-[#FF5B3D] text-[#202022]/80",
-                        pathname === item.href && "text-[#FF5B3D]"
+                        "text-sm font-semibold transition-colors hover:text-[#0F3B27] text-[#3D614E]",
+                        pathname === item.href && "text-[#0F3B27] font-bold"
                       )}
                     >
                       {item.label}
@@ -61,8 +61,8 @@ export function Header() {
                   ) : (
                     <button
                       className={cn(
-                        "flex items-center gap-1 text-sm font-semibold transition-colors focus:outline-none h-full text-[#202022]/80 hover:text-[#FF5B3D]",
-                        activeDropdown === item.label && "text-[#FF5B3D]"
+                        "flex items-center gap-1 text-sm font-semibold transition-colors focus:outline-none h-full text-[#3D614E] hover:text-[#0F3B27]",
+                        activeDropdown === item.label && "text-[#0F3B27] font-bold"
                       )}
                     >
                       {item.label}
@@ -97,16 +97,16 @@ export function Header() {
                               <Link
                                 key={child.label}
                                 href={child.href}
-                                className="group/link p-2.5 rounded-lg hover:bg-[#FAF9F7] transition-colors"
+                                className="group/link p-2.5 rounded-lg hover:bg-white transition-colors"
                               >
                                 <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-xs group-hover/link:text-[#FF5B3D] transition-colors text-[#202022]">
+                                  <span className="font-semibold text-xs group-hover/link:text-[#0F3B27] transition-colors text-[#0F3B27]">
                                     {child.label}
                                   </span>
-                                  <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#FF5B3D]" />
+                                  <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-[#92FF5F]" />
                                 </div>
                                 {child.description && (
-                                  <p className="text-[11px] text-[#606064] mt-0.5 line-clamp-1">{child.description}</p>
+                                  <p className="text-[11px] text-[#3D614E] mt-0.5 line-clamp-1">{child.description}</p>
                                 )}
                               </Link>
                             ))}
@@ -117,20 +117,20 @@ export function Header() {
                         {item.featured && (
                           <div className="col-span-1 pl-8 flex flex-col justify-between">
                             <div>
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-[#FF5B3D] mb-3 block">
-                                Spotlight
+                              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#0F3B27] mb-3 block">
+                                Spotlight Practice
                               </span>
-                              <h4 className="font-bold text-sm text-[#202022] mb-2 leading-snug font-serif">
+                              <h4 className="font-bold text-sm text-[#0F3B27] mb-2 leading-snug font-serif">
                                 {item.featured.title}
                               </h4>
-                              <p className="text-xs text-[#606064] mb-4 leading-relaxed">
+                              <p className="text-xs text-[#3D614E] mb-4 leading-relaxed font-light">
                                 {item.featured.description}
                               </p>
                             </div>
                             <Link href={item.featured.href}>
-                              <Button variant="ghost" className="h-auto p-0 hover:bg-transparent text-[#FF5B3D] text-xs font-semibold gap-1.5 group/btn">
+                              <Button variant="ghost" className="h-auto p-0 hover:bg-transparent text-[#0F3B27] text-xs font-mono font-bold uppercase tracking-wider gap-1.5 group/btn">
                                 <span>{item.featured.cta}</span>
-                                <ArrowRight className="h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                                <ArrowRight className="h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform text-[#92FF5F]" />
                               </Button>
                             </Link>
                           </div>
@@ -146,7 +146,7 @@ export function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 text-xs font-semibold text-[#606064] hover:text-[#202022] transition-colors p-2 rounded-sm"
+                className="flex items-center gap-2 text-xs font-mono font-semibold text-[#3D614E] hover:text-[#0F3B27] transition-colors p-2 rounded-full"
                 aria-label="Search mandates and practices"
               >
                 <Search className="h-4 w-4" />
@@ -156,15 +156,15 @@ export function Header() {
               <Link href="/jobs" tabIndex={-1}>
                 <Button
                   variant="outline"
-                  className="font-semibold rounded-sm text-xs px-4 h-10 border-[#EAE8E5] text-[#202022] hover:bg-[#FAF9F7]"
+                  className="font-mono font-bold uppercase tracking-wider rounded-full text-xs px-5 h-11 border-[#0F3B27]/20 text-[#0F3B27] hover:bg-white shadow-sm"
                 >
-                  Explore Jobs
+                  Active Roles
                 </Button>
               </Link>
 
               <Link href="/employers" tabIndex={-1}>
                 <Button
-                  className="font-semibold rounded-sm px-5 h-10 text-xs bg-[#202022] text-white hover:bg-[#FF5B3D] transition-colors"
+                  className="font-mono font-bold uppercase tracking-wider rounded-full px-6 h-11 text-xs bg-[#0F3B27] text-[#92FF5F] hover:bg-[#082115] shadow-lime-glow transition-all"
                 >
                   <span>Hire Talent</span>
                 </Button>
@@ -212,7 +212,7 @@ export function Header() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="text-xs text-[#606064] hover:text-[#FF5B3D] py-1 font-medium"
+                          className="text-xs text-[#3D614E] hover:text-[#0F3B27] py-1 font-medium transition-colors"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {child.label}
@@ -226,13 +226,13 @@ export function Header() {
 
             <div className="pt-4 flex flex-col gap-3">
               <Link href="/employers" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full h-12 rounded-sm bg-[#FF5B3D] text-white font-semibold text-xs gap-2">
+                <Button className="w-full h-12 rounded-full bg-[#0F3B27] text-[#92FF5F] hover:bg-[#0F3B27]/90 font-semibold text-xs gap-2 shadow-md">
                   <span>Hire Talent</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 text-[#92FF5F]" />
                 </Button>
               </Link>
               <Link href="/jobs" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full h-12 rounded-sm border-[#EAE8E5] text-xs font-semibold">
+                <Button variant="outline" className="w-full h-12 rounded-full border-[#E1E8E3] text-[#0F3B27] hover:bg-[#F7F9F7] text-xs font-semibold">
                   <span>Explore Jobs</span>
                 </Button>
               </Link>

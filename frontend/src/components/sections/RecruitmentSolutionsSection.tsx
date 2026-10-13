@@ -1,159 +1,297 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Crown, Users2, Clock4, Layers, Cpu, Compass } from "lucide-react";
+import {
+  ArrowRight,
+  Crown,
+  Layers,
+  Users2,
+  Clock4,
+  Compass,
+  CheckCircle2,
+  Zap,
+  TrendingUp,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const solutions = [
-  {
-    num: "01",
-    icon: Crown,
-    badge: "Flagship SLA",
-    title: "Retained Executive Search",
-    description: "Confidential, exhaustive search engagements for Board Directors, C-Suite, and VP-level mandates. Delivered with an 18-day average shortlist SLA and 12-month placement warranty.",
-    href: "/services/executive-search",
-    featured: true,
-  },
-  {
-    num: "02",
-    icon: Layers,
-    badge: "Sprint Scaling",
-    title: "Embedded Talent Partner (RPO)",
-    description: "Senior search directors embed directly into your Slack, Notion, and ATS to rapidly build out whole engineering squads (10–50 hires) under a predictable monthly model.",
-    href: "/services/rpo",
-    featured: true,
-  },
-  {
-    num: "03",
-    icon: Users2,
-    badge: "Milestone / Contingent",
-    title: "Permanent Specialist Placement",
-    description: "Direct-hire recruitment for rare, high-impact individual contributors: Staff & Principal Systems Engineers, Quant Researchers, and Technical Leads.",
-    href: "/services/permanent-placement",
-    featured: false,
-  },
-  {
-    num: "04",
-    icon: Clock4,
-    badge: "Rapid Deployment",
-    title: "Interim Leadership & Turnarounds",
-    description: "Battle-tested former C-Suite operators deployed within 72 hours to guide post-merger integrations, carve-outs, or executive transitions.",
-    href: "/services/interim-contract",
-    featured: false,
-  },
-  {
-    num: "05",
-    icon: Cpu,
-    badge: "Technical Depth",
-    title: "Specialized Technology & AI Practice",
-    description: "Architectural qualification led by former software leads. We evaluate distributed systems, kernel optimization, and foundation AI infrastructure.",
-    href: "/services/technology",
-    featured: false,
-  },
-  {
-    num: "06",
-    icon: Compass,
-    badge: "Market Intelligence",
-    title: "Compensation & Org Advisory",
-    description: "Unvarnished market compensation studies, organizational design, and candidate retention blueprints for board committees.",
-    href: "/services/innovation",
-    featured: false,
-  },
-];
-
 export function RecruitmentSolutionsSection() {
+  const [activePipelineStep, setActivePipelineStep] = useState(1);
+
+  const pipelineSteps = [
+    { num: "01", name: "Market Topology", detail: "Exhaustive competitor & passive talent universe mapping" },
+    { num: "02", name: "Discreet Approach", detail: "Confidential outreach led directly by Managing Partners" },
+    { num: "03", name: "Calibration Slate", detail: "Unvarnished shortlist presentation delivered within 18 days" },
+    { num: "04", name: "Succession Care", detail: "12-month post-placement integration & retention audit" },
+  ];
+
   return (
-    <section className="py-24 md:py-32 bg-transparent border-t border-[#EAE8E5]">
+    <section className="py-24 md:py-32 bg-transparent border-t border-[#E1E8E3] relative overflow-hidden" aria-labelledby="solutions-heading">
       <div className="container-enterprise">
+        
+        {/* Section Header */}
         <motion.div 
-          className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6"
+          className="max-w-3xl mb-16"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <div className="max-w-2xl">
-            <span className="eyebrow block mb-3 text-[#FF9A39]">03 / Talent Solutions</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#202022]">
-              Recruitment models engineered for organizational impact.
-            </h2>
-            <p className="text-[#606064] mt-4 text-sm sm:text-base font-light leading-relaxed">
-              From mission-critical executive succession to rapid engineering expansions, choose the search model calibrated to your timeline and organizational stakes.
-            </p>
-          </div>
-
-          <Link href="/services">
-            <Button variant="outline" className="h-11 px-5 rounded-sm border-[#EAE8E5] bg-white text-xs font-semibold text-[#202022] hover:bg-[#FAF9F7] hover:border-[#FF9A39]/40 gap-2 shrink-0 shadow-sm transition-all">
-              <span>View All Frameworks</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Button>
-          </Link>
+          <span className="eyebrow block mb-3">03 // SEARCH FRAMEWORKS</span>
+          <h2 id="solutions-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif leading-tight text-[#0F3B27]">
+            Architectural talent solutions built for high-consequence mandates.
+          </h2>
+          <p className="text-base text-[#3D614E] font-light mt-3 leading-relaxed max-w-2xl">
+            We reject the transactional agency model. Every search engagement is engineered with precision SLAs, proprietary market intelligence, and executive discretion.
+          </p>
         </motion.div>
 
-        {/* Magazine-style Mosaic Grid with Staggered Entrance & Spring Hover */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {solutions.map((sol, index) => {
-            const Icon = sol.icon;
-            return (
-              <motion.div
-                key={sol.title}
-                className={`p-8 rounded-2xl border border-[#EAE8E5] flex flex-col justify-between hover:border-[#FF9A39]/60 shadow-sm transition-colors duration-300 group relative overflow-hidden ${
-                  sol.featured ? "bg-white/95 backdrop-blur-sm" : "bg-white/85 backdrop-blur-sm"
-                }`}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ 
-                  y: -8, 
-                  scale: 1.018,
-                  boxShadow: "0 22px 35px -12px rgba(255, 154, 57, 0.16)",
-                  transition: { type: "spring", stiffness: 350, damping: 22 }
-                }}
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold font-serif text-[#FF9A39]">
-                      {sol.num}
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#FAF9F7] border border-[#EAE8E5] text-[#606064]">
-                      {sol.badge}
-                    </span>
-                  </div>
+        {/* =========================================================================
+            ASYMMETRIC ARCHITECTURAL SOLUTIONS MATRIX
+            ========================================================================= */}
+        <div className="grid grid-cols-12 gap-8 items-stretch">
 
-                  <motion.div 
-                    className="h-11 w-11 rounded-xl bg-[#FAF9F7] border border-[#EAE8E5] flex items-center justify-center text-[#202022] group-hover:text-[#FF5B3D] group-hover:bg-[#FFF3EF] group-hover:border-[#FF5B3D]/30 transition-all duration-300 shadow-sm"
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </motion.div>
+          {/* FLAGSHIP HERO POD: RETAINED EXECUTIVE SEARCH (Col-span-12 lg:col-span-7) */}
+          <motion.div
+            className="col-span-12 lg:col-span-7 p-8 sm:p-12 rounded-2xl bg-[#0F3B27] text-[#F7F9F7] border border-[#92FF5F]/25 shadow-elevated flex flex-col justify-between bracket-corners relative overflow-hidden group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+            whileHover={{ y: -6, boxShadow: "0 24px 50px -10px rgba(15, 59, 39, 0.35)" }}
+          >
+            {/* Subtle Ethereal Signal Lime Wave inside Card */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#92FF5F]/15 via-[#BFF2F0]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-                  <div>
-                    <h3 className="text-xl font-bold font-serif text-[#202022] group-hover:text-[#FF5B3D] transition-colors leading-snug">
-                      <Link href={sol.href}>
-                        {sol.title}
-                      </Link>
-                    </h3>
-                    <p className="text-xs text-[#606064] leading-relaxed mt-2.5 font-light">
-                      {sol.description}
-                    </p>
-                  </div>
+            <div className="space-y-6 relative z-10">
+              <div className="flex items-center justify-between border-b border-[#92FF5F]/20 pb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#144931] text-[#92FF5F] border border-[#92FF5F]/30">
+                  <Crown className="h-3.5 w-3.5 text-[#92FF5F]" />
+                  FLAGSHIP PRACTICE
+                </span>
+                <span className="text-xs font-mono text-[#92FF5F]">
+                  18-DAY MEAN SHORTLIST SLA
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#F7F9F7] leading-tight">
+                  Retained Executive Search &amp; Board Appointments
+                </h3>
+                <p className="text-sm sm:text-base text-[#CFF1D2]/90 leading-relaxed font-light mt-3">
+                  Exhaustive, board-governed search for Chief Executive, Technology, Engineering, and Scientific officers. We map the entire passive talent landscape to appoint leaders who alter your enterprise trajectory.
+                </p>
+              </div>
+
+              {/* Interactive Search Pipeline Stepper */}
+              <div className="p-4 rounded-xl bg-[#082115] border border-[#92FF5F]/20 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-[#CFF1D2] flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#92FF5F] animate-pulse" />
+                    Interactive Search Methodology:
+                  </span>
+                  <span className="text-[#92FF5F] font-bold">Phase {pipelineSteps[activePipelineStep].num} / 04</span>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#EAE8E5]">
-                  <Link
-                    href={sol.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#202022] group-hover:text-[#FF5B3D] transition-colors"
-                  >
-                    <span>Explore Practice</span>
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
-                  </Link>
+                <div className="grid grid-cols-4 gap-2">
+                  {pipelineSteps.map((step, idx) => {
+                    const isActive = idx === activePipelineStep;
+                    return (
+                      <button
+                        key={step.num}
+                        onClick={() => setActivePipelineStep(idx)}
+                        className={`text-left p-2.5 rounded-lg border transition-all ${
+                          isActive
+                            ? "bg-[#144931] border-[#92FF5F] text-[#F7F9F7]"
+                            : "bg-[#0F3B27]/60 border-[#92FF5F]/15 text-[#CFF1D2]/60 hover:border-[#92FF5F]/30"
+                        }`}
+                      >
+                        <div className={`text-[10px] font-mono font-bold ${isActive ? "text-[#92FF5F]" : ""}`}>
+                          {step.num}
+                        </div>
+                        <div className="text-[11px] font-semibold truncate mt-0.5">
+                          {step.name}
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
-              </motion.div>
-            );
-          })}
+
+                <div className="text-xs text-[#CFF1D2]/90 pt-1 font-light italic">
+                  &ldquo;{pipelineSteps[activePipelineStep].detail}&rdquo;
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="pt-8 mt-6 border-t border-[#92FF5F]/20 flex flex-wrap items-center justify-between gap-4 relative z-10">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#92FF5F]">
+                <ShieldCheck className="h-4 w-4" />
+                <span>12-Month Unconditional Replacement Guarantee</span>
+              </div>
+
+              <Link href="/services/executive-search">
+                <Button 
+                  size="sm" 
+                  className="bg-[#92FF5F] text-[#0F3B27] hover:bg-[#F7F9F7] rounded-full px-5 text-xs font-bold uppercase tracking-wider font-mono shadow-lime-glow gap-1.5"
+                >
+                  <span>Explore Practice</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* SECONDARY POD: EMBEDDED TALENT PARTNER / RPO (Col-span-12 lg:col-span-5) */}
+          <motion.div
+            className="col-span-12 lg:col-span-5 p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between relative overflow-hidden group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+            whileHover={{ y: -6, borderColor: "rgba(15, 59, 39, 0.3)" }}
+          >
+            {/* Soft Mint wash */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#CFF1D2]/40 to-transparent rounded-full blur-xl pointer-events-none" />
+
+            <div className="space-y-6 relative z-10">
+              <div className="flex items-center justify-between border-b border-[#E1E8E3] pb-4">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider bg-[#CFF1D2]/60 text-[#0F3B27]">
+                  <Layers className="h-3.5 w-3.5 text-[#0F3B27]" />
+                  SPRINT SCALING
+                </span>
+                <span className="text-xs font-mono text-[#3D614E]">
+                  PREDICTABLE MONTHLY
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold font-serif text-[#0F3B27] leading-tight">
+                  Embedded Talent Partner (RPO)
+                </h3>
+                <p className="text-sm text-[#3D614E] leading-relaxed font-light mt-2.5">
+                  Senior recruitment partners embed directly into your Slack, Greenhouse, and engineering rituals. Ideal for venture-backed hypergrowth needing 10–50 elite technical hires.
+                </p>
+              </div>
+
+              {/* Telemetry Metric Pod */}
+              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#F7F9F7] border border-[#E1E8E3]">
+                <div>
+                  <div className="text-xl font-bold font-serif text-[#0F3B27]">38% Lower</div>
+                  <div className="text-[11px] font-mono text-[#3D614E]">Cost-per-hire vs agency</div>
+                </div>
+                <div>
+                  <div className="text-xl font-bold font-serif text-[#0F3B27]">48 Hours</div>
+                  <div className="text-[11px] font-mono text-[#3D614E]">Team onboarding SLA</div>
+                </div>
+              </div>
+
+              <ul className="space-y-2 text-xs text-[#0F3B27]">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#0F3B27]" />
+                  <span>Full ownership of all candidate IP and applicant pipelines</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#0F3B27]" />
+                  <span>Custom interview rubrics &amp; technical assessment calibration</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-[#E1E8E3] flex items-center justify-between relative z-10">
+              <span className="text-xs font-mono text-[#3D614E]">Full Squad Deployment</span>
+              <Link href="/services/rpo" className="text-xs font-bold text-[#0F3B27] hover:text-[#3D614E] inline-flex items-center gap-1 font-mono uppercase tracking-wider">
+                View RPO Model &rarr;
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* POD 3: PERMANENT SPECIALIST PLACEMENT (Col-span-12 sm:col-span-6 lg:col-span-4) */}
+          <motion.div
+            className="col-span-12 sm:col-span-6 lg:col-span-4 p-7 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between group"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+            whileHover={{ y: -6, borderColor: "rgba(15, 59, 39, 0.3)" }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="p-2.5 rounded-lg bg-[#BFF2F0]/40 text-[#0F3B27] inline-block">
+                  <Users2 className="h-5 w-5" />
+                </span>
+                <span className="text-[11px] font-mono text-[#3D614E] uppercase">Direct Placement</span>
+              </div>
+              <h4 className="text-xl font-bold font-serif text-[#0F3B27]">Permanent Technical Placement</h4>
+              <p className="text-xs text-[#3D614E] leading-relaxed font-light">
+                Direct-hire search for rare technical individual contributors: Staff &amp; Principal Distributed Systems Engineers, Quantitative Researchers, and Security Architects.
+              </p>
+            </div>
+            <div className="pt-6 mt-4 border-t border-[#E1E8E3]">
+              <Link href="/services/permanent-placement" className="text-xs font-bold text-[#0F3B27] inline-flex items-center gap-1 font-mono hover:underline">
+                Explore Specialists &rarr;
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* POD 4: INTERIM LEADERSHIP & TURNAROUNDS (Col-span-12 sm:col-span-6 lg:col-span-4) */}
+          <motion.div
+            className="col-span-12 sm:col-span-6 lg:col-span-4 p-7 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between group"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
+            whileHover={{ y: -6, borderColor: "rgba(15, 59, 39, 0.3)" }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="p-2.5 rounded-lg bg-[#CFF1D2]/50 text-[#0F3B27] inline-block">
+                  <Clock4 className="h-5 w-5" />
+                </span>
+                <span className="text-[11px] font-mono text-[#3D614E] uppercase">72-Hour Mobilization</span>
+              </div>
+              <h4 className="text-xl font-bold font-serif text-[#0F3B27]">Interim Executive Deployment</h4>
+              <p className="text-xs text-[#3D614E] leading-relaxed font-light">
+                Vetted former CTOs, CISOs, and COOs mobilized within 72 hours to steer critical transitions, post-acquisition carve-outs, or turnaround initiatives.
+              </p>
+            </div>
+            <div className="pt-6 mt-4 border-t border-[#E1E8E3]">
+              <Link href="/services/interim-contract" className="text-xs font-bold text-[#0F3B27] inline-flex items-center gap-1 font-mono hover:underline">
+                Interim Solutions &rarr;
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* POD 5: MARKET INTELLIGENCE & ORG ADVISORY (Col-span-12 lg:col-span-4) */}
+          <motion.div
+            className="col-span-12 lg:col-span-4 p-7 rounded-2xl bg-white/90 backdrop-blur-md border border-[#E1E8E3] shadow-card flex flex-col justify-between group"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
+            whileHover={{ y: -6, borderColor: "rgba(15, 59, 39, 0.3)" }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="p-2.5 rounded-lg bg-[#0F3B27] text-[#92FF5F] inline-block">
+                  <Compass className="h-5 w-5" />
+                </span>
+                <span className="text-[11px] font-mono text-[#3D614E] uppercase">Board Intelligence</span>
+              </div>
+              <h4 className="text-xl font-bold font-serif text-[#0F3B27]">Compensation &amp; Org Advisory</h4>
+              <p className="text-xs text-[#3D614E] leading-relaxed font-light">
+                Unvarnished compensation benchmarking, equity grant modeling, and organizational design blueprints for board compensation committees.
+              </p>
+            </div>
+            <div className="pt-6 mt-4 border-t border-[#E1E8E3]">
+              <Link href="/reports" className="text-xs font-bold text-[#0F3B27] inline-flex items-center gap-1 font-mono hover:underline">
+                Market Reports &rarr;
+              </Link>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
